@@ -1,116 +1,9 @@
 
 --Insertar los datos a las tablas
 
---Tabla de Cliente--
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (1, 'Derrek', 'Flaunier', 'Female', '1972-10-02');
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (2, 'Stewart', 'Heeron', 'Female', '1971-12-16');
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (3, 'Cynde', 'O''Roan', 'Bigender', '1978-06-24');
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (4, 'Guenevere', 'Phillput', 'Polygender', '1965-01-24');
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (5, 'Emmey', 'Bodocs', 'Genderfluid', '1955-06-06');
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (6, 'Ardene', 'Haythorn', 'Non-binary', '1968-03-29');
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (7, 'Nealson', 'Jephson', 'Genderqueer', '1983-08-03');
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (8, 'Aviva', 'Sesons', 'Genderqueer', '1963-04-28');
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (9, 'Berrie', 'D''eath', 'Female', '1994-11-12');
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (10, 'Karl', 'Beggan', 'Non-binary', '1944-01-08');
-
-
---Tabla de Vehiculo--
-insert into vehiculo (id, patente, fecha_fabricacion) values (1, 'UP-LN-AP', '2020-11-21');
-insert into vehiculo (id, patente, fecha_fabricacion) values (2, 'Z6-JP-6J', '2020-07-31');
-insert into vehiculo (id, patente, fecha_fabricacion) values (3, 'HL-WH-V1', '2021-03-08');
-insert into vehiculo (id, patente, fecha_fabricacion) values (4, '7A-JP-P6', '2020-10-23');
-insert into vehiculo (id, patente, fecha_fabricacion) values (5, 'H4-B3-2J', '2019-10-21');
-insert into vehiculo (id, patente, fecha_fabricacion) values (6, 'Q5-JZ-G6', '2020-08-19');
-insert into vehiculo (id, patente, fecha_fabricacion) values (7, 'L0-PO-L3', '2019-07-28');
-insert into vehiculo (id, patente, fecha_fabricacion) values (8, 'NR-KE-R2', '2019-10-24');
-insert into vehiculo (id, patente, fecha_fabricacion) values (9, '3O-7I-0G', '2019-11-26');
-insert into vehiculo (id, patente, fecha_fabricacion) values (10, 'YX-94-PT', '2020-05-06');
-
---Tabla de Cliente_Vehiculo--
-
-
---Tabla de Modelo--
-
-insert into  modelo (id, nombre, marca, tipo) values (1, '2G4GZ5GVXB9053795', 'Mazda', 'MX-5');
-insert into  modelo (id, nombre, marca, tipo) values (2, '5GAKRDED8CJ619141', 'Hyundai', 'Santa Fe');
-insert into  modelo (id, nombre, marca, tipo) values (3, 'JTDKDTB39E1054887', 'Chevrolet', 'Suburban 2500');
-insert into  modelo (id, nombre, marca, tipo) values (4, 'WAUTFAFH7BN696647', 'GMC', 'Savana 2500');
-insert into  modelo (id, nombre, marca, tipo) values (5, 'WAUKF98E57A292824', 'Kia', 'Sportage');
-insert into  modelo (id, nombre, marca, tipo) values (6, 'WAUBFAFL3CN951361', 'Ford', 'Windstar');
-insert into  modelo (id, nombre, marca, tipo) values (7, '3N1CN7AP4EK205035', 'Acura', 'TL');
-insert into  modelo (id, nombre, marca, tipo) values (8, 'SALVP1BG6FH867018', 'Dodge', 'Durango');
-insert into  modelo (id, nombre, marca, tipo) values (9, 'SCFEBBBC3AG144980', 'Chevrolet', 'SSR');
-insert into  modelo (id, nombre, marca, tipo) values (10, '2G4GW5EV2B9610906', 'Dodge', 'Ram 1500');
-
-
---Tabla de pago--
-insert into pago (id, monto, fecha_pago) values (1, 87238, '2019-11-02');
-insert into pago (id, monto, fecha_pago) values (2, 80322, '2020-06-03');
-insert into pago (id, monto, fecha_pago) values (3, 93968, '2019-07-12');
-insert into pago (id, monto, fecha_pago) values (4, 64983, '2020-11-28');
-insert into pago (id, monto, fecha_pago) values (5, 96440, '2020-12-16');
-insert into pago (id, monto, fecha_pago) values (6, 95118, '2021-02-09');
-insert into pago (id, monto, fecha_pago) values (7, 68610, '2020-08-28');
-insert into pago (id, monto, fecha_pago) values (8, 84613, '2021-02-19');
-insert into pago (id, monto, fecha_pago) values (9, 95024, '2020-10-17');
-insert into pago (id, monto, fecha_pago) values (10, 84505, '2019-08-13');
-
-
-
---Tabla de Lugar --
-/*falta la foranea!!!!!
-
-insert into lugar (id, piso, numero) values (1, 0, 1);
-insert into lugar (id, piso, numero) values (2, 5, 2);
-insert into lugar (id, piso, numero) values (3, 2, 3);
-insert into lugar (id, piso, numero) values (4, 9, 4);
-insert into lugar (id, piso, numero) values (5, 1, 5);
-insert into lugar (id, piso, numero) values (6, 4, 6);
-insert into lugar (id, piso, numero) values (7, 10, 7);
-insert into lugar (id, piso, numero) values (8, 7, 8);
-insert into lugar (id, piso, numero) values (9, 5, 9);
-insert into lugar (id, piso, numero) values (10, 2, 10);
-
-*/
-
-
---Tabla de lugar_cliente_vehiculo--
-
-
-
---Tabla de Empleado--
-/*
-insert into empleado (rut, first_name, last_name, tipo) values ('12.994.020-8', 'Nert', 'Trafford', 'Guardia');
-insert into empleado (rut, first_name, last_name, tipo) values ('14.723.649-8', 'Matty', 'Scrimgeour', 'Guardia');
-insert into empleado (rut, first_name, last_name, tipo) values ('17.015.625-7', 'Harriot', 'Gunby', 'Portero');
-insert into empleado (rut, first_name, last_name, tipo) values ('10.629.591-K', 'Jermain', 'Flather', 'Portero');
-insert into empleado (rut, first_name, last_name, tipo) values ('15.281.374-3', 'Emmery', 'Izatson', 'Guardia');
-insert into empleado (rut, first_name, last_name, tipo) values ('12.348.185-1', 'Darrin', 'Folland', 'Cajero');
-insert into empleado (rut, first_name, last_name, tipo) values ('12.287.931-1', 'Blake', 'Askell', 'Guardia');
-insert into empleado (rut, first_name, last_name, tipo) values ('15.791.787-4', 'Lutero', 'Raulston', 'Guardia');
-insert into empleado (rut, first_name, last_name, tipo) values ('17.241.324-2', 'Shantee', 'Brandreth', 'Conserje');
-insert into empleado (rut, first_name, last_name, tipo) values ('12.705.287-3', 'Alphard', 'Seiler', 'Guardia');
-*/
-
-
---Tabla de Sueldo--
-insert into sueldo (id, monto) values (1, 4276227);
-insert into sueldo (id, monto) values (2, 1536209);
-insert into sueldo (id, monto) values (3, 3481348);
-insert into sueldo (id, monto) values (4, 327240);
-insert into sueldo (id, monto) values (5, 3846353);
-insert into sueldo (id, monto) values (6, 2063611);
-insert into sueldo (id, monto) values (7, 1303823);
-insert into sueldo (id, monto) values (8, 757268);
-insert into sueldo (id, monto) values (9, 3759168);
-insert into sueldo (id, monto) values (10, 3944749);
-
-
-
-
 --COMUNAS--
 insert into comuna (id, nombre, id_region)
-VALUES
+values
 	(1,'Arica',1),
 	(2,'Camarones',1),
 	(3,'General Lagos',1),
@@ -457,3 +350,113 @@ VALUES
 	(344,'Natales',16),
 	(345,'Torres del Paine',16),
 	(346,'Cabildo',6);
+
+--Tabla de Modelo--
+insert into  modelo (id, nombre, marca, tipo) values (1, '2G4GZ5GVXB9053795', 'Mazda', 'MX-5');
+insert into  modelo (id, nombre, marca, tipo) values (2, '5GAKRDED8CJ619141', 'Hyundai', 'Santa Fe');
+insert into  modelo (id, nombre, marca, tipo) values (3, 'JTDKDTB39E1054887', 'Chevrolet', 'Suburban 2500');
+insert into  modelo (id, nombre, marca, tipo) values (4, 'WAUTFAFH7BN696647', 'GMC', 'Savana 2500');
+insert into  modelo (id, nombre, marca, tipo) values (5, 'WAUKF98E57A292824', 'Kia', 'Sportage');
+insert into  modelo (id, nombre, marca, tipo) values (6, 'WAUBFAFL3CN951361', 'Ford', 'Windstar');
+insert into  modelo (id, nombre, marca, tipo) values (7, '3N1CN7AP4EK205035', 'Acura', 'TL');
+insert into  modelo (id, nombre, marca, tipo) values (8, 'SALVP1BG6FH867018', 'Dodge', 'Durango');
+insert into  modelo (id, nombre, marca, tipo) values (9, 'SCFEBBBC3AG144980', 'Chevrolet', 'SSR');
+insert into  modelo (id, nombre, marca, tipo) values (10, '2G4GW5EV2B9610906', 'Dodge', 'Ram 1500');
+
+--Tabla de pago--
+insert into pago (id, monto, fecha_pago) values (1, 87238, '2019-11-02');
+insert into pago (id, monto, fecha_pago) values (2, 80322, '2020-06-03');
+insert into pago (id, monto, fecha_pago) values (3, 93968, '2019-07-12');
+insert into pago (id, monto, fecha_pago) values (4, 64983, '2020-11-28');
+insert into pago (id, monto, fecha_pago) values (5, 96440, '2020-12-16');
+insert into pago (id, monto, fecha_pago) values (6, 95118, '2021-02-09');
+insert into pago (id, monto, fecha_pago) values (7, 68610, '2020-08-28');
+insert into pago (id, monto, fecha_pago) values (8, 84613, '2021-02-19');
+insert into pago (id, monto, fecha_pago) values (9, 95024, '2020-10-17');
+insert into pago (id, monto, fecha_pago) values (10, 84505, '2019-08-13');
+
+--Tabla de Sueldo--
+insert into sueldo (id, monto) values (1, 4276227);
+insert into sueldo (id, monto) values (2, 1536209);
+insert into sueldo (id, monto) values (3, 3481348);
+insert into sueldo (id, monto) values (4, 327240);
+insert into sueldo (id, monto) values (5, 3846353);
+insert into sueldo (id, monto) values (6, 2063611);
+insert into sueldo (id, monto) values (7, 1303823);
+insert into sueldo (id, monto) values (8, 757268);
+insert into sueldo (id, monto) values (9, 3759168);
+insert into sueldo (id, monto) values (10, 3944749);
+
+--Tabla de Cliente--
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (1, 'Derrek', 'Flaunier', 'Female', '1972-10-02');
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (2, 'Stewart', 'Heeron', 'Female', '1971-12-16');
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (3, 'Cynde', 'O''Roan', 'Bigender', '1978-06-24');
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (4, 'Guenevere', 'Phillput', 'Polygender', '1965-01-24');
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (5, 'Emmey', 'Bodocs', 'Genderfluid', '1955-06-06');
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (6, 'Ardene', 'Haythorn', 'Non-binary', '1968-03-29');
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (7, 'Nealson', 'Jephson', 'Genderqueer', '1983-08-03');
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (8, 'Aviva', 'Sesons', 'Genderqueer', '1963-04-28');
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (9, 'Berrie', 'D''eath', 'Female', '1994-11-12');
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento) values (10, 'Karl', 'Beggan', 'Non-binary', '1944-01-08');
+
+
+--Tabla de Vehiculo--
+insert into vehiculo (id, patente, fecha_fabricacion) values (1, 'UP-LN-AP', '2020-11-21');
+insert into vehiculo (id, patente, fecha_fabricacion) values (2, 'Z6-JP-6J', '2020-07-31');
+insert into vehiculo (id, patente, fecha_fabricacion) values (3, 'HL-WH-V1', '2021-03-08');
+insert into vehiculo (id, patente, fecha_fabricacion) values (4, '7A-JP-P6', '2020-10-23');
+insert into vehiculo (id, patente, fecha_fabricacion) values (5, 'H4-B3-2J', '2019-10-21');
+insert into vehiculo (id, patente, fecha_fabricacion) values (6, 'Q5-JZ-G6', '2020-08-19');
+insert into vehiculo (id, patente, fecha_fabricacion) values (7, 'L0-PO-L3', '2019-07-28');
+insert into vehiculo (id, patente, fecha_fabricacion) values (8, 'NR-KE-R2', '2019-10-24');
+insert into vehiculo (id, patente, fecha_fabricacion) values (9, '3O-7I-0G', '2019-11-26');
+insert into vehiculo (id, patente, fecha_fabricacion) values (10, 'YX-94-PT', '2020-05-06');
+
+--Tabla de Cliente_Vehiculo--
+
+
+
+
+
+
+--Tabla de Lugar --
+/*falta la foranea!!!!!
+
+insert into lugar (id, piso, numero) values (1, 0, 1);
+insert into lugar (id, piso, numero) values (2, 5, 2);
+insert into lugar (id, piso, numero) values (3, 2, 3);
+insert into lugar (id, piso, numero) values (4, 9, 4);
+insert into lugar (id, piso, numero) values (5, 1, 5);
+insert into lugar (id, piso, numero) values (6, 4, 6);
+insert into lugar (id, piso, numero) values (7, 10, 7);
+insert into lugar (id, piso, numero) values (8, 7, 8);
+insert into lugar (id, piso, numero) values (9, 5, 9);
+insert into lugar (id, piso, numero) values (10, 2, 10);
+
+*/
+
+
+--Tabla de lugar_cliente_vehiculo--
+
+
+
+--Tabla de Empleado--
+/*
+insert into empleado (rut, first_name, last_name, tipo) values ('12.994.020-8', 'Nert', 'Trafford', 'Guardia');
+insert into empleado (rut, first_name, last_name, tipo) values ('14.723.649-8', 'Matty', 'Scrimgeour', 'Guardia');
+insert into empleado (rut, first_name, last_name, tipo) values ('17.015.625-7', 'Harriot', 'Gunby', 'Portero');
+insert into empleado (rut, first_name, last_name, tipo) values ('10.629.591-K', 'Jermain', 'Flather', 'Portero');
+insert into empleado (rut, first_name, last_name, tipo) values ('15.281.374-3', 'Emmery', 'Izatson', 'Guardia');
+insert into empleado (rut, first_name, last_name, tipo) values ('12.348.185-1', 'Darrin', 'Folland', 'Cajero');
+insert into empleado (rut, first_name, last_name, tipo) values ('12.287.931-1', 'Blake', 'Askell', 'Guardia');
+insert into empleado (rut, first_name, last_name, tipo) values ('15.791.787-4', 'Lutero', 'Raulston', 'Guardia');
+insert into empleado (rut, first_name, last_name, tipo) values ('17.241.324-2', 'Shantee', 'Brandreth', 'Conserje');
+insert into empleado (rut, first_name, last_name, tipo) values ('12.705.287-3', 'Alphard', 'Seiler', 'Guardia');
+*/
+
+
+
+
+
+
+
