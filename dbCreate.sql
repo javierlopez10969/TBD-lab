@@ -1,5 +1,6 @@
 --Crear base de datos
 drop database if exists estacionamientosdb;
+
 /*
 --dropear tablas--
 drop table if exists cliente
@@ -16,6 +17,7 @@ drop table if exists empleado CASCADE;
 drop table if exists comuna CASCADE; 
 drop table if exists sueldo CASCADE; 
 */
+
 create database estacionamientosdb;
 \c estacionamientosdb;
 
@@ -27,7 +29,7 @@ CREATE TABLE IF not exists cliente (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	first_name VARCHAR(32) NOT NULL,
 	last_name VARCHAR(32) NOT NULL,
-	gender VARCHAR(10) NOT NULL,
+	gender VARCHAR(32) NOT NULL,
     fecha_de_nacimiento DATE NOT NULL
 );
 
@@ -36,7 +38,7 @@ CREATE TABLE IF not exists cliente (
 CREATE TABLE IF not exists vehiculo (
     id BIGSERIAL NOT NULL PRIMARY KEY,
     patente VARCHAR(32) NOT NULL,
-    año VARCHAR(32) NOT NULL
+    fecha_fabricacion VARCHAR(32) NOT NULL
 
 );
 
@@ -63,13 +65,14 @@ create table IF not exists  modelo (
 create table IF not exists  pago(
     id BIGSERIAL NOT NULL PRIMARY KEY,
     monto INT NOT NULL,
-    fecha_de_pago VARCHAR(32) NOT NULL
+    fecha_pago VARCHAR(32) NOT NULL
 );
 
 --Tabla de Comuna--
 CREATE TABLE IF not exists  comuna(
     id BIGSERIAL NOT NULL PRIMARY KEY,
-	nombre VARCHAR(32) NOT NULL
+	nombre VARCHAR(32) NOT NULL,
+    id_region INT NOT NULL
 );
 
 --Tabla de Edificio_Estacionamiento--
@@ -118,9 +121,9 @@ create table IF not exists lugar_cliente_vehiculo(
 
 --Tabla de Empleado--
 create table IF not exists empleado(
-    id BIGSERIAL NOT NULL PRIMARY KEY,
-	rut VARCHAR(14) NOT NULL,
-	nombre VARCHAR(32) NOT NULL,
+	rut VARCHAR(14) NOT NULL PRIMARY KEY,
+	first_name VARCHAR(32) NOT NULL,
+    last_name VARCHAR(32) NOT NULL,
 	tipo VARCHAR(32) NOT NULL,
 	CONSTRAINT id_edificio
         FOREIGN KEY(id)
@@ -134,4 +137,6 @@ CREATE TABLE IF not exists sueldo(
 );
 
 --Botar bse de datos--
+
+
 --drop database estacionamientosdb;
