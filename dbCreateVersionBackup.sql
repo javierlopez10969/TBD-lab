@@ -6,21 +6,42 @@
 -- Dumped by pg_dump version 13.2
 
 -- Started on 2021-04-23 01:09:47
+--Crear base de datos
+drop database if exists estacionamientosdb;
 
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
+/*
+--dropear tablas--
+drop table if exists cliente
+    CASCADE; 
+drop table if exists cliente_vehiculo CASCADE; 
+drop table if exists vehiculo CASCADE; 
+drop table if exists modelo CASCADE; 
+drop table if exists pago CASCADE; 
+drop table if exists contrato CASCADE; 
+drop table if exists lugar_cliente_vehiculo CASCADE; 
+drop table if exists lugar CASCADE;
+drop table if exists edificio_estacionamiento CASCADE; 
+drop table if exists empleado CASCADE; 
+drop table if exists comuna CASCADE; 
+drop table if exists sueldo CASCADE; 
+*/
 
-SET default_tablespace = '';
+create database estacionamientosdb;
+\c estacionamientosdb;
+--SET statement_timeout = 0;
+--SET lock_timeout = 0;
+--SET idle_in_transaction_session_timeout = 0;
+--SET client_encoding = 'UTF8';
+--SET standard_conforming_strings = on;
+--SELECT pg_catalog.set_config('search_path', '', false);
+--SET check_function_bodies = false;
+--SET xmloption = content;
+--SET client_min_messages = warning;
+--SET row_security = off;
 
-SET default_table_access_method = heap;
+--SET default_tablespace = '';
+
+--SET default_table_access_method = heap;
 
 --
 -- TOC entry 203 (class 1259 OID 16559)
@@ -558,131 +579,7 @@ ALTER TABLE ONLY public.sueldo ALTER COLUMN id SET DEFAULT nextval('public.sueld
 ALTER TABLE ONLY public.vehiculo ALTER COLUMN id SET DEFAULT nextval('public.vehiculo_id_seq'::regclass);
 
 
---
--- TOC entry 2927 (class 0 OID 16559)
--- Dependencies: 203
--- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
-COPY public.cliente (id, first_name, last_name, gender, fecha_de_nacimiento, id_comuna) FROM stdin;
-1	Derrek	Flaunier	Female	1972-10-02	3
-2	Stewart	Heeron	Female	1971-12-16	2
-\.
-
-
---
--- TOC entry 2931 (class 0 OID 16575)
--- Dependencies: 207
--- Data for Name: cliente_vehiculo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.cliente_vehiculo (id, id_cliente, id_vehiculo) FROM stdin;
-\.
-
-
---
--- TOC entry 2937 (class 0 OID 16609)
--- Dependencies: 213
--- Data for Name: comuna; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.comuna (id, nombre, id_region) FROM stdin;
-1	Arica	1
-2	Camarones	1
-3	General Lagos	1
-4	Putre	1
-5	Alto Hospicio	2
-\.
-
-
---
--- TOC entry 2941 (class 0 OID 16630)
--- Dependencies: 217
--- Data for Name: contrato; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.contrato (id, fecha_de_inicio, fecha_de_termino, horario_de_inicio, horario_de_termino, id_pago, id_edificio, id_clie_vehi) FROM stdin;
-\.
-
-
---
--- TOC entry 2939 (class 0 OID 16617)
--- Dependencies: 215
--- Data for Name: edificio_estacionamiento; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) FROM stdin;
-\.
-
-
---
--- TOC entry 2948 (class 0 OID 16748)
--- Dependencies: 224
--- Data for Name: empleado; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.empleado (id, rut, nombre, tipo, id_edificio, id_sueldo, id_comuna) FROM stdin;
-\.
-
-
---
--- TOC entry 2943 (class 0 OID 16643)
--- Dependencies: 219
--- Data for Name: lugar; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.lugar (id, piso, numero, id_edificio) FROM stdin;
-\.
-
-
---
--- TOC entry 2945 (class 0 OID 16656)
--- Dependencies: 221
--- Data for Name: lugar_cliente_vehiculo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.lugar_cliente_vehiculo (id, id_clie_vehi, id_lugar) FROM stdin;
-\.
-
-
---
--- TOC entry 2933 (class 0 OID 16593)
--- Dependencies: 209
--- Data for Name: modelo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.modelo (id, nombre, marca, tipo) FROM stdin;
-\.
-
-
---
--- TOC entry 2935 (class 0 OID 16601)
--- Dependencies: 211
--- Data for Name: pago; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.pago (id, monto, fecha_pago) FROM stdin;
-\.
-
-
---
--- TOC entry 2947 (class 0 OID 16679)
--- Dependencies: 223
--- Data for Name: sueldo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.sueldo (id, monto) FROM stdin;
-\.
-
-
---
--- TOC entry 2929 (class 0 OID 16567)
--- Dependencies: 205
--- Data for Name: vehiculo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.vehiculo (id, patente, fecha_fabricacion, id_modelo) FROM stdin;
-\.
 
 
 --
