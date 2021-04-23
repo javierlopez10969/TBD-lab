@@ -1,8 +1,8 @@
 
 --Insertar los datos a las tablas
 
---COMUNAS / LISTO--
-insert into comuna (id, nombre, id_region)
+--COMUNAS / LISTO BORRAR ID:REGON DE BASE DE DATOS--
+insert into comuna (id, nombre)
 values
 	(1,'Arica'),
 	(2,'Camarones'),
@@ -438,7 +438,7 @@ insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id
 insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (4, 'Guenevere', 'Phillput', 'Polygender', '1965-01-24', 12);
 insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (5, 'Emmey', 'Bodocs', 'Genderfluid', '1955-06-06', 8);
 insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (6, 'Ardene', 'Haythorn', 'Non-binary', '1968-03-29', 8);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (7, 'Nealson', 'Jephson', 'Genderqueer', '1983-08-03', );
+insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (7, 'Nealson', 'Jephson', 'Genderqueer', '1983-08-03', 8);
 insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (8, 'Aviva', 'Sesons', 'Genderqueer', '1963-04-28', 100);
 insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (9, 'Berrie', 'D''eath', 'Female', '1994-11-12', 19);
 insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (10, 'Karl', 'Beggan', 'Non-binary', '1944-01-08', 1);
