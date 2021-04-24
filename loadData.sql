@@ -483,22 +483,30 @@ insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (10, 10, 3
 
 
 
+--Tabla de edificio_estacionamiento --
+
+insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (1, 'Tucapel', 3140, 'Empresas Tucapel', 127);
+insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (2, 'Padre Alonso de Ovalle',679, 'Ingen Y Telecom', 127);
+insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (3, 'Román Díaz',  2161, 'Empresa De Servicios Transitorios', 115);
+insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (4, 'Ureta Cox', 1038, 'Empresa Yatai S.A.', 124);
+insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (5, 'Gran Avenida Jose Miguel Carrera', 5986, 'Zona3 Limitada', 124);
+insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (6, 'José Ureta', 969, 'CONSTRUCTORA COF', 104);
+
+
 
 --Tabla de Lugar --
-/*falta la foranea!!!!!
 
-insert into lugar (id, piso, numero) values (1, 0, 1);
-insert into lugar (id, piso, numero) values (2, 5, 2);
-insert into lugar (id, piso, numero) values (3, 2, 3);
-insert into lugar (id, piso, numero) values (4, 9, 4);
-insert into lugar (id, piso, numero) values (5, 1, 5);
-insert into lugar (id, piso, numero) values (6, 4, 6);
-insert into lugar (id, piso, numero) values (7, 10, 7);
-insert into lugar (id, piso, numero) values (8, 7, 8);
-insert into lugar (id, piso, numero) values (9, 5, 9);
-insert into lugar (id, piso, numero) values (10, 2, 10);
+insert into lugar (id, piso, numero, id_edificio) values (1, -1, 1, 3);
+insert into lugar (id, piso, numero, id_edificio) values (2, 5, 2, 4);
+insert into lugar (id, piso, numero, id_edificio) values (3, 2, 3, 2);
+insert into lugar (id, piso, numero, id_edificio) values (4, 9, 4, 5);
+insert into lugar (id, piso, numero, id_edificio) values (5, 1, 5, 2);
+insert into lugar (id, piso, numero, id_edificio) values (6, 4, 6, 1);
+insert into lugar (id, piso, numero, id_edificio) values (7, 10, 7, 1);
+insert into lugar (id, piso, numero, id_edificio) values (8, 7, 8, 3);
+insert into lugar (id, piso, numero, id_edificio) values (9, 5, 9, 3);
+insert into lugar (id, piso, numero, id_edificio) values (10, 2, 10, 2);
 
-*/
 
 
 --Tabla de lugar_cliente_vehiculo--
