@@ -9,7 +9,10 @@ CREATE TABLE IF not exists cliente
 (
 	id_cliente serial primary key,
 	nombre varchar(32),
-	apellido varchar(32)
+	apellido varchar(32),
+	genero varchar(3),
+	fecha_nacimiento date,
+	id_comuna serial
 );
 
 CREATE TABLE IF not exists contrato
@@ -55,7 +58,8 @@ CREATE TABLE IF not exists vehiculo
 (
 	id_vehiculo serial primary key,
 	patente varchar(32),
-	ano date
+	ano date,
+	id_modelo serial
 );
 
 CREATE TABLE IF not exists lugar
@@ -89,6 +93,9 @@ CREATE TABLE IF not exists sueldo
 	monto integer
 );
 
+ALTER TABLE cliente
+ADD FOREIGN KEY (id_comuna) REFERENCES comuna(id_comuna);
+
 ALTER TABLE contrato
 ADD FOREIGN KEY (id_edificio) REFERENCES edificio_estacion(id_edificio);
 
@@ -106,6 +113,9 @@ ADD FOREIGN KEY (id_cliente_vehiculo) REFERENCES cliente_vehiculo(id_cliente_veh
 
 ALTER TABLE lugar_cliente_vehiculo
 ADD FOREIGN KEY (id_lugar) REFERENCES lugar(id_lugar);
+
+ALTER TABLE vehiculo
+ADD FOREIGN KEY (id_modelo) REFERENCES modelo(id_modelo);
 
 ALTER TABLE lugar
 ADD FOREIGN KEY (id_edificio) REFERENCES edificio_estacion(id_edificio);
