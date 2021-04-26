@@ -1,9 +1,8 @@
-
 --Insertar los datos a las tablas
 
 --COMUNAS / LISTO BORRAR ID:REGON DE BASE DE DATOS--
-insert into comuna (id, nombre)
-values
+INSERT INTO comuna (id_comuna, nombre)
+VALUES
 	(1,'Arica'),
 	(2,'Camarones'),
 	(3,'General Lagos'),
@@ -352,132 +351,128 @@ values
 	(346,'Cabildo');
 
 --Tabla de Modelo/ Se podrian agregar mas pero esta LISTO--
-insert into  modelo (id, nombre, marca, tipo) values (1, '2G4GZ5GVXB9053795', 'Mazda', 'MX-5');
-insert into  modelo (id, nombre, marca, tipo) values (2, '5GAKRDED8CJ619141', 'Hyundai', 'Santa Fe');
-insert into  modelo (id, nombre, marca, tipo) values (3, 'JTDKDTB39E1054887', 'Chevrolet', 'Suburban 2500');
-insert into  modelo (id, nombre, marca, tipo) values (4, 'WAUTFAFH7BN696647', 'GMC', 'Savana 2500');
-insert into  modelo (id, nombre, marca, tipo) values (5, 'WAUKF98E57A292824', 'Kia', 'Sportage');
-insert into  modelo (id, nombre, marca, tipo) values (6, 'WAUBFAFL3CN951361', 'Ford', 'Windstar');
-insert into  modelo (id, nombre, marca, tipo) values (7, '3N1CN7AP4EK205035', 'Acura', 'TL');
-insert into  modelo (id, nombre, marca, tipo) values (8, 'SALVP1BG6FH867018', 'Dodge', 'Durango');
-insert into  modelo (id, nombre, marca, tipo) values (9, 'SCFEBBBC3AG144980', 'Chevrolet', 'SSR');
-insert into  modelo (id, nombre, marca, tipo) values (10, '2G4GW5EV2B9610906', 'Dodge', 'Ram 1500');
+INSERT INTO  modelo (id_modelo, nombre, marca, tipo) VALUES (1, '2G4GZ5GVXB9053795', 'Mazda', 'MX-5'),
+(2, '5GAKRDED8CJ619141', 'Hyundai', 'Santa Fe'),
+(3, 'JTDKDTB39E1054887', 'Chevrolet', 'Suburban 2500'),
+(4, 'WAUTFAFH7BN696647', 'GMC', 'Savana 2500'),
+(5, 'WAUKF98E57A292824', 'Kia', 'Sportage'),
+(6, 'WAUBFAFL3CN951361', 'Ford', 'Windstar'),
+(7, '3N1CN7AP4EK205035', 'Acura', 'TL'),
+(8, 'SALVP1BG6FH867018', 'Dodge', 'Durango'),
+(9, 'SCFEBBBC3AG144980', 'Chevrolet', 'SSR'),
+(10, '2G4GW5EV2B9610906', 'Dodge', 'Ram 1500');
 
 --Tabla de pago / LISTO--
-insert into pago (id, monto, fecha_pago) values (1, 87238, '2019-11-02');
-insert into pago (id, monto, fecha_pago) values (2, 80322, '2020-06-03');
-insert into pago (id, monto, fecha_pago) values (3, 93968, '2019-07-12');
-insert into pago (id, monto, fecha_pago) values (4, 64983, '2020-11-28');
-insert into pago (id, monto, fecha_pago) values (5, 96440, '2020-12-16');
-insert into pago (id, monto, fecha_pago) values (6, 95118, '2021-02-09');
-insert into pago (id, monto, fecha_pago) values (7, 68610, '2020-08-28');
-insert into pago (id, monto, fecha_pago) values (8, 84613, '2021-02-19');
-insert into pago (id, monto, fecha_pago) values (9, 95024, '2020-10-17');
-insert into pago (id, monto, fecha_pago) values (10, 84505, '2019-08-13');
-
-insert into pago (id, monto, fecha_pago) values (11, 99238, '2020-11-02');
-insert into pago (id, monto, fecha_pago) values (12, 98322, '2021-06-03');
-insert into pago (id, monto, fecha_pago) values (13, 96968, '2020-07-12');
-insert into pago (id, monto, fecha_pago) values (14, 85983, '2021-11-28');
-insert into pago (id, monto, fecha_pago) values (15, 65440, '2021-12-16');
-insert into pago (id, monto, fecha_pago) values (16, 75118, '2019-02-09');
-insert into pago (id, monto, fecha_pago) values (17, 68910, '2021-08-28');
-insert into pago (id, monto, fecha_pago) values (18, 89813, '2019-02-19');
-insert into pago (id, monto, fecha_pago) values (19, 99924, '2019-10-17');
-insert into pago (id, monto, fecha_pago) values (20, 98505, '2020-08-13');
-
-insert into pago (id, monto, fecha_pago) values (21, 87998, '2019-11-03');
-insert into pago (id, monto, fecha_pago) values (22, 80822, '2020-06-04');
-insert into pago (id, monto, fecha_pago) values (23, 99968, '2019-07-13');
-insert into pago (id, monto, fecha_pago) values (24, 89983, '2020-11-29');
-insert into pago (id, monto, fecha_pago) values (25, 89440, '2020-12-17');
-insert into pago (id, monto, fecha_pago) values (26, 98118, '2021-02-10');
-insert into pago (id, monto, fecha_pago) values (27, 68610, '2020-08-29');
-insert into pago (id, monto, fecha_pago) values (28, 94613, '2021-02-20');
-insert into pago (id, monto, fecha_pago) values (29, 99024, '2020-10-18');
-insert into pago (id, monto, fecha_pago) values (30, 98505, '2019-08-14');
-
-insert into pago (id, monto, fecha_pago) values (31, 87238, '2019-12-02');
-insert into pago (id, monto, fecha_pago) values (32, 80322, '2020-07-03');
-insert into pago (id, monto, fecha_pago) values (33, 93968, '2019-08-12');
-insert into pago (id, monto, fecha_pago) values (34, 64983, '2020-12-28');
-insert into pago (id, monto, fecha_pago) values (35, 96440, '2021-01-16');
-insert into pago (id, monto, fecha_pago) values (36, 95118, '2021-03-09');
-insert into pago (id, monto, fecha_pago) values (37, 68610, '2020-07-28');
-insert into pago (id, monto, fecha_pago) values (38, 84613, '2021-03-19');
-insert into pago (id, monto, fecha_pago) values (39, 95024, '2020-11-17');
-insert into pago (id, monto, fecha_pago) values (40, 84505, '2019-09-13');
+INSERT INTO pago (id_pago, monto, fecha_pago) VALUES (1, 87238, '2019-11-02'),
+(2, 80322, '2020-06-03'),
+(3, 93968, '2019-07-12'),
+(4, 64983, '2020-11-28'),
+(5, 96440, '2020-12-16'),
+(6, 95118, '2021-02-09'),
+(7, 68610, '2020-08-28'),
+(8, 84613, '2021-02-19'),
+(9, 95024, '2020-10-17'),
+(10, 84505, '2019-08-13'),
+(11, 99238, '2020-11-02'),
+(12, 98322, '2021-06-03'),
+(13, 96968, '2020-07-12'),
+(14, 85983, '2021-11-28'),
+(15, 65440, '2021-12-16'),
+(16, 75118, '2019-02-09'),
+(17, 68910, '2021-08-28'),
+(18, 89813, '2019-02-19'),
+(19, 99924, '2019-10-17'),
+(20, 98505, '2020-08-13'),
+(21, 87998, '2019-11-03'),
+(22, 80822, '2020-06-04'),
+(23, 99968, '2019-07-13'),
+(24, 89983, '2020-11-29'),
+(25, 89440, '2020-12-17'),
+(26, 98118, '2021-02-10'),
+(27, 68610, '2020-08-29'),
+(28, 94613, '2021-02-20'),
+(29, 99024, '2020-10-18'),
+(30, 98505, '2019-08-14'),
+(31, 87238, '2019-12-02'),
+(32, 80322, '2020-07-03'),
+(33, 93968, '2019-08-12'),
+(34, 64983, '2020-12-28'),
+(35, 96440, '2021-01-16'),
+(36, 95118, '2021-03-09'),
+(37, 68610, '2020-07-28'),
+(38, 84613, '2021-03-19'),
+(39, 95024, '2020-11-17'),
+(40, 84505, '2019-09-13');
 
 --Tabla de Sueldo / LISTO--
-insert into sueldo (id, monto) values (1, 4276227);
-insert into sueldo (id, monto) values (2, 1536209);
-insert into sueldo (id, monto) values (3, 3481348);
-insert into sueldo (id, monto) values (4, 327240);
-insert into sueldo (id, monto) values (5, 3846353);
-insert into sueldo (id, monto) values (6, 2063611);
-insert into sueldo (id, monto) values (7, 1303823);
-insert into sueldo (id, monto) values (8, 757268);
-insert into sueldo (id, monto) values (9, 3759168);
-insert into sueldo (id, monto) values (10, 3944749);
-
-insert into sueldo (id, monto) values (11, 5276227);
-insert into sueldo (id, monto) values (12, 2536209);
-insert into sueldo (id, monto) values (13, 4481348);
-insert into sueldo (id, monto) values (14, 427240);
-insert into sueldo (id, monto) values (15, 4846353);
-insert into sueldo (id, monto) values (16, 3063611);
-insert into sueldo (id, monto) values (17, 2303823);
-insert into sueldo (id, monto) values (18, 857268);
-insert into sueldo (id, monto) values (19, 4464555);
-insert into sueldo (id, monto) values (20, 4944749);
+INSERT INTO sueldo (id_sueldo, monto) VALUES (1, 4276227),
+(2, 1536209),
+(3, 3481348),
+(4, 327240),
+(5, 3846353),
+(6, 2063611),
+(7, 1303823),
+(8, 757268),
+(9, 3759168),
+(10, 3944749),
+(11, 5276227),
+(12, 2536209),
+(13, 4481348),
+(14, 427240),
+(15, 4846353),
+(16, 3063611),
+(17, 2303823),
+(18, 857268),
+(19, 4464555),
+(20, 4944749);
 
 --Tabla de Cliente / LISTO--
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (1, 'Derrek', 'Flaunier', 'Female', '1972-10-02', 1);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (2, 'Stewart', 'Heeron', 'Female', '1971-12-16', 12);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (3, 'Cynde', 'O''Roan', 'Bigender', '1978-06-24', 13);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (4, 'Guenevere', 'Phillput', 'Polygender', '1965-01-24', 12);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (5, 'Emmey', 'Bodocs', 'Genderfluid', '1955-06-06', 8);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (6, 'Ardene', 'Haythorn', 'Non-binary', '1968-03-29', 8);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (7, 'Nealson', 'Jephson', 'Genderqueer', '1983-08-03', 8);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (8, 'Aviva', 'Sesons', 'Genderqueer', '1963-04-28', 100);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (9, 'Berrie', 'D''eath', 'Female', '1994-11-12', 19);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (10, 'Karl', 'Beggan', 'Non-binary', '1944-01-08', 1);
-
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (11, 'Luis', 'Flaunier', 'Female', '1965-11-02', 7);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (12, 'Andres', 'Heeron', 'Female', '1975-02-16', 6);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (13, 'Maurico', 'O''Roan', 'Bigender', '1985-05-24', 2);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (14, 'Nicolas', 'Phillput', 'Polygender', '1955-05-24', 2);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (15, 'Javier', 'Bodocs', 'Genderfluid', '1965-06-06', 2);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (16, 'David', 'Haythorn', 'Non-binary', '1969-04-29', 4);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (17, 'Benjamin', 'Jephson', 'Genderqueer', '1985-09-03', 4);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (18, 'Tomas', 'Sesons', 'Genderqueer', '1967-05-28', 4);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (19, 'Sebastian', 'D''eath', 'Female', '1995-12-12', 4);
-insert into cliente (id, first_name, last_name, gender, fecha_de_nacimiento, "id_comuna") values (20, 'Armando', 'Beggan', 'Non-binary', '1945-02-08', 4);
+INSERT INTO cliente (id_cliente, nombre, apellido, genero, fecha_nacimiento, id_comuna)
+VALUES (1, 'Derrek', 'Flaunier', 'F', '1972-10-02', 1),
+(2, 'Stewart', 'Heeron', 'F', '1971-12-16', 12),
+(3, 'Cynde', 'O''Roan', 'B', '1978-06-24', 13),
+(4, 'Guenevere', 'Phillput', 'P', '1965-01-24', 12),
+(5, 'Emmey', 'Bodocs', 'G', '1955-06-06', 8),
+(6, 'Ardene', 'Haythorn', 'N', '1968-03-29', 8),
+(7, 'Nealson', 'Jephson', 'G', '1983-08-03', 8),
+(8, 'Aviva', 'Sesons', 'G', '1963-04-28', 100),
+(9, 'Berrie', 'D''eath', 'F', '1994-11-12', 19),
+(10, 'Karl', 'Beggan', 'N', '1944-01-08', 1),
+(11, 'Luis', 'Flaunier', 'F', '1965-11-02', 7),
+(12, 'Andres', 'Heeron', 'F', '1975-02-16', 6),
+(13, 'Maurico', 'O''Roan', 'B', '1985-05-24', 2),
+(14, 'Nicolas', 'Phillput', 'P', '1955-05-24', 2),
+(15, 'Javier', 'Bodocs', 'G', '1965-06-06', 2),
+(16, 'David', 'Haythorn', 'N', '1969-04-29', 4),
+(17, 'Benjamin', 'Jephson', 'G', '1985-09-03', 4),
+(18, 'Tomas', 'Sesons', 'G', '1967-05-28', 4),
+(19, 'Sebastian', 'D''eath', 'F', '1995-12-12', 4),
+(20, 'Armando', 'Beggan', 'N', '1945-02-08', 4);
 
 
 --Tabla de Vehiculo / LISTO--
-insert into vehiculo (id, patente, fecha_fabricacion, "id_modelo") values (1, 'UP-LN-AP', '2020-11-21', 2);
-insert into vehiculo (id, patente, fecha_fabricacion, "id_modelo") values (2, 'Z6-JP-6J', '2020-07-31', 3);
-insert into vehiculo (id, patente, fecha_fabricacion, "id_modelo") values (3, 'HL-WH-V1', '2021-03-08', 2);
-insert into vehiculo (id, patente, fecha_fabricacion, "id_modelo") values (4, '7A-JP-P6', '2020-10-23', 2);
-insert into vehiculo (id, patente, fecha_fabricacion, "id_modelo") values (5, 'H4-B3-2J', '2019-10-21', 2);
-insert into vehiculo (id, patente, fecha_fabricacion, "id_modelo") values (6, 'Q5-JZ-G6', '2020-08-19', 1);
-insert into vehiculo (id, patente, fecha_fabricacion, "id_modelo") values (7, 'L0-PO-L3', '2019-07-28', 1);
-insert into vehiculo (id, patente, fecha_fabricacion, "id_modelo") values (8, 'NR-KE-R2', '2019-10-24', 5);
-insert into vehiculo (id, patente, fecha_fabricacion, "id_modelo") values (9, '3O-7I-0G', '2019-11-26', 4);
-insert into vehiculo (id, patente, fecha_fabricacion, "id_modelo") values (10, 'YX-94-PT', '2020-05-06', 3);
+INSERT INTO vehiculo (id_vehiculo, patente, ano, id_modelo) VALUES (1, 'UP-LN-AP', '2020-11-21', 2),
+ (2, 'Z6-JP-6J', '2020-07-31', 3),
+ (3, 'HL-WH-V1', '2021-03-08', 2),
+ (4, '7A-JP-P6', '2020-10-23', 2),
+ (5, 'H4-B3-2J', '2019-10-21', 2),
+ (6, 'Q5-JZ-G6', '2020-08-19', 1),
+ (7, 'L0-PO-L3', '2019-07-28', 1),
+ (8, 'NR-KE-R2', '2019-10-24', 5),
+ (9, '3O-7I-0G', '2019-11-26', 4),
+ (10, 'YX-94-PT', '2020-05-06', 3);
 
 --Tabla de Cliente_Vehiculo--
-insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (1, 1, 2);
-insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (2, 2, 3);
-insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (3, 3, 2);
-insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (4, 9, 2);
-insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (5, 8, 2);
-insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (6, 7, 1);
-insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (7, 4, 1);
-insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (8, 5, 5);
-insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (9, 6, 4);
-insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (10, 10, 3);
+INSERT INTO cliente_vehiculo (id_cliente_vehiculo, id_vehiculo, id_cliente) VALUES (1, 1, 2),
+(2, 2, 3),
+(3, 3, 2),
+(4, 9, 2),
+(5, 8, 2),
+(6, 7, 1),
+(7, 4, 1),
+(8, 5, 5),
+(9, 6, 4),
+(10, 10, 3);
 
 
 
@@ -485,51 +480,66 @@ insert into cliente_vehiculo (id, "id_vehiculo", "id_cliente") values (10, 10, 3
 
 --Tabla de edificio_estacionamiento --
 
-insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (1, 'Tucapel', 3140, 'Empresas Tucapel', 127);
-insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (2, 'Padre Alonso de Ovalle',679, 'Ingen Y Telecom', 127);
-insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (3, 'Román Díaz',  2161, 'Empresa De Servicios Transitorios', 115);
-insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (4, 'Ureta Cox', 1038, 'Empresa Yatai S.A.', 124);
-insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (5, 'Gran Avenida Jose Miguel Carrera', 5986, 'Zona3 Limitada', 124);
-insert into edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) values (6, 'José Ureta', 969, 'CONSTRUCTORA COF', 104);
+INSERT INTO edificio_estacion (id_edificio, direccion, numero_edificio, nombre, id_comuna) VALUES (1, 'Tucapel', 3140, 'Empresas Tucapel', 127),
+(2, 'Padre Alonso de Ovalle',679, 'Ingen Y Telecom', 127),
+(3, 'Román Díaz',  2161, 'Empresa De Servicios Transitorios', 115),
+(4, 'Ureta Cox', 1038, 'Empresa Yatai S.A.', 124),
+(5, 'Gran Avenida Jose Miguel Carrera', 5986, 'Zona3 Limitada', 124),
+(6, 'José Ureta', 969, 'CONSTRUCTORA COF', 104);
 
 
 
 --Tabla de Lugar --
 
-insert into lugar (id, piso, numero, id_edificio) values (1, -1, 1, 3);
-insert into lugar (id, piso, numero, id_edificio) values (2, 5, 2, 4);
-insert into lugar (id, piso, numero, id_edificio) values (3, 2, 3, 2);
-insert into lugar (id, piso, numero, id_edificio) values (4, 9, 4, 5);
-insert into lugar (id, piso, numero, id_edificio) values (5, 1, 5, 2);
-insert into lugar (id, piso, numero, id_edificio) values (6, 4, 6, 1);
-insert into lugar (id, piso, numero, id_edificio) values (7, 10, 7, 1);
-insert into lugar (id, piso, numero, id_edificio) values (8, 7, 8, 3);
-insert into lugar (id, piso, numero, id_edificio) values (9, 5, 9, 3);
-insert into lugar (id, piso, numero, id_edificio) values (10, 2, 10, 2);
+INSERT INTO lugar (id_lugar, piso, numero, id_edificio) VALUES (1, -1, 1, 3),
+(2, 5, 2, 4),
+(3, 2, 3, 2),
+(4, 9, 4, 5),
+(5, 1, 5, 2),
+(6, 4, 6, 1),
+(7, 10, 7, 1),
+(8, 7, 8, 3),
+(9, 5, 9, 3),
+(10, 2, 10, 2);
 
 
 
 --Tabla de lugar_cliente_vehiculo--
 
-
+INSERT INTO lugar_cliente_vehiculo (id, id_clie_vehi,id_lugar) VALUES (1, 1, 6),
+(2, 3, 4),
+(3, 2, 5),
+(4, 5, 8),
+(5, 4, 3),
+(6, 7, 7),
+(7, 9, 1),
+(8, 8, 9),
+(9, 10, 2),
+(10, 6, 10)
 
 --Tabla de Empleado--
-/*
-insert into empleado (rut, first_name, last_name, tipo) values ('12.994.020-8', 'Nert', 'Trafford', 'Guardia');
-insert into empleado (rut, first_name, last_name, tipo) values ('14.723.649-8', 'Matty', 'Scrimgeour', 'Guardia');
-insert into empleado (rut, first_name, last_name, tipo) values ('17.015.625-7', 'Harriot', 'Gunby', 'Portero');
-insert into empleado (rut, first_name, last_name, tipo) values ('10.629.591-K', 'Jermain', 'Flather', 'Portero');
-insert into empleado (rut, first_name, last_name, tipo) values ('15.281.374-3', 'Emmery', 'Izatson', 'Guardia');
-insert into empleado (rut, first_name, last_name, tipo) values ('12.348.185-1', 'Darrin', 'Folland', 'Cajero');
-insert into empleado (rut, first_name, last_name, tipo) values ('12.287.931-1', 'Blake', 'Askell', 'Guardia');
-insert into empleado (rut, first_name, last_name, tipo) values ('15.791.787-4', 'Lutero', 'Raulston', 'Guardia');
-insert into empleado (rut, first_name, last_name, tipo) values ('17.241.324-2', 'Shantee', 'Brandreth', 'Conserje');
-insert into empleado (rut, first_name, last_name, tipo) values ('12.705.287-3', 'Alphard', 'Seiler', 'Guardia');
-*/
 
+INSERT INTO empleado (id,rut, nombre, tipo, id_edificio, id_sueldo, id_comuna) VALUES (1,129940208, 'Nert Trafford', 'Guardia',1,4,127),
+(2,147236498, 'Matty Scrimgeour', 'Guardia',2, 3,127),
+(3,170156257, 'Harriot Gunby', 'Portero',1, 5,127),
+(4,106295910, 'Jermain Flather', 'Portero',2, 10,127),
+(5,152813743, 'Emmery Izatson', 'Guardia',3, 1,115),
+(6,123481851, 'Darrin Folland', 'Cajero',1, 1,127),
+(7,122879311, 'Blake Askell', 'Guardia',4, 15,124),
+(8,157917874, 'Lutero Raulston', 'Guardia',5, 9,124),
+(9,172413242, 'Shantee Brandreth', 'Conserje',1, 2,127),
+(10,127052873, 'Alphard Seiler', 'Guardia',6, 2,104);
 
+--Tabla de Contrato--
 
-
-
-
-
+INSERT INTO contrato (id,fecha_de_inicio,fecha_de_termino,horario_de_inicio,horario_de_termino,id_pago,id_edificio,id_clie_vehi) 
+VALUES (1,'2018-10-30','2022-03-12','9:46','17:41',1,5,2),
+(2,'2019-01-26','2020-12-03','9:29','18:20',31,6,3),
+(3,'2018-09-20','2021-09-30','8:38','18:13',14,1,1),
+(4,'2018-11-10','2021-12-19','8:39','19:31',38,4,5),
+(5,'2018-08-23','2021-05-22','9:49','19:40',15,5,7),
+(6,'2019-07-12','2020-09-11','8:28','19:02',27,2,10),
+(7,'2018-11-05','2021-08-26','8:30','17:32',29,6,9),
+(8,'2019-11-20','2021-03-13','8:22','19:09',12,6,4),
+(9,'2018-12-19','2021-04-23','8:56','19:10',36,3,8),
+(10,'2019-04-26','2021-05-07','9:38','18:53',23,5,6)
