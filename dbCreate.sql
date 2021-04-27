@@ -211,7 +211,7 @@ CREATE TABLE public.edificio_estacionamiento (
     id bigint NOT NULL,
     direccion character varying(100) NOT NULL,
     numero_edificio integer NOT NULL,
-    nombre character varying(32) NOT NULL,
+    nombre character varying(50) NOT NULL,
     id_comuna bigint NOT NULL
 );
 

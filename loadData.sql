@@ -1,7 +1,7 @@
 --Insertar los datos a las tablas
 
 --COMUNAS / LISTO BORRAR ID:REGON DE BASE DE DATOS--
-INSERT INTO comuna (id_comuna, nombre)
+INSERT INTO comuna (id, nombre)
 VALUES
 	(1,'Arica'),
 	(2,'Camarones'),
@@ -351,7 +351,7 @@ VALUES
 	(346,'Cabildo');
 
 --Tabla de Modelo/ Se podrian agregar mas pero esta LISTO--
-INSERT INTO  modelo (id_modelo, nombre, marca, tipo) VALUES (1, '2G4GZ5GVXB9053795', 'Mazda', 'MX-5'),
+INSERT INTO  modelo (id, nombre, marca, tipo) VALUES (1, '2G4GZ5GVXB9053795', 'Mazda', 'MX-5'),
 (2, '5GAKRDED8CJ619141', 'Hyundai', 'Santa Fe'),
 (3, 'JTDKDTB39E1054887', 'Chevrolet', 'Suburban 2500'),
 (4, 'WAUTFAFH7BN696647', 'GMC', 'Savana 2500'),
@@ -363,7 +363,7 @@ INSERT INTO  modelo (id_modelo, nombre, marca, tipo) VALUES (1, '2G4GZ5GVXB90537
 (10, '2G4GW5EV2B9610906', 'Dodge', 'Ram 1500');
 
 --Tabla de pago / LISTO--
-INSERT INTO pago (id_pago, monto, fecha_pago) VALUES (1, 87238, '2019-11-02'),
+INSERT INTO pago (id, monto, fecha_pago) VALUES (1, 87238, '2019-11-02'),
 (2, 80322, '2020-06-03'),
 (3, 93968, '2019-07-12'),
 (4, 64983, '2020-11-28'),
@@ -405,7 +405,7 @@ INSERT INTO pago (id_pago, monto, fecha_pago) VALUES (1, 87238, '2019-11-02'),
 (40, 84505, '2019-09-13');
 
 --Tabla de Sueldo / LISTO--
-INSERT INTO sueldo (id_sueldo, monto) VALUES (1, 4276227),
+INSERT INTO sueldo (id, monto) VALUES (1, 4276227),
 (2, 1536209),
 (3, 3481348),
 (4, 327240),
@@ -427,7 +427,7 @@ INSERT INTO sueldo (id_sueldo, monto) VALUES (1, 4276227),
 (20, 4944749);
 
 --Tabla de Cliente / LISTO--
-INSERT INTO cliente (id_cliente, nombre, apellido, genero, fecha_nacimiento, id_comuna)
+INSERT INTO cliente (id, first_name, last_name, gender, fecha_de_nacimiento, id_comuna)
 VALUES (1, 'Derrek', 'Flaunier', 'F', '1972-10-02', 1),
 (2, 'Stewart', 'Heeron', 'F', '1971-12-16', 12),
 (3, 'Cynde', 'O''Roan', 'B', '1978-06-24', 13),
@@ -451,7 +451,7 @@ VALUES (1, 'Derrek', 'Flaunier', 'F', '1972-10-02', 1),
 
 
 --Tabla de Vehiculo / LISTO--
-INSERT INTO vehiculo (id_vehiculo, patente, ano, id_modelo) VALUES (1, 'UP-LN-AP', '2020-11-21', 2),
+INSERT INTO vehiculo (id, patente, fecha_fabricacion, id_modelo) VALUES (1, 'UP-LN-AP', '2020-11-21', 2),
  (2, 'Z6-JP-6J', '2020-07-31', 3),
  (3, 'HL-WH-V1', '2021-03-08', 2),
  (4, '7A-JP-P6', '2020-10-23', 2),
@@ -463,7 +463,7 @@ INSERT INTO vehiculo (id_vehiculo, patente, ano, id_modelo) VALUES (1, 'UP-LN-AP
  (10, 'YX-94-PT', '2020-05-06', 3);
 
 --Tabla de Cliente_Vehiculo--
-INSERT INTO cliente_vehiculo (id_cliente_vehiculo, id_vehiculo, id_cliente) VALUES (1, 1, 2),
+INSERT INTO cliente_vehiculo (id, id_vehiculo, id_cliente) VALUES (1, 1, 2),
 (2, 2, 3),
 (3, 3, 2),
 (4, 9, 2),
@@ -480,7 +480,7 @@ INSERT INTO cliente_vehiculo (id_cliente_vehiculo, id_vehiculo, id_cliente) VALU
 
 --Tabla de edificio_estacionamiento --
 
-INSERT INTO edificio_estacion (id_edificio, direccion, numero_edificio, nombre, id_comuna) VALUES (1, 'Tucapel', 3140, 'Empresas Tucapel', 127),
+INSERT INTO edificio_estacionamiento (id, direccion, numero_edificio, nombre, id_comuna) VALUES (1, 'Tucapel', 3140, 'Empresas Tucapel', 127),
 (2, 'Padre Alonso de Ovalle',679, 'Ingen Y Telecom', 127),
 (3, 'Román Díaz',  2161, 'Empresa De Servicios Transitorios', 115),
 (4, 'Ureta Cox', 1038, 'Empresa Yatai S.A.', 124),
@@ -491,7 +491,7 @@ INSERT INTO edificio_estacion (id_edificio, direccion, numero_edificio, nombre, 
 
 --Tabla de Lugar --
 
-INSERT INTO lugar (id_lugar, piso, numero, id_edificio) VALUES (1, -1, 1, 3),
+INSERT INTO lugar (id, piso, numero, id_edificio) VALUES (1, -1, 1, 3),
 (2, 5, 2, 4),
 (3, 2, 3, 2),
 (4, 9, 4, 5),
@@ -515,7 +515,7 @@ INSERT INTO lugar_cliente_vehiculo (id, id_clie_vehi,id_lugar) VALUES (1, 1, 6),
 (7, 9, 1),
 (8, 8, 9),
 (9, 10, 2),
-(10, 6, 10)
+(10, 6, 10);
 
 --Tabla de Empleado--
 
@@ -532,7 +532,7 @@ INSERT INTO empleado (id,rut, nombre, tipo, id_edificio, id_sueldo, id_comuna) V
 
 --Tabla de Contrato--
 
-INSERT INTO contrato (id,fecha_de_inicio,fecha_de_termino,horario_de_inicio,horario_de_termino,id_pago,id_edificio,id_clie_vehi) 
+INSERT INTO contrato (id, fecha_de_inicio, fecha_de_termino, horario_de_inicio, horario_de_termino, id_pago, id_edificio, id_clie_vehi) 
 VALUES (1,'2018-10-30','2022-03-12','9:46','17:41',1,5,2),
 (2,'2019-01-26','2020-12-03','9:29','18:20',31,6,3),
 (3,'2018-09-20','2021-09-30','8:38','18:13',14,1,1),
