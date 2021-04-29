@@ -39,3 +39,5 @@ AND public.lugar.id = public.lugar_cliente_vehiculo.id_lugar AND public.cliente_
 AND public.contrato.id_clie_vehi = public.cliente_vehiculo.id)
 GROUP by public.edificio_estacionamiento.nombre
 ORDER by count(public.lugar.id) DESC;
+
+
