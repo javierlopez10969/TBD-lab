@@ -1,4 +1,4 @@
-DROP VIEW lugar_disponible;
+DROP VIEW if exists lugar_disponible;
 
 CREATE VIEW lugar_disponible as (SELECT count(public.lugar.id_lugar) as cantidad
 FROM public.edificio_estacion, public.lugar, public.contrato
