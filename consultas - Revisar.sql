@@ -1,3 +1,17 @@
+--1) lista de clientes que gasta más por edificio
+SELECT public.edificio_estacionamiento.id, public.cliente.first_name, MAX(public.pago.monto)
+FROM public.pago, public.cliente, public.cliente_vehiculo, public.contrato, public.edificio_estacionamiento
+WHERE public.cliente.id = public.cliente_vehiculo.id_cliente AND public.cliente_vehiculo.id = public.contrato.id_clie_vehi AND public.contrato.id_pago = public.pago.id AND public.contrato.id_edificio = public.edificio_estacionamiento.id AND public.pago.monto IN 
+(
+	SELECT MAX(public.pago.monto)
+	FROM public.pago, public.contrato, public.edificio_estacionamiento
+	WHERE public.edificio_estacionamiento.id = public.contrato.id_edificio AND public.pago.id = public.contrato.id_pago
+	GROUP by public.edificio_estacionamiento.id
+)
+GROUP by public.edificio_estacionamiento.id, public.cliente.first_name
+ORDER by public.edificio_estacionamiento.id;
+
+
 --2) modelos de auto más recurrente por edificio
 SELECT public.edificio_estacionamiento.id, public.modelo.marca, count(public.modelo.id)
 FROM public.modelo, public.vehiculo, public.cliente_vehiculo, public.contrato, public.edificio_estacionamiento
@@ -23,7 +37,13 @@ GROUP by public.edificio_estacionamiento.id)
 GROUP by public.edificio_estacionamiento.id, public.empleado.rut
 ORDER by public.edificio_estacionamiento.id;
 
---5) version 2
+--4) lista de comunas con la cantidad de clientes que residen en ellas
+SELECT public.comuna.nombre, count(public.cliente.id)
+FROM public.comuna, public.cliente
+WHERE public.comuna.id = public.cliente.id_comuna
+GROUP by public.comuna.nombre;
+
+--5) lista de edificio con más lugares disponibles (sin contrato) version 2
 DROP VIEW if exists lugar_disponible;
 
 CREATE VIEW lugar_disponible as (SELECT count(public.lugar.id) as cantidad
@@ -57,28 +77,28 @@ FROM lugar_disponible);
 DROP VIEW if exists max_cantidad_cliente_por_edificio;
 DROP VIEW if exists cantidad_auto;
 
-CREATE VIEW cantidad_auto as (SELECT public.edificio_estacionamiento.id, public.cliente.id, count(public.vehiculo.id) as cantidad
+CREATE VIEW cantidad_auto as (SELECT public.edificio_estacionamiento.id as Edesid, public.cliente.id as Clid, count(public.vehiculo.id) as cantidad
 FROM public.edificio_estacionamiento, public.cliente, public.cliente_vehiculo, public.vehiculo, public.contrato
 WHERE public.cliente.id = public.cliente_vehiculo.id_cliente AND public.vehiculo.id = public.cliente_vehiculo.id_vehiculo AND public.cliente_vehiculo.id = public.contrato.id_clie_vehi AND public.contrato.id_edificio = public.edificio_estacionamiento.id
 GROUP by public.edificio_estacionamiento.id, public.cliente.id
 ORDER by public.edificio_estacionamiento.id);
 
-CREATE VIEW max_cantidad_cliente_por_edificio as (SELECT cantidad_auto.id_edificio, MAX(cantidad_auto.cantidad) as cantidad
+CREATE VIEW max_cantidad_cliente_por_edificio as (SELECT cantidad_auto.Edesid, MAX(cantidad_auto.cantidad) as cantidad
 FROM cantidad_auto
-GROUP by cantidad_auto.id_edificio);
+GROUP by cantidad_auto.Edesid);
 
-SELECT public.edificio_estacionamiento.nombre, cantidad_auto.id_cliente, cantidad_auto.cantidad
+SELECT public.edificio_estacionamiento.nombre, cantidad_auto.Clid, cantidad_auto.cantidad
 FROM public.edificio_estacionamiento, cantidad_auto, max_cantidad_cliente_por_edificio
-WHERE public.edificio_estacionamiento.id = cantidad_auto.id_edificio AND cantidad_auto.id_edificio = max_cantidad_cliente_por_edificio.id_edificio AND cantidad_auto.cantidad = max_cantidad_cliente_por_edificio.cantidad
-GROUP by public.edificio_estacionamiento.nombre, cantidad_auto.id_cliente, cantidad_auto.cantidad;
+WHERE public.edificio_estacionamiento.id = cantidad_auto.Edesid AND cantidad_auto.Edesid = max_cantidad_cliente_por_edificio.Edesid AND cantidad_auto.cantidad = max_cantidad_cliente_por_edificio.cantidad
+GROUP by public.edificio_estacionamiento.nombre, cantidad_auto.Clid, cantidad_auto.cantidad;
 
 
 --8) lugar más usado por edificio
-SELECT public.edificio_estacion.nombre, count(public.lugar.id_lugar) as cantidad_lugar_usado
-FROM public.edificio_estacion, public.lugar, public.lugar_cliente_vehiculo, public.cliente_vehiculo, public.contrato
-WHERE public.edificio_estacion.id_edificio = public.lugar.id_edificio AND public.lugar.id_lugar = public.lugar_cliente_vehiculo.id_lugar AND public.cliente_vehiculo.id_cliente_vehiculo = public.lugar_cliente_vehiculo.id_cliente_vehiculo AND public.cliente_vehiculo.id_cliente_vehiculo = public.contrato.id_cliente_vehiculo AND public.contrato.id_edificio = public.edificio_estacion.id_edificio
-GROUP by public.edificio_estacion.id_edificio
-ORDER by public.edificio_estacion.id_edificio;
+SELECT public.edificio_estacionamiento.nombre, count(public.lugar.id) as cantidad_lugar_usado
+FROM public.edificio_estacionamiento, public.lugar, public.lugar_cliente_vehiculo, public.cliente_vehiculo, public.contrato
+WHERE public.edificio_estacionamiento.id = public.lugar.id_edificio AND public.lugar.id = public.lugar_cliente_vehiculo.id_lugar AND public.cliente_vehiculo.id = public.lugar_cliente_vehiculo.id_clie_vehi AND public.cliente_vehiculo.id = public.contrato.id_clie_vehi AND public.contrato.id_edificio = public.edificio_estacionamiento.id
+GROUP by public.edificio_estacionamiento.id
+ORDER by public.edificio_estacionamiento.id;
 
 --9) edificio con más empleados, indicando el número de empleados de ese edificio
 DROP VIEW if exists empleados_disponible;
