@@ -40,4 +40,21 @@ AND public.contrato.id_clie_vehi = public.cliente_vehiculo.id)
 GROUP by public.edificio_estacionamiento.nombre
 ORDER by count(public.lugar.id) DESC;
 
+--9)
+
+SELECT public.edificio_estacionamiento.id as id_edificio, public.edificio_estacionamiento.nombre as nombre_edificio, COUNT(public.empleado.id_edificio) as empleados_totales
+FROM public.empleado, public.edificio_estacionamiento
+WHERE empleado.id_edificio = edificio_estacionamiento.id 
+GROUP by public.edificio_estacionamiento.id, public.edificio_estacionamiento.nombre 
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+
+
+--10)
+SELECT  public.empleado.tipo as empleado, public.sueldo.monto as sueldo, public.edificio_estacionamiento.nombre as nombre_edificio, public.comuna.nombre as comuna_edificio
+FROM public.comuna, public.edificio_estacionamiento, public.empleado, public.sueldo
+WHERE public.sueldo.id = public.empleado.id_sueldo AND public.empleado.id_edificio = public.edificio_estacionamiento.id 
+    AND public.comuna.id = public.edificio_estacionamiento.id_comuna
+ORDER by public.empleado.tipo, public.sueldo.monto, public.edificio_estacionamiento.nombre, public.comuna.nombre
+
 
