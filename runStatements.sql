@@ -25,6 +25,21 @@ WHERE public.cliente.id = public.cliente_vehiculo.id_cliente AND public.cliente_
 GROUP by public.edificio_estacionamiento.id, public.cliente.first_name
 ORDER by public.edificio_estacionamiento.id;
 
+--3) empleado con mayor sueldo por edificio
+SELECT edificio.id id_edificio, empleado.rut rut, sueldo.monto sueldo
+FROM public.sueldo sueldo
+INNER JOIN public.empleado empleado ON empleado.id_sueldo = sueldo.id
+INNER JOIN public.edificio_estacionamiento edificio ON empleado.id_edificio = edificio.id 
+
+INNER JOIN (
+    SELECT public.edificio_estacionamiento.id, MAX(public.sueldo.monto) sueldomax
+    FROM public.sueldo 
+    INNER JOIN public.empleado ON public.empleado.id_sueldo = public.sueldo.id
+    INNER JOIN public.edificio_estacionamiento ON public.empleado.id_edificio = public.edificio_estacionamiento.id 
+    GROUP BY public.edificio_estacionamiento.id
+) maximo ON sueldo.monto = maximo.sueldomax AND maximo.id = id_edificio
+ORDER BY id_edificio ASC;
+
 --4) lista de comunas con la cantidad de clientes que residen en ellas
 SELECT public.comuna.nombre, count(public.cliente.id)
 FROM public.comuna, public.cliente
