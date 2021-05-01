@@ -1,6 +1,7 @@
 --Script para ejecutar las consulatas a la base de datos
 
-
+\echo 
+\echo 
 \echo 1) lista de clientes que gasta más por edificio 
 \echo 
 \echo 
@@ -17,21 +18,46 @@ GROUP by public.edificio_estacionamiento.id, public.cliente.first_name
 ORDER by public.edificio_estacionamiento.id;
 
 \echo 
-\echo 2) modelos de autos más recurrentes por edificio
+\echo 2) modelo de autos más recurrentes por edificio
 \echo 
 \echo 
-SELECT public.edificio_estacionamiento.id as Edificio, public.modelo.marca, count(public.modelo.id)
-FROM public.modelo, public.vehiculo, public.cliente_vehiculo, public.contrato, public.edificio_estacionamiento
-WHERE public.modelo.id = public.vehiculo.id_modelo AND public.cliente_vehiculo.id_vehiculo = public.vehiculo.id AND public.contrato.id_clie_vehi = public.cliente_vehiculo.id AND public.contrato.id_edificio = public.edificio_estacionamiento.id
-GROUP by public.edificio_estacionamiento.id, public.modelo.marca
-HAVING count(public.modelo.id) IN
-(
-	SELECT count(public.modelo.id)
-	FROM public.modelo, public.vehiculo, public.cliente_vehiculo, public.contrato, public.edificio_estacionamiento
-	WHERE public.modelo.id = public.vehiculo.id_modelo AND public.cliente_vehiculo.id_vehiculo = public.vehiculo.id AND public.contrato.id_clie_vehi = public.cliente_vehiculo.id AND public.contrato.id_edificio = public.edificio_estacionamiento.id
-	GROUP by public.edificio_estacionamiento.id
-)
-ORDER by public.edificio_estacionamiento.id;
+
+SELECT *
+FROM (SELECT ee.nombre AS edificio,CMT.marca as marca,count(CMT.marca) as cantidad
+	FROM edificio_estacionamiento ee
+	INNER JOIN(SELECT co.id_edificio,CVMT.marca,CVMT.tipo
+				FROM contrato co
+				INNER JOIN(SELECT ce.id ,VE.marca, VE.tipo
+							FROM cliente_vehiculo ce
+							INNER JOIN (SELECT ve.id ,mo.marca,mo.tipo
+										FROM modelo mo
+										INNER JOIN vehiculo ve ON mo.id = ve.id_modelo) AS VE
+				ON VE.id = ce.id_vehiculo) AS CVMT
+				ON CVMT.id = co.id_clie_vehi) AS CMT
+				ON CMT.id_edificio = ee.id
+	GROUP BY edificio, cmt.marca
+	ORDER BY edificio) as EMC
+WHERE (EMC.edificio,EMC.cantidad) IN (
+	SELECT EMC2.edificio, MAX(EMC2.cantidad)
+
+		FROM (SELECT ee.nombre AS edificio,CMT.marca as marca,count(CMT.marca) as cantidad
+		FROM edificio_estacionamiento ee
+		INNER JOIN(SELECT co.id_edificio,CVMT.marca,CVMT.tipo
+					FROM contrato co
+					INNER JOIN(SELECT ce.id ,VE.marca, VE.tipo
+								FROM cliente_vehiculo ce
+								INNER JOIN (SELECT ve.id ,mo.marca,mo.tipo
+											FROM modelo mo
+											INNER JOIN vehiculo ve ON mo.id = ve.id_modelo) AS VE
+					ON VE.id = ce.id_vehiculo) AS CVMT
+					ON CVMT.id = co.id_clie_vehi) AS CMT
+					ON CMT.id_edificio = ee.id
+		GROUP BY edificio, cmt.marca
+		ORDER BY edificio) as EMC2
+	
+	GROUP BY edificio
+);
+	
 
 \echo 
 \echo 3) empleado con mayor sueldo por edificio
@@ -90,6 +116,45 @@ WHERE public.edificio_estacionamiento.id = public.lugar.id_edificio AND (public.
 GROUP by public.edificio_estacionamiento.nombre
 HAVING count(public.lugar.id) IN (SELECT MIN(lugar_disponible.cantidad)
 FROM lugar_disponible);
+
+
+\echo 
+\echo 7) lista de clientes con más autos por edificio
+\echo 
+\echo 
+
+DROP VIEW if exists max_cantidad_cliente_por_edificio;
+DROP VIEW if exists cantidad_auto;
+
+CREATE VIEW cantidad_auto as (SELECT public.edificio_estacionamiento.id as Edesid, public.cliente.id as cl_id, count(public.vehiculo.id) as cantidad, public.cliente.first_name as nombre, public.cliente.last_name as apellido
+FROM public.edificio_estacionamiento, public.cliente, public.cliente_vehiculo, public.vehiculo, public.contrato
+WHERE public.cliente.id = public.cliente_vehiculo.id_cliente AND public.vehiculo.id = public.cliente_vehiculo.id_vehiculo AND public.cliente_vehiculo.id = public.contrato.id_clie_vehi AND public.contrato.id_edificio = public.edificio_estacionamiento.id
+GROUP by public.edificio_estacionamiento.id, public.cliente.id, public.cliente.first_name , public.cliente.last_name
+ORDER by public.edificio_estacionamiento.id);
+
+CREATE VIEW max_cantidad_cliente_por_edificio as (SELECT cantidad_auto.Edesid, MAX(cantidad_auto.cantidad) as cantidad, cantidad_auto.nombre, cantidad_auto.apellido
+FROM cantidad_auto
+GROUP by cantidad_auto.Edesid, cantidad_auto.nombre, cantidad_auto.apellido );
+
+SELECT  cantidad_auto.cl_id,  cantidad_auto.nombre, cantidad_auto.apellido, public.edificio_estacionamiento.nombre as nombre_edificio, cantidad_auto.cantidad
+FROM public.edificio_estacionamiento, cantidad_auto, max_cantidad_cliente_por_edificio
+WHERE public.edificio_estacionamiento.id = cantidad_auto.Edesid AND cantidad_auto.Edesid = max_cantidad_cliente_por_edificio.Edesid AND cantidad_auto.cantidad = max_cantidad_cliente_por_edificio.cantidad
+GROUP by public.edificio_estacionamiento.nombre, cantidad_auto.cl_id, cantidad_auto.cantidad, cantidad_auto.nombre, cantidad_auto.apellido 
+ORDER BY public.edificio_estacionamiento.nombre;
+
+
+\echo 
+\echo 8) lugar más usado por edificio
+\echo 
+\echo 
+SELECT public.edificio_estacionamiento.nombre, count(public.lugar.id) as cantidad_lugar_usado
+FROM public.edificio_estacionamiento, public.lugar, public.lugar_cliente_vehiculo, public.cliente_vehiculo, public.contrato
+WHERE public.edificio_estacionamiento.id = public.lugar.id_edificio AND public.lugar.id = public.lugar_cliente_vehiculo.id_lugar 
+        AND public.cliente_vehiculo.id = public.lugar_cliente_vehiculo.id_clie_vehi AND public.cliente_vehiculo.id = public.contrato.id_clie_vehi 
+        AND public.contrato.id_edificio = public.edificio_estacionamiento.id
+GROUP by public.edificio_estacionamiento.id
+ORDER by public.edificio_estacionamiento.id;
+
 
 \echo 
 \echo 9) edificio con más empleados, indicando el número de empleados de ese edificio
