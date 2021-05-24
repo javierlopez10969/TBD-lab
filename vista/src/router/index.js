@@ -6,12 +6,12 @@ Vue.use(VueRouter)
 
 const routes = [
   //Primera pagina
-  /*
   {
     path: '/',
     name: 'home',
     component: () => import('../components/general/Home')
   },
+  /*
   {
     path: '/about',
     name: 'about',

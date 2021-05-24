@@ -3,11 +3,10 @@
     <Navbar v-bind:botones= show v-bind:user=usuario>  </Navbar>
     <div class="container mt-5">
     </div>
-    <div v-if="tamanoRoute===0" class="container mt-5">
-      <!-- v-on:update:usuario="usuario = $event" -->
-      <router-view v-bind:usuario=usuario></router-view>
+    <div  class="container mt-5">
+      <!-- v-on:update:usuario="usuario = $event" -->      
+      <router-view></router-view>
     </div>
-
     <div class = "container-fluid bottom mx-0 px-0">
       <Footer></Footer>
     </div>
@@ -26,7 +25,6 @@ export default {
       baseURL: "http://localhost:3000/api",
       tamanoRoute : 0,
       usuario: {}
-
     }
   },
   components: {
@@ -47,31 +45,31 @@ export default {
 }
 
   .color1{
-    background-color: #9F9FED;
+    background-color: #457B9D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
   }
 
   .color2{
-    background-color:  #FEF9FF !important  ;
+    background-color:  #F1FAEE !important  ;
     color: black !important ;
   }
   .color2:hover{
-    background-color:#F2DFD7 !important  ;
+    background-color:#A8DADC !important  ;
     color: black !important ;
   }
 
   .color3{
-    background-color: #736CED !important ;
+    background-color: #1D3557 !important ;
      color: white !important ;
   }
 
   .color4{
-    background-color: #D4C1EC!important ;
+    background-color: #A8DADC!important ;
      color: black !important ;
   }
 
   .color5{
-    background-color: #9F9FED !important ;
+    background-color: #457B9D !important ;
      color: white !important ;
   }
   .color6{
@@ -83,8 +81,8 @@ export default {
     color: white !important ;
   }
   .color7:{
-    background-color: #9F9FED !important;
-    color: #736CED !important;
+    background-color: #457B9D !important;
+    color: #1D3557 !important;
   }
     .color8{
     background-color: rgb(110, 110, 110) !important ;

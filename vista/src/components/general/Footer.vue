@@ -31,9 +31,7 @@
                 <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                 <ul class="list-unstyled">
                     <li><i class="fa fa-envelope mr-2"></i> javier.lopez@usach.cl</li>                    
-                    <li><i class="fa fa-envelope mr-2"></i> javier.sepulveda.h@usach.cl</li>                    
-                    <li><i class="fa fa-envelope mr-2"></i> benjamin.donoso@usach.cl</li>                    
-                    <li><i class="fa fa-envelope mr-2"></i> joaquin.torres@usach.cl</li>
+                   <li><i class="fa fa-envelope mr-2"></i> benjamin.donoso@usach.cl</li>      
                     <li><i class="fa fa-envelope mr-2"></i> david.ramirez.v@usach.cl</li>   
                 </ul>
             </div>
@@ -42,14 +40,11 @@
                 <p class="float-left">
                     <a href="#">Volver arriba</a>
                 </p>
-                <!-- 
-                <p class="text-right text-muted">created with <i class="fa fa-heart"></i> by <a href="https://t-php.fr/43-theme-ecommerce-bootstrap-4.html"><i>t-php</i></a> | <span>v. 1.0</span></p>
-                -->
             </div>
 
             <div class="col-12 copyright mx-0 px-0 bottom">
 
-                <p class="text-center text-muted">Sitio web creado con Vue.js, Node.js y MongoDB para el ramo de Fundamentos de Ingeniería en Software de la Universidad de Santiago de Chile, 2021</p>
+                <p class="text-center text-muted">Sitio web creado con Vue.js, Java Spring y PostgresSQL para el ramo de Taller de Base de Datos de la Universidad de Santiago de Chile, 2021</p>
                 
             </div>
 

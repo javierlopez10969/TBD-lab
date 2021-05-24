@@ -2,7 +2,7 @@
  <div class="container-fluid">
 
     <!-- barra superior -->
-        <div class="row color1" >                    
+        <div class="row color2" >                    
             
             <nav class="navbar navbar-expand-sm" >
             <div row>
@@ -21,7 +21,7 @@
 
             <!-- Brand/logo -->
             <a class="navbar-brand" href="/" v-if="botones" >
-                <img src="https://i.ibb.co/g9T9mMH/quickdev.png"  alt="quickdev"  height="60"/>
+                <img src="./preparados.png"  alt="quickdev"  height="60"/>
             </a>
             <a class="navbar-brand" href="/home" v-else >
                 <img src="https://i.ibb.co/g9T9mMH/quickdev.png"  alt="quickdev"  height="60"/>
@@ -128,6 +128,9 @@ export default {
         ],
     data() {
         return {
+            images: {
+                logo: require('./preparados.png')
+            }
         }
     },
  

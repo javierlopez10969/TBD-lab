@@ -6,7 +6,7 @@
             </div>
             <div class="col">
                 <div class="container-fluid text-right">
-                    <img src="https://i.ibb.co/tBsCcYD/sidedev.png" alt="sidedev" border="0">
+                    <img src="https://i.ibb.co/hRHLs8y/preparados.png" alt="preparados" border="0">
                 </div>   
             </div>
             <div class="col">
@@ -60,13 +60,7 @@
 
 <script>
 export default {
-  created() {
-    if (localStorage.getItem('token') === null) {
-        console.log('hola')
-    }else{
-        this.$router.push('/home');
-    }
-  },
+
 }
 </script>
 <style>
