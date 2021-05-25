@@ -15,7 +15,7 @@
         <!--iamgenes y texto-->
         <div class="row">
           <div class="col ">
-            <a><img class='custom-rounded' src="https://i.ibb.co/b17FRsD/technology-4256272-1920.jpg" alt="technology-4256272-1920" border="0"></a>
+            <a><img class='custom-rounded' src="https://i.ibb.co/tXwS0rG/tipos-de-voluntariado.png" alt="technology-4256272-1920" border="0"></a>
           </div>
           <div class="col texto-publicitario">
             Si tu empresa necesita un servicio o requiere de una transformación tecnologica para entregar servicios a los demás, QuickDev es tu solución, esta plataforma de transformación funciona como intermediaria entre especialistas y clientes de cualquier rubro.
@@ -33,15 +33,14 @@
 
           </div>
           <div class="col">
-            <a><img class='custom-rounded ' src="https://i.ibb.co/v1J6N9n/pexels-sora-shimazaki-5668859.jpg" alt="pexels-sora-shimazaki-5668859" border="0"></a>
+            <a><img class='custom-rounded ' src="https://i.ibb.co/vBDPwkz/pexels-rodnae-productions-6646918.jpg" alt="pexels-sora-shimazaki-5668859" border="0"></a>
           </div>
-
 
         </div>
 
         <div class="row">
           <div class="col">
-            <a><img  class='custom-rounded' src="https://i.ibb.co/XCm0ztT/pexels-andrea-piacquadio-3790805.jpg" alt="pexels-andrea-piacquadio-3790805" border="0"></a>
+            <a><img  class='custom-rounded' src="https://i.ibb.co/t25WcSv/1442457512-019994-1442458031-noticia-normal.png" alt="pexels-andrea-piacquadio-3790805" border="0"></a>
           </div>
           <div class="col texto-publicitario">
             Así podrás conseguir los servicios que necesites como cliente o bien encontrar trabajos adecuados a tus conocimientos como especialista.
