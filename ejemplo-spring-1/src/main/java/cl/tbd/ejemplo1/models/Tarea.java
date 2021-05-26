@@ -3,21 +3,21 @@ package cl.tbd.ejemplo1.models;
 import java.util.Date;
 
 public class Tarea {
-    private Interger id;
+    private Integer id;
     private String nombre;
     private String descrip;
-    private Interger cant_vol_requeridos;
-    private Interger cant_vol_inscritos;
-    private Interger id_emergencia;
+    private Integer cant_vol_requeridos;
+    private Integer cant_vol_inscritos;
+    private Integer id_emergencia;
     private Date finicio;
     private Date ffin;
-    private Interger id_estado;
+    private Integer id_estado;
 
-	public Interger getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(Interger id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -37,27 +37,27 @@ public class Tarea {
 		this.descrip = descrip;
 	}
 
-	public Interger getCant_vol_requeridos() {
+	public Integer getCant_vol_requeridos() {
 		return this.cant_vol_requeridos;
 	}
 
-	public void setCant_vol_requeridos(Interger cant_vol_requeridos) {
+	public void setCant_vol_requeridos(Integer cant_vol_requeridos) {
 		this.cant_vol_requeridos = cant_vol_requeridos;
 	}
 
-	public Interger getCant_vol_inscritos() {
+	public Integer getCant_vol_inscritos() {
 		return this.cant_vol_inscritos;
 	}
 
-	public void setCant_vol_inscritos(Interger cant_vol_inscritos) {
+	public void setCant_vol_inscritos(Integer cant_vol_inscritos) {
 		this.cant_vol_inscritos = cant_vol_inscritos;
 	}
 
-	public Interger getId_emergencia() {
+	public Integer getId_emergencia() {
 		return this.id_emergencia;
 	}
 
-	public void setId_emergencia(Interger id_emergencia) {
+	public void setId_emergencia(Integer id_emergencia) {
 		this.id_emergencia = id_emergencia;
 	}
 
@@ -77,11 +77,11 @@ public class Tarea {
 		this.ffin = ffin;
 	}
 
-	public Interger getId_estado() {
+	public Integer getId_estado() {
 		return this.id_estado;
 	}
 
-	public void setId_estado(Interger id_estado) {
+	public void setId_estado(Integer id_estado) {
 		this.id_estado = id_estado;
 	}
 

@@ -3,15 +3,15 @@ package cl.tbd.ejemplo1.models;
 import java.util.Date;
 
 public class Voluntario {
-    private Interger id;
+    private Integer id;
     private String nombre;
     private Date fnacimiento;
 
-	public Interger getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(Interger id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
