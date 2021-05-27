@@ -54,13 +54,12 @@ export default {
     color: black !important ;
   }
 
-  .color10:hover{
-    background-color:#A8DADC !important  ;
-    color: black !important ;
-  }
-
   .color3{
     background-color: #1D3557 !important ;
+     color: white !important ;
+  }
+  .color3:hover{
+    background-color: #255ba5 !important ;
      color: white !important ;
   }
 
@@ -74,17 +73,18 @@ export default {
      color: white !important ;
   }
   .color6{
-    background-color: rgb(160, 0, 0) !important ;
-     color: white !important ;
+    background-color: TRANSPARENT !important ;
+     color: #1D3557 !important;
   }
   .color6:hover{
-    background-color: red !important  ;
+    background-color: #255ba5!important  ;
     color: white !important ;
   }
-  .color7:{
+  .color7{
     background-color: #457B9D !important;
     color: #1D3557 !important;
   }
+  
     .color8{
     background-color: rgb(110, 110, 110) !important ;
      color: white !important ;
@@ -93,12 +93,41 @@ export default {
     background-color: rgb(153, 153, 153) !important  ;
     color: white !important ;
   }
+
+  .color9{
+
+    background: linear-gradient(180deg, #7289da 80%, transparent 100%);
+  }
+  .transparente{
+    background-color: transparent;
+  }
   .letra-blanca{
     color: white;
   }
   .letra-blanca:hover{
     color: white;
      text-decoration: none;
+  }
+  .texto-publicitario{
+    font-family: Dosis;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: black;
+  }
+
+  .press2p{
+    font-family: 'Racing Sans One', cursive;
+  }
+  .roboto{
+    font-family: 'Roboto', sans-serif;
+  }
+    .padding_arriba{
+    padding-top: 65px;
   }
 
 </style>

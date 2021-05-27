@@ -11,27 +11,32 @@ const routes = [
     name: 'home',
     component: () => import('../components/general/Home')
   },
-  /*
+  //Pagin about
   {
     path: '/about',
     name: 'about',
     component: () => import('../components/general/About')
   },
+
+  //-----------------------------------------------------------------------------------------------------------
+  //Paginas de usuario
   {
     path: '/registrar',
     name: 'registrar',
     component: () => import('../components/usuario/Registrar.vue')
   },
   {
-    path: '/preguntas_frecuentes',
-    name: 'preguntas frecuentes',
-    component: () => import('../components/general/PreguntasFrecuentes.vue')
-  },
-  {
     path: '/login',
     name: 'login',
     component: () => import('../components/usuario/Login.vue')
   },
+  /*
+  {
+    path: '/preguntas_frecuentes',
+    name: 'preguntas frecuentes',
+    component: () => import('../components/general/PreguntasFrecuentes.vue')
+  },
+
   {
     path: '/view',
     name: 'view',

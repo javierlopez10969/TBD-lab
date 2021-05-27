@@ -2,7 +2,7 @@
  <div class="container-fluid">
 
     <!-- barra superior -->
-        <div class="row color2" >                    
+        <div class="row transparente " >                    
             
             <nav class="navbar navbar-expand-sm" >
             <div row>
@@ -15,13 +15,11 @@
                 v-bind:usuario=user
                 >
                 </Sidebar>
-            </div>    
-
-
+            </div>   
 
             <!-- Brand/logo -->
-            <a class="navbar-brand" href="/" v-if="botones" >
-                <img src="./preparados.png"  alt="quickdev"  height="60"/>
+            <a class="navbar-brand margen_l2" href="/" v-if="botones" >
+                <img src="https://i.ibb.co/nbxmWJQ/preparadoslogo.png"  alt="quickdev"  height="60"/>
             </a>
             <a class="navbar-brand" href="/home" v-else >
                 <img src="https://i.ibb.co/g9T9mMH/quickdev.png"  alt="quickdev"  height="60"/>
@@ -35,16 +33,16 @@
                     </li>
                 -->
                     <li class="nav-item">
-                    <a class="nav-link letra_1" href="/">¿Quiénes Somos?</a>
+                    <a class="nav-link color6 rounded-pill" href="/">¿Quiénes Somos?</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/">¿Cómo Participar?</a>
+                    <a class="nav-link color6 rounded-pill" href="/">¿Cómo Participar?</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/">Programas y Proyectos</a>
+                    <a class="nav-link color6 rounded-pill" href="/">Programas y Proyectos</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/">Contáctanos</a>
+                    <a class="nav-link color6 rounded-pill" href="/">Contáctanos</a>
                     </li>
 
                       <!--
@@ -87,14 +85,14 @@
             </div>
 -->
             <ul class="nav navbar-nav navbar-right"  v-if="botones">
-                <!-- Boton Iniciar Sesion 
-                    <a class="btn btn-default color2 rounded-pill"  href="/login" role="button" >Iniciar Sesión</a> 
-                -->
-                <!-- Boton Registrarse
+                <!-- Boton Iniciar Sesion -->
+                    <a class="btn btn-default color3 rounded-pill"  href="/login" role="button" >Iniciar Sesión</a> 
+                
+                <!-- Boton Registrarse-->
                 <div class="col-sm button ">
-                    <a class="btn btn-default color2 rounded-pill " href="/registrar" role="button">Registrarse</a>
+                    <a class="btn btn-default color3 rounded-pill " href="/registrar" role="button">Registrarse</a>
                 </div>
-                 -->
+                
 
             </ul>
             <ul class="nav navbar-nav navbar-right"  v-if="!botones">
@@ -169,6 +167,9 @@ estilo de colores (pude ser HEX)   ej #FFFFFF
     .margen_l{
         margin-left: 5%;
     }
+    .margen_l2{
+        margin-left: 15px;
+    }
     .padding-text{
         padding-top:30px;
     }
@@ -237,6 +238,12 @@ estilo de colores (pude ser HEX)   ej #FFFFFF
     }
     .redondeado-abajo-derecha{
         border-bottom-right-radius: 4px;
+    }
+
+    .quedarseArriba{
+        position: fixed; /* Set the navbar to fixed position */
+        top: 0; /* Position the navbar at the top of the page */
+        width: 100%; /* Full width */
     }
 
  </style> 
