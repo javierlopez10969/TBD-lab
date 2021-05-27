@@ -53,7 +53,8 @@ export default {
     background-color:  #F1FAEE !important  ;
     color: black !important ;
   }
-  .color2:hover{
+
+  .color10:hover{
     background-color:#A8DADC !important  ;
     color: black !important ;
   }
@@ -99,4 +100,5 @@ export default {
     color: white;
      text-decoration: none;
   }
+
 </style>

@@ -2,11 +2,11 @@
     <div class="container-fluid bottom mododark margen" >
         <div class="row padding1">
             <div class="col-md-3 col-lg-4 col-xl-3">
-                <h5><a href="/about">About</a></h5>
-                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                <p class="mb-0">
+               <!-- <h5><a href="/about">About</a></h5> -->
+                <a href="https://ibb.co/fFmGr1m"><img src="https://i.ibb.co/fFmGr1m/kisspng-hand-free-content-clip-art-painted-hands-cliparts-5a89bf166850b4-6848443315189767904273.png" alt="kisspng-hand-free-content-clip-art-painted-hands-cliparts-5a89bf166850b4-6848443315189767904273" border="0"></a>
+
                    
-                </p>
+        
             </div>
 
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto">

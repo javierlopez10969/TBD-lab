@@ -29,19 +29,30 @@
             <!-- Links -->
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav">
+                <!--
                     <li class="nav-item">
                     <a class="nav-link" href="/view/">Usuarios registrados</a>
                     </li>
+                -->
                     <li class="nav-item">
-                    <a class="nav-link" href="/home">Link 3</a>
+                    <a class="nav-link letra_1" href="/">¿Quiénes Somos?</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/proyecto">Link 3</a>
+                    <a class="nav-link" href="/">¿Cómo Participar?</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/">Programas y Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/">Contáctanos</a>
+                    </li>
+
+                      <!--
                     <form class="form-inline">
                         <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Busca tu proyecto" aria-label="Search">
                         <button class="btn btn-outline-success color3 rounded-pill" type="submit">Buscar</button>
                     </form>
+                    -->
                 </ul>
 
 
@@ -76,12 +87,14 @@
             </div>
 -->
             <ul class="nav navbar-nav navbar-right"  v-if="botones">
-                <!-- Boton Iniciar Sesion -->
-                    <a class="btn btn-default color2 rounded-pill"  href="/login" role="button" >Iniciar Sesión</a>
-                <!-- Boton Registrarse -->
+                <!-- Boton Iniciar Sesion 
+                    <a class="btn btn-default color2 rounded-pill"  href="/login" role="button" >Iniciar Sesión</a> 
+                -->
+                <!-- Boton Registrarse
                 <div class="col-sm button ">
                     <a class="btn btn-default color2 rounded-pill " href="/registrar" role="button">Registrarse</a>
                 </div>
+                 -->
 
             </ul>
             <ul class="nav navbar-nav navbar-right"  v-if="!botones">
@@ -225,4 +238,5 @@ estilo de colores (pude ser HEX)   ej #FFFFFF
     .redondeado-abajo-derecha{
         border-bottom-right-radius: 4px;
     }
+
  </style> 
