@@ -5,4 +5,5 @@ import cl.tbd.ejemplo1.models.Tarea_habilidad;
 public interface Tarea_habilidadRepository {
     public int countTarea_habilidad();
     public List<Tarea_habilidad> getAllTarea_habilidad();
+    public Tarea_habilidad createTarea_habilidad(Tarea_habilidad tarea_habilidad);
 }

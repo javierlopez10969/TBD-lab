@@ -34,4 +34,21 @@ public class Vol_habilidadRepositoryImp implements Vol_habilidadRepository {
         }
     }
 
+    @Override
+    public Vol_habilidad createVol_habilidad(Vol_habilidad vol_habilidad) {
+        try(Connection conn = sql2o.open()){
+            int insertedId = (int) conn.createQuery("INSERT INTO vol_habilidad (id_voluntario, id_habilidad)"+
+            " values (:vol_habilidadId_voluntario, :vol_habilidadId_habilidad)", true)
+                    .addParameter("vol_habilidadId_voluntario", vol_habilidad.getId_voluntario())
+                    .addParameter("vol_habilidadId_habilidad", vol_habilidad.getId_habilidad())
+                    .executeUpdate().getKey();
+                    vol_habilidad.setId(insertedId);
+            return vol_habilidad;        
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        
+    }
+
 }
