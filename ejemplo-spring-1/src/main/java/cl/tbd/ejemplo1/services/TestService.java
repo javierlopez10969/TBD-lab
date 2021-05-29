@@ -10,7 +10,7 @@ public class TestService {
 
     @GetMapping("/hello")
     public String HelloWorld(){
-        return "Hola mundo";
+        return "Hola mufffndo";
     }
 
     @PostMapping("/hello")

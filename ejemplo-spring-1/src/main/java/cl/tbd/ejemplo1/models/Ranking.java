@@ -6,7 +6,7 @@ public class Ranking {
     private Integer id_tarea;
     private Integer puntaje;
     private Integer flg_invitado;
-    private Integer flg_participante;
+    private Integer flg_participa;
 
 	public Integer getId() {
 		return this.id;
@@ -48,12 +48,12 @@ public class Ranking {
 		this.flg_invitado = flg_invitado;
 	}
 
-	public Integer getFlg_participante() {
-		return this.flg_participante;
+	public Integer getFlg_participa() {
+		return this.flg_participa;
 	}
 
-	public void setFlg_participante(Integer flg_participante) {
-		this.flg_participante = flg_participante;
+	public void setFlg_participa(Integer flg_participa) {
+		this.flg_participa = flg_participa;
 	}
 
 }

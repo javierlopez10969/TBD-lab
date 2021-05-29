@@ -36,13 +36,13 @@ public class RankingRepositoryImp implements RankingRepository {
     @Override
     public Ranking createRanking(Ranking ranking) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO ranking (id_voluntario, id_tarea, puntaje, flg_invitado, flg_participa) "+
-			"values (:rankingId_voluntario, :rankingId_tarea, :rankingPuntaje, :rankingFlg_invitado, :rankingFlg_participa)", true)
+            int insertedId = (int) conn.createQuery("INSERT INTO ranking (id, id_voluntario, id_tarea, puntaje, flg_invitado, flg_participa) "+"values (:rankingId, :rankingId_voluntario, :rankingId_tarea, :rankingPuntaje, :rankingFlg_invitado, :rankingFlg_participa)", true)
+                    .addParameter("rankingId", ranking.getId())
                     .addParameter("rankingId_voluntario", ranking.getId_voluntario())
 					.addParameter("rankingId_tarea", ranking.getId_tarea())
 					.addParameter("rankingPuntaje", ranking.getPuntaje())
 					.addParameter("rankingFlg_invitado", ranking.getFlg_invitado())
-					.addParameter("rankingFlg_participa", ranking.getFlg_participante())
+					.addParameter("rankingFlg_participa", ranking.getFlg_participa())
                     .executeUpdate().getKey();
             ranking.setId(insertedId);
             return ranking;        

@@ -37,8 +37,9 @@ public class Tarea_habilidadRepositoryImp implements Tarea_habilidadRepository {
     @Override
     public Tarea_habilidad createTarea_habilidad(Tarea_habilidad tarea_habilidad) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO tarea_habilidad (id_emehab, id_tarea)"+
-            " values (:tarea_habilidadId_emehab, :tarea_habilidadId_tarea)", true)
+            int insertedId = (int) conn.createQuery("INSERT INTO tarea_habilidad (id, id_emehab, id_tarea)"+
+            " values (:tarea_habilidadId, :tarea_habilidadId_emehab, :tarea_habilidadId_tarea)", true)
+                    .addParameter("tarea_habilidadId", tarea_habilidad.getId())
                     .addParameter("tarea_habilidadId_emehab", tarea_habilidad.getId_emehab())
                     .addParameter("tarea_habilidadId_tarea", tarea_habilidad.getId_tarea())
                     .executeUpdate().getKey();

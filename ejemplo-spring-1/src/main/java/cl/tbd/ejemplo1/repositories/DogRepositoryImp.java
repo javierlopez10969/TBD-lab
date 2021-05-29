@@ -37,7 +37,8 @@ public class DogRepositoryImp implements DogRepository {
     @Override
     public Dog createDog(Dog dog) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO dog (name) values (:dogName)", true)
+            int insertedId = (int) conn.createQuery("INSERT INTO dog (id, name) values (:dogId:dogName)", true)
+                    .addParameter("dogId", dog.getId())
                     .addParameter("dogName", dog.getName())
                     .executeUpdate().getKey();
             dog.setId(insertedId);

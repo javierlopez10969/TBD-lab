@@ -5,6 +5,7 @@ import cl.tbd.ejemplo1.repositories.TareaRepository;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,7 +27,16 @@ public class TareaService {
         return tareaRepository.getAllTarea();
     }
 
+<<<<<<< Updated upstream
     @GetMapping("/tareas/count")
+=======
+    @GetMapping("/tarea/{ID}")
+    public Tarea getById(@PathVariable int ID) {
+        return tareaRepository.getById(ID);
+    }
+
+    @GetMapping("/tarea/count")
+>>>>>>> Stashed changes
     public String countTarea(){
         int total = tareaRepository.countTarea();
         return String.format("Tienes en total, %s de la lista.", total);

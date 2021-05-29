@@ -24,6 +24,17 @@ public class TareaRepositoryImp implements TareaRepository {
     }
 
     @Override
+    public Tarea getById(int ID) {
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery("SELECT * FROM tarea WHERE tarea.id = :id").addParameter("id", ID).executeAndFetchFirst(Tarea.class);
+        
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
     public List<Tarea> getAllTarea() {
         try(Connection conn = sql2o.open()){
             return conn.createQuery("select * from tarea")
@@ -36,8 +47,8 @@ public class TareaRepositoryImp implements TareaRepository {
     @Override
     public Tarea createTarea(Tarea tarea) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO tarea (nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) "+
-			"values (:tareaNombre, :tareaDescrip, :tareaCant_vol_requeridos, :tareaCant_vol_inscritos, :tareaId_emergencia, :tareaFinicio, :tareaFfin, :tareaId_estado)", true)
+            int insertedId = (int) conn.createQuery("INSERT INTO tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) " + "values (:tareaId, :tareaNombre, :tareaDescrip, :tareaCant_vol_requeridos, :tareaCant_vol_inscritos, :tareaId_emergencia, :tareaFinicio, :tareaFfin, :tareaId_estado)", true)
+                    .addParameter("tareaId", tarea.getId())
                     .addParameter("tareaNombre", tarea.getNombre())
 					.addParameter("tareaDescrip", tarea.getDescrip())
                     .addParameter("tareaCant_vol_requeridos", tarea.getCant_vol_requeridos())

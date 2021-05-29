@@ -36,8 +36,9 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
     @Override
     public Institucion createInstitucion(Institucion institucion) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO institucion (nombre, descrip) "+
-			"values (:institucionNombre, :institucionDescrip)", true)
+            int insertedId = (int) conn.createQuery("INSERT INTO institucion (id, nombre, descrip) "+
+			"values (:institucionId, :institucionNombre, :institucionDescrip)", true)
+                    .addParameter("institucionId", institucion.getId())
                     .addParameter("institucionNombre", institucion.getNombre())
 					.addParameter("institucionDescrip", institucion.getDescrip())
                     .executeUpdate().getKey();
