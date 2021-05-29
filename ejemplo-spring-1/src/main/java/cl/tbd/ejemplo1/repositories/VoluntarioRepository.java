@@ -6,4 +6,5 @@ public interface VoluntarioRepository {
     public int countVoluntario();
     public List<Voluntario> getAllVoluntario();
     public Voluntario createVoluntario(Voluntario voluntario);
+    public boolean deleteVoluntario(int id);
 }
