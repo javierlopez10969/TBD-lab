@@ -21,20 +21,20 @@ public class HabilidadService {
         this.habilidadRepository = habilidadRepository;
     }
 
-    @GetMapping("/habilidad")
+    @GetMapping("/habilidades")
     public List<Habilidad> getAllHabilidad() {
         return habilidadRepository.getAllHabilidad();
     }
 
-    @GetMapping("/habilidad/count")
+    @GetMapping("/habilidades/count")
     public String countHabilidad(){
         int total = habilidadRepository.countHabilidad();
         return String.format("Tienes en total, %s de la lista.", total);
     }
 
-    @PostMapping("/habilidad/a")
+    @PostMapping("/habilidades/a")
     @ResponseBody
-    public Habilidad createDog(@RequestBody Habilidad habilidad){
+    public Habilidad createHabilidad(@RequestBody Habilidad habilidad){
         Habilidad result = habilidadRepository.createHabilidad(habilidad);
         return result;
     }

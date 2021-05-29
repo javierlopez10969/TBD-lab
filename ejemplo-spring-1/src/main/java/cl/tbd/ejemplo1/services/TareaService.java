@@ -21,18 +21,18 @@ public class TareaService {
         this.tareaRepository = tareaRepository;
     }
 
-    @GetMapping("/tarea")
+    @GetMapping("/tareas")
     public List<Tarea> getAllTarea() {
         return tareaRepository.getAllTarea();
     }
 
-    @GetMapping("/tarea/count")
+    @GetMapping("/tareas/count")
     public String countTarea(){
         int total = tareaRepository.countTarea();
         return String.format("Tienes en total, %s de la lista.", total);
     }
 
-    @PostMapping("/tarea/a")
+    @PostMapping("/tareas/a")
     @ResponseBody
     public Tarea createTarea(@RequestBody Tarea tarea){
         Tarea result = tareaRepository.createTarea(tarea);

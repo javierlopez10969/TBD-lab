@@ -21,18 +21,18 @@ public class EmergenciaService {
         this.emergenciaRepository = emergenciaRepository;
     }
 
-    @GetMapping("/emergencia")
+    @GetMapping("/emergencias")
     public List<Emergencia> getAllEmergencia(){
         return emergenciaRepository.getAllEmergencia();
     }
 
-    @GetMapping("/emergencia/count")
+    @GetMapping("/emergencias/count")
     public String countEmergencia(){
         int total = emergenciaRepository.countEmergencia();
         return String.format("Tienes en total, %s de la lista.", total);
     }
 
-    @PostMapping("/emergencia/a")
+    @PostMapping("/emergencias/a")
     @ResponseBody
     public Emergencia createEmergencia(@RequestBody Emergencia emergencia){
         Emergencia result = emergenciaRepository.createEmergencia(emergencia);

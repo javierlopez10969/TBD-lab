@@ -21,18 +21,18 @@ public class InstitucionService {
         this.institucionRepository = institucionRepository;
     }
 
-    @GetMapping("/institucion")
+    @GetMapping("/instituciones")
     public List<Institucion> getAllInstitucion() {
         return institucionRepository.getAllInstitucion();
     }
 
-    @GetMapping("/institucion/count")
+    @GetMapping("/instituciones/count")
     public String countInstitucion(){
         int total = institucionRepository.countInstitucion();
         return String.format("Tienes en total, %s de la lista.", total);
     }
 
-    @PostMapping("/institucion/a")
+    @PostMapping("/instituciones/a")
     @ResponseBody
     public Institucion createInstitucion(@RequestBody Institucion institucion){
         Institucion result = institucionRepository.createInstitucion(institucion);

@@ -21,18 +21,18 @@ public class RankingService {
         this.rankingRepository = rankingRepository;
     }
 
-    @GetMapping("/ranking")
+    @GetMapping("/rankings")
     public List<Ranking> getAllRanking() {
         return rankingRepository.getAllRanking();
     }
 
-    @GetMapping("/ranking/count")
+    @GetMapping("/rankings/count")
     public String countRanking(){
         int total = rankingRepository.countRanking();
         return String.format("Tienes en total, %s de la lista.", total);
     }
 
-    @PostMapping("/ranking/a")
+    @PostMapping("/rankings/a")
     @ResponseBody
     public Ranking createRanking(@RequestBody Ranking ranking){
         Ranking result = rankingRepository.createRanking(ranking);

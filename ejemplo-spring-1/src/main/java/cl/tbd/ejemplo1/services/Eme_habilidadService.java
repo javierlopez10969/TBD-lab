@@ -21,18 +21,18 @@ public class Eme_habilidadService{
         this.eme_habilidadRepository = eme_habilidadRepository;
     }
 
-    @GetMapping("/eme_habilidad")
+    @GetMapping("/eme_habilidades")
     public List<Eme_habilidad> getAllEme_habilidad(){
         return eme_habilidadRepository.getAllEme_habilidad();
     }
 
-    @GetMapping("/eme_habilidad/count")
+    @GetMapping("/eme_habilidades/count")
     public String countEme_habilidad(){
         int total = eme_habilidadRepository.countEme_habilidad();
         return String.format("Tienes en total, %s de la lista.", total);
     }
 
-    @PostMapping("/eme_habilidad/a")
+    @PostMapping("/eme_habilidades/a")
     @ResponseBody
     public Eme_habilidad createEme_habilidad(@RequestBody Eme_habilidad eme_habilidad){
         Eme_habilidad result = eme_habilidadRepository.createEme_habilidad(eme_habilidad);

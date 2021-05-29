@@ -21,18 +21,18 @@ public class Tarea_habilidadService {
         this.tarea_habilidadRepository = tarea_habilidadRepository;
     }
 
-    @GetMapping("/tarea_habilidad")
+    @GetMapping("/tarea_habilidades")
     public List<Tarea_habilidad> getAllTarea_habilidad() {
         return tarea_habilidadRepository.getAllTarea_habilidad();
     }
 
-    @GetMapping("/tarea_habilidad/count")
+    @GetMapping("/tarea_habilidades/count")
     public String countTarea_habilidad(){
         int total = tarea_habilidadRepository.countTarea_habilidad();
         return String.format("Tienes en total, %s de la lista.", total);
     }
 
-    @PostMapping("/tarea_habilidad/a")
+    @PostMapping("/tarea_habilidades/a")
     @ResponseBody
     public Tarea_habilidad createTarea_habilidad(@RequestBody Tarea_habilidad tarea_habilidad){
         Tarea_habilidad result = tarea_habilidadRepository.createTarea_habilidad(tarea_habilidad);

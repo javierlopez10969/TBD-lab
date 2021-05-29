@@ -24,7 +24,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     }
 
     @Override
-    public List<Voluntario> getAllVoluntario() {
+    public List<Voluntario> getAllVoluntarios() {
         try(Connection conn = sql2o.open()){
             return conn.createQuery("select * from voluntario")
                     .executeAndFetch(Voluntario.class);

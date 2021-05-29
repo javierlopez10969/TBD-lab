@@ -21,20 +21,20 @@ public class Estado_tareaService {
         this.estado_tareaRepository = estado_tareaRepository;
     }
 
-    @GetMapping("/estado_tarea")
+    @GetMapping("/estado_tareas")
     public List<Estado_tarea> getAllEstado_tarea() {
         return estado_tareaRepository.getAllEstado_tarea();
     }
 
-    @GetMapping("/estado_tarea/count")
-    public String countDogs(){
+    @GetMapping("/estado_tareas/count")
+    public String countEstado_tarea(){
         int total =estado_tareaRepository.countEstado_tarea();
         return String.format("Tienes en total, %s de la lista.", total);
     }
 
-    @PostMapping("/estado_tarea/a")
+    @PostMapping("/estado_tareas/a")
     @ResponseBody
-    public Estado_tarea createDog(@RequestBody Estado_tarea estado_tarea){
+    public Estado_tarea createEstado_tarea(@RequestBody Estado_tarea estado_tarea){
         Estado_tarea result = estado_tareaRepository.createEstado_tarea(estado_tarea);
         return result;
     }

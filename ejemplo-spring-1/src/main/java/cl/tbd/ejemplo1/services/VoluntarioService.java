@@ -23,25 +23,25 @@ public class VoluntarioService {
         this.voluntarioRepository = voluntarioRepository;
     }
 
-    @GetMapping("/voluntario")
-    public List<Voluntario> getAllVoluntario() {
-        return voluntarioRepository.getAllVoluntario();
+    @GetMapping("/voluntarios")
+    public List<Voluntario> getAllVoluntarios() {
+        return voluntarioRepository.getAllVoluntarios();
     }
 
-    @GetMapping("/voluntario/count")
+    @GetMapping("/voluntarios/count")
     public String countVoluntario(){
         int total = voluntarioRepository.countVoluntario();
         return String.format("Tienes en total, %s de la lista.", total);
     }
 
-    @PostMapping("/voluntario/a")
+    @PostMapping("/voluntarios/a")
     @ResponseBody
     public Voluntario createVoluntario(@RequestBody Voluntario voluntario){
         Voluntario result = voluntarioRepository.createVoluntario(voluntario);
         return result;
     }
 
-    @GetMapping("/voluntario/{id}")
+    @GetMapping("/voluntarios/{id}")
     public boolean deleteVoluntario(@PathVariable int id){
         return voluntarioRepository.deleteVoluntario(id);
     }
