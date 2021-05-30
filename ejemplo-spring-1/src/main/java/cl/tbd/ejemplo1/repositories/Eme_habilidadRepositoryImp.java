@@ -37,9 +37,9 @@ public class Eme_habilidadRepositoryImp implements Eme_habilidadRepository {
     @Override
     public Eme_habilidad createEme_habilidad(Eme_habilidad eme_habilidad) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO eme_habilidad (id, id_emergencia, id_habilidad)"+
-            " values (:eme_habilidadId ,:eme_habilidadId_emergencia, :eme_habilidadId_habilidad)", true)
-                    .addParameter("eme_habilidadId", eme_habilidad.getId())
+            int insertedId = (int) conn.createQuery("INSERT INTO eme_habilidad ( id_emergencia, id_habilidad)"+
+            " values (:eme_habilidadId_emergencia, :eme_habilidadId_habilidad)", true)
+                    
                     .addParameter("eme_habilidadId_emergencia", eme_habilidad.getId_emergencia())
                     .addParameter("eme_habilidadId_habilidad", eme_habilidad.getId_habilidad())
                     .executeUpdate().getKey();

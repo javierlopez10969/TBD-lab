@@ -31,9 +31,9 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.eme_habilidad (
-    id numeric(8,0) NOT NULL,
-    id_emergencia numeric(6,0),
-    id_habilidad numeric(4,0)
+    id serial NOT NULL,
+    id_emergencia serial,
+    id_habilidad serial
 );
 
 
@@ -45,12 +45,12 @@ ALTER TABLE public.eme_habilidad OWNER TO postgres;
 --
 
 CREATE TABLE public.emergencia (
-    id numeric(6,0) NOT NULL,
+    id serial NOT NULL,
     nombre character varying(100),
     descrip character varying(400),
     finicio date,
     ffin date,
-    id_institucion numeric(4,0)
+    id_institucion serial
 );
 
 
@@ -62,7 +62,7 @@ ALTER TABLE public.emergencia OWNER TO postgres;
 --
 
 CREATE TABLE public.estado_tarea (
-    id numeric(2,0) NOT NULL,
+    id serial NOT NULL,
     descrip character varying(20)
 );
 
@@ -75,7 +75,7 @@ ALTER TABLE public.estado_tarea OWNER TO postgres;
 --
 
 CREATE TABLE public.habilidad (
-    id numeric(4,0) NOT NULL,
+    id serial NOT NULL,
     descrip character varying(100)
 );
 
@@ -88,7 +88,7 @@ ALTER TABLE public.habilidad OWNER TO postgres;
 --
 
 CREATE TABLE public.institucion (
-    id numeric(4,0) NOT NULL,
+    id serial NOT NULL,
     nombre character varying(100),
     descrip character varying(400)
 );
@@ -102,9 +102,9 @@ ALTER TABLE public.institucion OWNER TO postgres;
 --
 
 CREATE TABLE public.ranking (
-    id numeric(8,0) NOT NULL,
-    id_voluntario numeric(8,0),
-    id_tarea numeric(8,0),
+    id serial NOT NULL,
+    id_voluntario serial,
+    id_tarea serial,
     puntaje numeric(3,0),
     flg_invitado numeric(1,0),
     flg_participa numeric(1,0)
@@ -128,15 +128,15 @@ COMMENT ON TABLE public.ranking IS 'los flgInvitado, flgParticipa 1 si la respue
 --
 
 CREATE TABLE public.tarea (
-    id numeric(8,0) NOT NULL,
+    id serial NOT NULL,
     nombre character varying(60),
     descrip character varying(300),
     cant_vol_requeridos numeric(4,0),
     cant_vol_inscritos numeric(4,0),
-    id_emergencia numeric(6,0),
+    id_emergencia serial,
     finicio date,
     ffin date,
-    id_estado numeric(2,0)
+    id_estado serial
 );
 
 
@@ -148,9 +148,9 @@ ALTER TABLE public.tarea OWNER TO postgres;
 --
 
 CREATE TABLE public.tarea_habilidad (
-    id numeric(8,0) NOT NULL,
-    id_emehab numeric(8,0),
-    id_tarea numeric(8,0)
+    id serial NOT NULL,
+    id_emehab serial,
+    id_tarea serial
 );
 
 
@@ -162,9 +162,9 @@ ALTER TABLE public.tarea_habilidad OWNER TO postgres;
 --
 
 CREATE TABLE public.vol_habilidad (
-    id numeric(8,0) NOT NULL,
-    id_voluntario numeric(8,0),
-    id_habilidad numeric(8,0)
+    id serial NOT NULL,
+    id_voluntario serial,
+    id_habilidad serial
 );
 
 
@@ -176,7 +176,7 @@ ALTER TABLE public.vol_habilidad OWNER TO postgres;
 --
 
 CREATE TABLE public.voluntario (
-    id numeric(8,0) NOT NULL,
+    id serial NOT NULL,
     nombre character varying(100),
     fnacimiento date
 );

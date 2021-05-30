@@ -19,64 +19,34 @@
             <div class="col ">
                 <div class="container-fluid ventana">
                     <a href="/"><img class="padding_up" src="https://i.ibb.co/nbxmWJQ/preparadoslogo.png" alt="logo" ></a>
-                  <form class="form-signin">
+                  <form class="form-signin" @submit.prevent="handleSubmitForm">
                     
                     <article class="card-body mx-auto" style="max-width: 400px;">
                         <h4 class="card-title text-center">Crear cuenta</h4>
-                        <form @submit.prevent="handleSubmitForm">
-
                         <div class="form-group input-group">
-                            <input name="" class="form-control rounded-pill" placeholder="Nombre" type="text" v-model="user.name" required>
-                        </div> 
-                        <div class="form-group input-group">
-                            <input name="" class="form-control rounded-pill" placeholder="Apellido" type="text" v-model="apellido" required>
-                        </div> 
-                        <div class="form-group input-group">
-                            <input name="" class="form-control rounded-pill" placeholder="Nombre de la empresa" type="text" v-model="user.nameEmpresa" required>
-                        </div> 
-                        <div class="form-group input-group">
-                            <input name="" class="form-control rounded-pill" placeholder="Correo electrónico" type="email" v-model="user.email" required>
-                        </div> 
-                        <div class="form-group input-group">
-                            <input name="" class="form-control rounded-pill" placeholder="R.U.T." type="text" v-model="user.username" required>
-                        </div> 
-                        <div class="form-group input-group">
-                            <select class="custom-select rounded-pill" style="max-width: 120px;">
-                                <option selected="">+569</option>
-                                <option value="1">+562</option>
-                            </select>
-                            <input name="" class="form-control rounded-pill" placeholder="Número teléfono" type="number" v-model="user.phone" required>
+                            <input name="" class="form-control rounded-pill" placeholder="Nombre Completo" type="text" v-model="user.name" required>
                         </div> 
 
-                        <div class="form-group input-group rounded-pill">
-
-                            <select class="form-control rounded-pill " v-model="user.role" required >
-                                <option hidden selected disabled value="">Seleccione su especialidad </option>
-                                <option>Voluntariado</option>
-                                <option>Organizador</option>
-                            </select>
+                    <!-- fecha-->
+                        <div class="form-group input-group">
+                            <label class="mt-2" for="datepicker-dateformat2" > </label>
+                            <b-form-datepicker
+                            style="text-align:left;"
+                            placeholder="Fecha de Nacimiento"
+                            id="datepicker-dateformat2"
+                            dropright
+                            :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
+                            locale="es"
+                            v-model="user.fnacimiento"
+                            ></b-form-datepicker>
                         </div>
-
-                        <div v-if="user.role=='Voluntariado'">
-                            <div class="form-group input-group">
-                                <input name="" class="form-control rounded-pill" placeholder="Servicios que ofreces" type="text" v-model="user.especialidad" required>
-                            </div> 
-                        </div>
-
-                        <div v-if="user.role=='Organizador'">
-                            <input name="" class="form-control rounded-pill" placeholder="Rubro de tu empresa" type="text" v-model="user.especialidad" required>
-                        </div>
-                        <div class="form-group input-group">
-                            <input class="form-control rounded-pill" placeholder="Contraseña" type="password" v-model="user.pass" required name="password" >
-                        </div> 
-                        <div class="form-group input-group">
-                            <input class="form-control rounded-pill" id="passbox" placeholder="Repetir contraseña" type="password" v-model="pass" required   >
-                        </div>                                      
                         <div class="form-group text-center">
-                            <button class="btn btn-lg color3 rounded-pill" type="submit"  @click="checkPassword()">Crear cuenta</button>
+                            <button class="btn btn-lg color3 rounded-pill" type="submit">Crear cuenta</button>
                         </div>     
                         <p class="text-center">¿Ya tienes cuenta?  <a href="/login">Inicia sesión aquí</a> </p>                                                                 
-                        </form>
+                        
+                        
+                       
                     </article>
                   </form>
                 </div>
@@ -98,42 +68,28 @@
     export default {
         data() {
             return {
-                user: {                    
-                    username: '', 
+                user: {    
+                    //id: 2,        
                     name: '',
-                    email: '',
-                    phone: '',
-                    pass: '',
-                    role: '',
-                    especialidad: '',
-                    nameEmpresa :''
-                    
+                    fnacimiento: '', 
                 },
-                pass: '',
-                apellido: '',
-            }
-        },
-        computed: {
-            fullName: function () {
-                return this.firstName + ' ' + this.lastName
+
             }
         },
         methods: {
             handleSubmitForm() {
-                let apiURL = 'http://localhost:3000/api/registrar';
-                this.pass = '';
-                this.limpiarMensaje();
-                this.user.name = this.user.name + ' ' + this.apellido; 
-                alert('Usuario creado con exito, correo de usuario  : ' + this.user.email)
-                axios.post(apiURL, this.user).then(() => {
+                let apiURL = 'http://localhost:3000/voluntarios/a';
+                //this.limpiarMensaje();
+                //this.user.name = this.user.name + ' ' + this.apellido; 
+                alert('Usuario creado con exito, nombre de usuario : ' + this.user.name)
+                axios.post(apiURL, {
+                    //id : this.user.id,
+                    nombre : this.user.name,
+                    fnacimiento : this.user.fnacimiento
+                    }).then(() => {
                   this.user = {
-                    username:'',  
                     name: '',
-                    email: '',
-                    pass: '',
-                    phone: '',
-                    especialidad: '',
-                    nameEmpresa : ''
+                    fnacimiento: '',  
                   } 
                 this.$router.push('/login')
                 }).catch(error => {
@@ -141,25 +97,14 @@
                     console.log(error)
                 });
             },
-            checkPassword() {
-                // Verificamos si las constraseñas no coinciden 
-                if (this.user.pass != this.pass) {
-                   //alert("No coinciden las contraseñas")
-                   document.getElementById("passbox").setCustomValidity("Las contraseñas no coinciden")
-                   
-                   
-                    // Si las constraseñas no coinciden mostramos un mensaje 
-                   // document.getElementById("error").classList.add("mostrar");
-                   //a.setCustomValidity("asdgasdgf dasgfas <3");
-                    
-                }
-                else {                    
-                    document.getElementById("passbox").setCustomValidity('') 
-                    document.getElementById("passbox").selected = false 
-                }
-            },
             limpiarMensaje(){
                 document.getElementById("passbox").setCustomValidity('')  
+            },
+            onContext(ctx) {
+            // The date formatted in the locale, or the `label-no-date-selected` string
+            this.user.fnacimiento = ctx.selectedFormatted
+            // The following will be an empty string until a valid date is entered
+            this.selected = ctx.selectedYMD
             }
 
         }

@@ -36,9 +36,9 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     @Override
     public Emergencia createEmergencia(Emergencia emergencia) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO emergencia (id ,nombre, descrip, finicio, ffin, id_institucion) "+
-			"values (:emergenciaId, :emergenciaNombre, :emergenciaDescrip, :emergenciaFinicio, :emergenciaFfin, :emergenciaId_institucion)", true)
-                    .addParameter("emergenciaId", emergencia.getId())
+            int insertedId = (int) conn.createQuery("INSERT INTO emergencia (nombre, descrip, finicio, ffin, id_institucion) "+
+			"values ( :emergenciaNombre, :emergenciaDescrip, :emergenciaFinicio, :emergenciaFfin, :emergenciaId_institucion)", true)
+                    
                     .addParameter("emergenciaNombre", emergencia.getNombre())
 					.addParameter("emergenciaDescrip", emergencia.getDescrip())
 					.addParameter("emergenciaFinicio", emergencia.getFinicio())
