@@ -37,9 +37,10 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
     @Override
     public Habilidad createHabilidad(Habilidad habilidad) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO habilidad ( descrip)"+
-            " values ( :habilidadDescrip)", true)
-                   
+            int insertedId = countHabilidad()+1;
+            conn.createQuery("INSERT INTO habilidad ( id, descrip)"+
+            " values (:id, :habilidadDescrip)", true)
+                    .addParameter("id",  insertedId)        
                     .addParameter("habilidadDescrip", habilidad.getDescrip())
                     .executeUpdate().getKey();
             habilidad.setId(insertedId);
@@ -62,5 +63,20 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
             return false;
         }
 
+    }
+
+    @Override
+    public boolean updateHabilidad(Habilidad nuevoHabilidad){
+        String updateSql = "update habilidad set descrip = :descrip where id = :id";
+        try (Connection con = sql2o.open()) {   
+            con.createQuery(updateSql)
+                .addParameter("descrip", nuevoHabilidad.getDescrip())
+                .addParameter("id", nuevoHabilidad.getId())
+                .executeUpdate();
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }

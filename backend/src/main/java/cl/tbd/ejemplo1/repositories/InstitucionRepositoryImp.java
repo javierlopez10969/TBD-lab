@@ -36,8 +36,10 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
     @Override
     public Institucion createInstitucion(Institucion institucion) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO institucion (nombre, descrip) "+
-			"values ( :institucionNombre, :institucionDescrip)", true)
+            int insertedId = countInstitucion()+1;
+            conn.createQuery("INSERT INTO institucion (id, nombre, descrip) "+
+			"values (:id, :institucionNombre, :institucionDescrip)", true)
+                    .addParameter("id",  insertedId)  
                     .addParameter("institucionNombre", institucion.getNombre())
 					.addParameter("institucionDescrip", institucion.getDescrip())
                     .executeUpdate().getKey();
@@ -60,5 +62,21 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
             return false;
         }
 
+    }
+
+    @Override
+    public boolean updateInstitucion(Institucion nuevoInstitucion){
+        String updateSql = "update institucion set nombre = :nombre, descrip = :descrip where id = :id";
+        try (Connection con = sql2o.open()) {   
+            con.createQuery(updateSql)
+                .addParameter("descrip", nuevoInstitucion.getDescrip())
+                .addParameter("nombre", nuevoInstitucion.getNombre())
+                .addParameter("id", nuevoInstitucion.getId())
+                .executeUpdate();
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }

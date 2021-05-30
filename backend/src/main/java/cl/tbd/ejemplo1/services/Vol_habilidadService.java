@@ -44,4 +44,8 @@ public class Vol_habilidadService {
     public boolean deleteVol_habilidad(@PathVariable int id){
         return vol_habilidadRepository.deleteVol_habilidad(id);
     }
+    @PostMapping("/vol_habilidades/update")
+    public boolean deleteVol_habilidad(@RequestBody Vol_habilidad vol_habilidad){
+        return vol_habilidadRepository.updateVol_habilidad(vol_habilidad);
+    }
 }

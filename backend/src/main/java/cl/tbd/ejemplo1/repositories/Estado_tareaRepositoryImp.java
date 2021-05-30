@@ -37,9 +37,10 @@ public class Estado_tareaRepositoryImp implements Estado_tareaRepository {
     @Override
     public Estado_tarea createEstado_tarea(Estado_tarea estado_tarea) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO estado_tarea ( descrip) "+
-            "values ( :estado_tareaDescrip)", true)
-                   
+            int insertedId = countEstado_tarea()+1;
+            conn.createQuery("INSERT INTO estado_tarea ( id, descrip) "+
+            "values (:id, :estado_tareaDescrip)", true)
+                    .addParameter("id",  insertedId)       
                     .addParameter("estado_tareaDescrip", estado_tarea.getDescrip())
                     .executeUpdate().getKey();
             estado_tarea.setId(insertedId);
@@ -57,6 +58,21 @@ public class Estado_tareaRepositoryImp implements Estado_tareaRepository {
             conn.createQuery("DELETE FROM estado_tarea WHERE id = :id").addParameter("id", id)
             .executeUpdate();
             return true; 
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
+    @Override
+    public boolean updateEstado_tarea(Estado_tarea estado_tarea){
+        String updateSql = "update estado_tarea set  descrip = :descrip where id = :id";
+        try (Connection con = sql2o.open()) {   
+            con.createQuery(updateSql)
+                .addParameter("descrip", estado_tarea.getDescrip())
+                .addParameter("id", estado_tarea.getId())
+                .executeUpdate();
+            return true;
         }catch(Exception e){
             System.out.println(e.getMessage());
             return false;

@@ -36,9 +36,10 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     @Override
     public Emergencia createEmergencia(Emergencia emergencia) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO emergencia (nombre, descrip, finicio, ffin, id_institucion) "+
-			"values ( :emergenciaNombre, :emergenciaDescrip, :emergenciaFinicio, :emergenciaFfin, :emergenciaId_institucion)", true)
-                    
+            int insertedId = countEmergencia()+1;
+            conn.createQuery("INSERT INTO emergencia (id, nombre, descrip, finicio, ffin, id_institucion) "+
+			"values (:id, :emergenciaNombre, :emergenciaDescrip, :emergenciaFinicio, :emergenciaFfin, :emergenciaId_institucion)", true)
+                    .addParameter("id",  insertedId)      
                     .addParameter("emergenciaNombre", emergencia.getNombre())
 					.addParameter("emergenciaDescrip", emergencia.getDescrip())
 					.addParameter("emergenciaFinicio", emergencia.getFinicio())
@@ -60,6 +61,26 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
             conn.createQuery("DELETE FROM emergencia WHERE id = :id").addParameter("id", id)
             .executeUpdate();
             return true; 
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean updateEmergencia(Emergencia emergencia){
+        String updateSql = "update emergencia set nombre = :nombre, descrip = :descrip, finicio = :finicio, ffin = :ffin, id_institucion = :id_institucion where id = :id";
+        try (Connection con = sql2o.open()) {   
+            con.createQuery(updateSql)
+                .addParameter("nombre", emergencia.getNombre())
+                .addParameter("descrip", emergencia.getDescrip())
+                .addParameter("finicio", emergencia.getFinicio())
+                .addParameter("ffin", emergencia.getFfin())
+                .addParameter("id_institucion",emergencia.getId_institucion())
+                .addParameter("id", emergencia.getId())
+                .executeUpdate();
+            return true;
         }catch(Exception e){
             System.out.println(e.getMessage());
             return false;

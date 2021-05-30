@@ -6,5 +6,6 @@ public interface RankingRepository {
     public int countRanking();
     public List<Ranking> getAllRanking();
     public Ranking createRanking(Ranking ranking);
-    boolean deleteRanking(int id);
+    public boolean deleteRanking(int id);
+    public boolean updateRanking(Ranking nuevoRanking);
 }

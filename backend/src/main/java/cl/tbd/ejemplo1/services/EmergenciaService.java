@@ -44,4 +44,8 @@ public class EmergenciaService {
     public boolean deleteEmergencia(@PathVariable int id){
         return emergenciaRepository.deleteEmergencia(id);
     }
+    @PostMapping("/emergencias/update")
+    public boolean updateEmergencia(@RequestBody Emergencia emergencia){
+         return emergenciaRepository.updateEmergencia(emergencia);
+    }
 }

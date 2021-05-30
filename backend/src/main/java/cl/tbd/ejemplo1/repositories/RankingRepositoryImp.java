@@ -36,8 +36,10 @@ public class RankingRepositoryImp implements RankingRepository {
     @Override
     public Ranking createRanking(Ranking ranking) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO ranking ( id_voluntario, id_tarea, puntaje, flg_invitado, flg_participa) "+"values ( :rankingId_voluntario, :rankingId_tarea, :rankingPuntaje, :rankingFlg_invitado, :rankingFlg_participa)", true)
-                
+            int insertedId = countRanking()+1;
+            conn.createQuery("INSERT INTO ranking (id, id_voluntario, id_tarea, puntaje, flg_invitado, flg_participa)"+
+            "values (:id, :rankingId_voluntario, :rankingId_tarea, :rankingPuntaje, :rankingFlg_invitado, :rankingFlg_participa)", true)
+                    .addParameter("id",  insertedId)     
                     .addParameter("rankingId_voluntario", ranking.getId_voluntario())
 					.addParameter("rankingId_tarea", ranking.getId_tarea())
 					.addParameter("rankingPuntaje", ranking.getPuntaje())
@@ -63,5 +65,30 @@ public class RankingRepositoryImp implements RankingRepository {
             return false;
         }
 
+    }
+
+    @Override
+    public boolean updateRanking(Ranking nuevoRanking){
+        String updateSql = "update ranking set " +
+        "id_voluntario = :id_voluntario, " +
+        "id_tarea = :id_tarea, " +
+        "puntaje = :puntaje, " +
+        "flg_invitado = :flg_invitado, "+
+        "flg_participa = :flg_participa " +
+        "where id = :id";
+        try (Connection con = sql2o.open()) {   
+            con.createQuery(updateSql)
+                .addParameter("id_voluntario", nuevoRanking.getId_voluntario())
+                .addParameter("id_tarea", nuevoRanking.getId_tarea())
+                .addParameter("puntaje", nuevoRanking.getPuntaje())
+                .addParameter("flg_invitado", nuevoRanking.getFlg_invitado())
+                .addParameter("flg_participa", nuevoRanking.getFlg_participa())
+                .addParameter("id", nuevoRanking.getId())
+                .executeUpdate();
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }

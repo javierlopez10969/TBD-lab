@@ -44,4 +44,9 @@ public class HabilidadService {
     public boolean deleteHabilidad(@PathVariable int id){
         return habilidadRepository.deleteHabilidad(id);
     }
+
+    @PostMapping("/habilidades/update")
+    public boolean updateHabilidad(@RequestBody Habilidad habilidad){
+         return habilidadRepository.updateHabilidad(habilidad);
+    }
 }

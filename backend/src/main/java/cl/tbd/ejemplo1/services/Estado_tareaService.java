@@ -44,4 +44,8 @@ public class Estado_tareaService {
     public boolean deleteEstado_tarea(@PathVariable int id){
         return estado_tareaRepository.deleteEstado_tarea(id);
     }
+    @PostMapping("/estado_tareas/update")
+    public boolean updateEstado_tarea(@RequestBody Estado_tarea estado_tarea){
+         return estado_tareaRepository.updateEstado_tarea(estado_tarea);
+    }
 }

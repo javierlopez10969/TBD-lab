@@ -44,4 +44,9 @@ public class RankingService {
     public boolean deleteRanking(@PathVariable int id){
         return rankingRepository.deleteRanking(id);
     }
+
+    @PostMapping("/rankings/update")
+    public boolean updateRanking(@RequestBody Ranking ranking){
+         return rankingRepository.updateRanking(ranking);
+    }
 }

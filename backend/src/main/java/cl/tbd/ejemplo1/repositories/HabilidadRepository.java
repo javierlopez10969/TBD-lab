@@ -7,4 +7,5 @@ public interface HabilidadRepository {
     public List<Habilidad> getAllHabilidad();
     public Habilidad createHabilidad(Habilidad habilidad);
     public boolean deleteHabilidad(int id);
+    public boolean updateHabilidad(Habilidad nuevoHabilidad);
 }

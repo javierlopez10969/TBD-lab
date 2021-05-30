@@ -6,5 +6,6 @@ public interface Tarea_habilidadRepository {
     public int countTarea_habilidad();
     public List<Tarea_habilidad> getAllTarea_habilidad();
     public Tarea_habilidad createTarea_habilidad(Tarea_habilidad tarea_habilidad);
-    public boolean deleteTarea_habilidad(int id);
+    public boolean deleteTarea_habilidad(int id);    
+    public boolean updateTarea_habilidad(Tarea_habilidad nuevoTarea_habilidad);
 }

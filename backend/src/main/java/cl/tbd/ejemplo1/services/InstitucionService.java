@@ -44,4 +44,9 @@ public class InstitucionService {
     public boolean deleteInstitucion(@PathVariable int id){
         return institucionRepository.deleteInstitucion(id);
     }
+       
+    @PostMapping("/instituciones/update")
+    public boolean updateInstitucion(@RequestBody Institucion institucion){
+         return institucionRepository.updateInstitucion(institucion);
+    }
 }

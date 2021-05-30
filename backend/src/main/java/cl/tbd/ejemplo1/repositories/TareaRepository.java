@@ -8,4 +8,5 @@ public interface TareaRepository {
     public Tarea getById(int id);
     public Tarea createTarea(Tarea tarea);
     public boolean deleteTarea(int id);
+    public boolean updateTarea(Tarea nuevaTarea);
 }

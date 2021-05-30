@@ -47,8 +47,10 @@ public class TareaRepositoryImp implements TareaRepository {
     @Override
     public Tarea createTarea(Tarea tarea) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO tarea ( nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) " + 
-            "values ( :tareaNombre, :tareaDescrip, :tareaCant_vol_requeridos, :tareaCant_vol_inscritos, :tareaId_emergencia, :tareaFinicio, :tareaFfin, :tareaId_estado)", true)
+            int insertedId = countTarea()+1;
+            conn.createQuery("INSERT INTO tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) " + 
+            "values ( :id , :tareaNombre, :tareaDescrip, :tareaCant_vol_requeridos, :tareaCant_vol_inscritos, :tareaId_emergencia, :tareaFinicio, :tareaFfin, :tareaId_estado)", true)
+                    .addParameter("id",  insertedId)  
                     .addParameter("tareaNombre", tarea.getNombre())
 					.addParameter("tareaDescrip", tarea.getDescrip())
                     .addParameter("tareaCant_vol_requeridos", tarea.getCant_vol_requeridos())
@@ -77,6 +79,30 @@ public class TareaRepositoryImp implements TareaRepository {
             System.out.println(e.getMessage());
             return false;
         }
-
+    }
+    @Override
+    public boolean updateTarea(Tarea nuevaTarea){
+        String updateSql = 
+        "update tarea set nombre = :nombre ," +
+        "descrip = :descrip, cant_vol_requeridos = :cant_vol_requeridos," +
+        "cant_vol_inscritos = :cant_vol_inscritos , id_emergencia = :id_emergencia,"+
+        "finicio = :finicio, ffin = :ffin "+
+        "where id = :id";
+        try (Connection con = sql2o.open()) {   
+            con.createQuery(updateSql)
+                .addParameter("nombre", nuevaTarea.getNombre() )
+                .addParameter("descrip",nuevaTarea.getDescrip() )
+                .addParameter("cant_vol_requeridos",nuevaTarea.getCant_vol_requeridos())
+                .addParameter("cant_vol_inscritos",nuevaTarea.getCant_vol_inscritos())
+                .addParameter("id_emergencia",nuevaTarea.getId_emergencia())
+                .addParameter("finicio",nuevaTarea.getFinicio())
+                .addParameter("ffin",nuevaTarea.getFfin())
+                .addParameter("id", nuevaTarea.getId())
+                .executeUpdate();
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }

@@ -7,4 +7,5 @@ public interface InstitucionRepository {
     public List<Institucion> getAllInstitucion();
     public Institucion createInstitucion(Institucion institucion);
     public boolean deleteInstitucion(int id);
+    public boolean updateInstitucion(Institucion nuevoInstitucion);
 }

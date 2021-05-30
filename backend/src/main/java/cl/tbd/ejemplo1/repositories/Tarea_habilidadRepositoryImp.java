@@ -37,8 +37,10 @@ public class Tarea_habilidadRepositoryImp implements Tarea_habilidadRepository {
     @Override
     public Tarea_habilidad createTarea_habilidad(Tarea_habilidad tarea_habilidad) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO tarea_habilidad ( id_emehab, id_tarea)"+
-            " values ( :tarea_habilidadId_emehab, :tarea_habilidadId_tarea)", true)
+            int insertedId = countTarea_habilidad()+1;
+            conn.createQuery("INSERT INTO tarea_habilidad ( id , id_emehab, id_tarea)"+
+            " values (:id, :tarea_habilidadId_emehab, :tarea_habilidadId_tarea)", true)
+                    .addParameter("id",  insertedId)  
                     .addParameter("tarea_habilidadId_emehab", tarea_habilidad.getId_emehab())
                     .addParameter("tarea_habilidadId_tarea", tarea_habilidad.getId_tarea())
                     .executeUpdate().getKey();
@@ -62,6 +64,22 @@ public class Tarea_habilidadRepositoryImp implements Tarea_habilidadRepository {
             return false;
         }
 
+    }
+
+    @Override
+    public boolean updateTarea_habilidad(Tarea_habilidad nuevoTarea_habilidad){
+        String updateSql = "update tarea_habilidad set id_emehab = :id_emehab, id_tarea = :id_tarea where id = :id";
+        try (Connection con = sql2o.open()) {   
+            con.createQuery(updateSql)
+                .addParameter("id_emehab", nuevoTarea_habilidad.getId_emehab())
+                .addParameter("id_tarea", nuevoTarea_habilidad.getId_tarea())
+                .addParameter("id", nuevoTarea_habilidad.getId())
+                .executeUpdate();
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
 }

@@ -45,4 +45,10 @@ public class VoluntarioService {
     public Voluntario getVoluntario(@PathVariable int id){
         return voluntarioRepository.getVoluntario(id);
     }
+
+    @PostMapping("/voluntarios/update")
+    public boolean updateVoluntario(@RequestBody Voluntario voluntario){
+         return voluntarioRepository.updateVoluntario(voluntario);
+    }
+    
 }

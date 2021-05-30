@@ -8,4 +8,5 @@ public interface VoluntarioRepository {
     public Voluntario createVoluntario(Voluntario voluntario);
     public boolean deleteVoluntario(int id);
     public Voluntario getVoluntario(int id);
+    public boolean updateVoluntario(Voluntario nuevoVoluntario);
 }

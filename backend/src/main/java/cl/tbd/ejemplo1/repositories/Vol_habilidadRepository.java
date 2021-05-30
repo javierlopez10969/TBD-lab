@@ -7,4 +7,5 @@ public interface Vol_habilidadRepository {
     public List<Vol_habilidad> getAllVol_habilidad();
     public Vol_habilidad createVol_habilidad(Vol_habilidad vol_habilidad);
     public boolean deleteVol_habilidad(int id);
+    public boolean updateVol_habilidad(Vol_habilidad nuevoVol_habilidad);
 }

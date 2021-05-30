@@ -44,5 +44,9 @@ public class Eme_habilidadService{
     public boolean deleteEme_habilidad(@PathVariable int id){
         return eme_habilidadRepository.deleteEme_habilidad(id);
     }
+    @PostMapping("/eme_habilidades/update")
+    public boolean updateEme_habilidad(@RequestBody Eme_habilidad eme_habilidad){
+         return eme_habilidadRepository.updateEme_habilidad(eme_habilidad);
+    }
 }
 

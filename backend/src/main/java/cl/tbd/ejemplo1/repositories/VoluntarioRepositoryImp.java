@@ -55,7 +55,8 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     @Override
     public boolean deleteVoluntario(int id){
         try(Connection conn = sql2o.open()){
-            conn.createQuery("DELETE FROM voluntario WHERE id = :id").addParameter("id", id)
+            conn.createQuery("DELETE FROM voluntario WHERE id = :id")
+            .addParameter("id", id)
             .executeUpdate();
             return true; 
         }catch(Exception e){
@@ -76,5 +77,20 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
             return null;
         }
 	}
-    
+
+    @Override
+    public boolean updateVoluntario(Voluntario nuevoVoluntario){
+        String updateSql = "update voluntario set nombre = :nombre, fnacimiento = :fnacimiento where id = :id";
+        try (Connection con = sql2o.open()) {   
+            con.createQuery(updateSql)
+                .addParameter("fnacimiento", nuevoVoluntario.getFnacimiento())
+                .addParameter("nombre",nuevoVoluntario.getNombre())
+                .addParameter("id", nuevoVoluntario.getId())
+                .executeUpdate();
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
