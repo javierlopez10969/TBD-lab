@@ -1,20 +1,27 @@
 # TBD-lab Entrega 1
-Entrega 1 de TBD realziada por el grupo 6
+Entrega 1 de TBD realziada por el grupo 6.
+
+El proyecto se divide en 3 carpetas correspondientes a las 3 partes de la aplicación : 
+* Cliente (Carpeta Vista desarrollado con Vue.js)
+* Serivicio Res con Spring (Backend API)
+* Base de Datos (PostgreSQL)
 # Vista
+### Requisitos
+* Npm
+* Nodejs
+Para levantar la vista usted tendrá que ubicarse en la carpeta llamada vista.
 
 ## Instalación de proyecto
-```
-npm install
-```
-
-### Compilar y ejecutar la vista en un puerto local
-```
-npm run serve
-```
+### `npm install`
+### Compilar y ejecutar la vista en el puerto local 8080
+### `npm run serve`
 
 # Backend : Base de datos
+### Requisitos
+* PostgreSQL
 
-En primer lugar usted deberá levantar la base de datos de la aplciación.
+Para generar la base de datos con la que opera la aplicación, usted deberá ubicarse en la carpeta BD, una vez dentro de esa carpeta
+abrá una terminal o consola en esa carpeta y ejecute la consola de PostgresSQL
 
 ## Windows
 
@@ -32,22 +39,20 @@ Una vez abierta la consola de postgres ejecute el siguiente comando para crear l
 
 ### `\i basedate.sql`
 
+Ya creada la base de datos procedá a cargar datos dump mediante:
+### `\i loadData.sql`
+
 # Backend : Servicio Rest
 
 ### Requisitos
 * Java 8 o superior 
 * Gradle 5.x o superior (opcional)
-* 
 * En la línea de comandos, dirigirse a la carpeta del proyecto backend
 * Iniciar proyecto Gradle con el comando `gradlew` en Windows y con `/.gradlew` Linux/ Mac
-Configurar URL de conexión en `application.resources`
+Configurar credenciales del usuario postgres en `application.resources`
 
-* Ejecutar proyecto de desarrollo con `gradlew bootRun` 
-
+* Ejecutar proyecto de desarrollo con
+## Windows
 ### `gradlew bootRun`
-* O
-### `./gradlew bootRun`
-
-
-
-
+## Linux o MAC
+### `gradlew bootRun`
