@@ -17,10 +17,28 @@
                 </h6>
                 <h2>
                     <p> 
-                    Postulantes tarea : 
+                    Voluntarios Requeridos: {{tarea.cant_vol_requeridos}}
                     </p>
                    
                 </h2>
+                <h2>
+                    <p> 
+                    Actualmente Inscritos: {{tarea.cant_vol_inscritos}}
+                    </p>
+                   
+                </h2>
+                <h4>
+                    <p> 
+                    Fecha de Inicio: {{tarea.finicio}}
+                    </p>
+                   
+                </h4>
+                <h4>
+                    <p> 
+                    Fecha de Termino: {{tarea.ffin}}
+                    </p>
+                   
+                </h4>
                     <div class="form-group text-center">
                 </div>   
                 <div >

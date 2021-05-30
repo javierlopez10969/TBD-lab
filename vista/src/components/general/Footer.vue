@@ -3,7 +3,7 @@
         <div class="row padding1">
             <div class="col-md-3 col-lg-4 col-xl-3">
                <!-- <h5><a href="/about">About</a></h5> -->
-                <a href="https://ibb.co/fFmGr1m"><img src="https://i.ibb.co/fFmGr1m/kisspng-hand-free-content-clip-art-painted-hands-cliparts-5a89bf166850b4-6848443315189767904273.png" alt="kisspng-hand-free-content-clip-art-painted-hands-cliparts-5a89bf166850b4-6848443315189767904273" border="0"></a>
+                <a><img src="https://i.ibb.co/fFmGr1m/kisspng-hand-free-content-clip-art-painted-hands-cliparts-5a89bf166850b4-6848443315189767904273.png" alt="kisspng-hand-free-content-clip-art-painted-hands-cliparts-5a89bf166850b4-6848443315189767904273" border="0"></a>
 
                    
         

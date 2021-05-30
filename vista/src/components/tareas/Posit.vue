@@ -1,6 +1,6 @@
 <template>
     <div class="contenedor" > 
-        <img hre src="https://i.ibb.co/6P44Zc9/Rectangle-12.png" alt="Rectangle-12" width="250" height="250" />
+        <img hre src="https://i.ibb.co/Xtk8K3T/yellow-post-it-clipart-post-it-clipart-282-300.png"  alt="Rectangle-12" width="250" height="250" />
         <div class="centrado text-center ">
 
             <div class = " rowtext-center ">
@@ -18,19 +18,7 @@
                     <h4>{{tarea.descrip}}</h4>
                 </div>
                 
-                <div  v-if="tarea.cant_vol_requeridos.length >= 4">
-                    <h5>{{tarea.cant_vol_requeridos.slice(0,20)}}</h5>
-                </div>
-                <div col v-else> 
-                    <h4>{{tarea.cant_vol_requeridos}}</h4>
-                </div>
 
-                <div  v-if="tarea.cant_vol_inscritos.length >= 4">
-                    <h5>{{tarea.cant_vol_inscritos.slice(0,20)}}</h5>
-                </div>
-                <div col v-else> 
-                    <h4>{{tarea.cant_vol_inscritos}}</h4>
-                </div>
 
                 <router-link 
                     :to="{name: 'tarea', params: { id: tarea.id}}" 
