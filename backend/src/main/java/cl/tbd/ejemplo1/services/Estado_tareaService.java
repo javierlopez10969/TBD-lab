@@ -5,6 +5,7 @@ import cl.tbd.ejemplo1.repositories.Estado_tareaRepository;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,5 +38,10 @@ public class Estado_tareaService {
     public Estado_tarea createEstado_tarea(@RequestBody Estado_tarea estado_tarea){
         Estado_tarea result = estado_tareaRepository.createEstado_tarea(estado_tarea);
         return result;
+    }
+
+    @GetMapping("/estado_tareas/d/{id}")
+    public boolean deleteEstado_tarea(@PathVariable int id){
+        return estado_tareaRepository.deleteEstado_tarea(id);
     }
 }

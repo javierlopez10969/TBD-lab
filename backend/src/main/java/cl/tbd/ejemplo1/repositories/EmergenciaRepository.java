@@ -6,4 +6,5 @@ public interface EmergenciaRepository {
     public int countEmergencia();
     public List<Emergencia> getAllEmergencia();
     public Emergencia createEmergencia(Emergencia emergencia);
+    public boolean deleteEmergencia(int id);
 }

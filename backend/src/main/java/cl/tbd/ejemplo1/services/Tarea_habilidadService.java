@@ -5,6 +5,7 @@ import cl.tbd.ejemplo1.repositories.Tarea_habilidadRepository;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,5 +38,10 @@ public class Tarea_habilidadService {
     public Tarea_habilidad createTarea_habilidad(@RequestBody Tarea_habilidad tarea_habilidad){
         Tarea_habilidad result = tarea_habilidadRepository.createTarea_habilidad(tarea_habilidad);
         return result;
+    }
+
+    @GetMapping("/tarea_habilidades/d/{id}")
+    public boolean deleteTarea_habilidad(@PathVariable int id){
+        return tarea_habilidadRepository.deleteTarea_habilidad(id);
     }
 }

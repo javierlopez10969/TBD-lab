@@ -52,4 +52,17 @@ public class Vol_habilidadRepositoryImp implements Vol_habilidadRepository {
         
     }
 
+    @Override
+    public boolean deleteVol_habilidad(int id){
+        try(Connection conn = sql2o.open()){
+            conn.createQuery("DELETE FROM Vol_habilidad WHERE id = :id").addParameter("id", id)
+            .executeUpdate();
+            return true; 
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
+
 }

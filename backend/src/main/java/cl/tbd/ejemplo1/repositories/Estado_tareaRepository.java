@@ -6,4 +6,5 @@ public interface Estado_tareaRepository {
     public int countEstado_tarea();
     public List<Estado_tarea> getAllEstado_tarea();
     public Estado_tarea createEstado_tarea(Estado_tarea estado_tarea);
+    public boolean deleteEstado_tarea(int id);
 }

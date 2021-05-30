@@ -5,6 +5,7 @@ import cl.tbd.ejemplo1.repositories.Eme_habilidadRepository;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,4 +39,10 @@ public class Eme_habilidadService{
         Eme_habilidad result = eme_habilidadRepository.createEme_habilidad(eme_habilidad);
         return result;
     }
+
+    @GetMapping("/eme_habilidades/d/{id}")
+    public boolean deleteEme_habilidad(@PathVariable int id){
+        return eme_habilidadRepository.deleteEme_habilidad(id);
+    }
 }
+

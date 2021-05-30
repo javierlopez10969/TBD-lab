@@ -5,6 +5,7 @@ import cl.tbd.ejemplo1.repositories.Vol_habilidadRepository;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,5 +38,10 @@ public class Vol_habilidadService {
     public Vol_habilidad createVol_habilidad(@RequestBody Vol_habilidad vol_habilidad){
         Vol_habilidad result = vol_habilidadRepository.createVol_habilidad(vol_habilidad);
         return result;
+    }
+
+    @GetMapping("/vol_habilidades/d/{id}")
+    public boolean deleteVol_habilidad(@PathVariable int id){
+        return vol_habilidadRepository.deleteVol_habilidad(id);
     }
 }

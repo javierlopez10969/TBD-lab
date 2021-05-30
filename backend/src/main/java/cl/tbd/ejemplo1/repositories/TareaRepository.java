@@ -7,4 +7,5 @@ public interface TareaRepository {
     public List<Tarea> getAllTarea();
     public Tarea getById(int id);
     public Tarea createTarea(Tarea tarea);
+    public boolean deleteTarea(int id);
 }

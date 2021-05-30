@@ -5,6 +5,7 @@ import cl.tbd.ejemplo1.repositories.InstitucionRepository;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,5 +38,10 @@ public class InstitucionService {
     public Institucion createInstitucion(@RequestBody Institucion institucion){
         Institucion result = institucionRepository.createInstitucion(institucion);
         return result;
+    }
+
+    @GetMapping("/instituciones/d/{id}")
+    public boolean deleteInstitucion(@PathVariable int id){
+        return institucionRepository.deleteInstitucion(id);
     }
 }

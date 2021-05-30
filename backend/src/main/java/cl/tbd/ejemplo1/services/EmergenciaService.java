@@ -5,6 +5,7 @@ import cl.tbd.ejemplo1.repositories.EmergenciaRepository;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,5 +38,10 @@ public class EmergenciaService {
     public Emergencia createEmergencia(@RequestBody Emergencia emergencia){
         Emergencia result = emergenciaRepository.createEmergencia(emergencia);
         return result;
+    }
+
+    @GetMapping("/emergencias/d/{id}")
+    public boolean deleteEmergencia(@PathVariable int id){
+        return emergenciaRepository.deleteEmergencia(id);
     }
 }

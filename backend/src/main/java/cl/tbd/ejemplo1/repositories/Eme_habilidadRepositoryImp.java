@@ -51,5 +51,17 @@ public class Eme_habilidadRepositoryImp implements Eme_habilidadRepository {
         }
         
     }
+    @Override
+    public boolean deleteEme_habilidad(int id){
+        try(Connection conn = sql2o.open()){
+            conn.createQuery("DELETE FROM eme_habilidad WHERE id = :id").addParameter("id", id)
+            .executeUpdate();
+            return true; 
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
 
 }

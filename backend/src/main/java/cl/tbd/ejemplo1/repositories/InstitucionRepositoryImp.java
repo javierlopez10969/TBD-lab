@@ -49,4 +49,16 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
         
     }
+    @Override
+    public boolean deleteInstitucion(int id){
+        try(Connection conn = sql2o.open()){
+            conn.createQuery("DELETE FROM institucion WHERE id = :id").addParameter("id", id)
+            .executeUpdate();
+            return true; 
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
 }

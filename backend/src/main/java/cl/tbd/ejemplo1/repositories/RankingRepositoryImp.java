@@ -52,4 +52,16 @@ public class RankingRepositoryImp implements RankingRepository {
         }
         
     }
+    @Override
+    public boolean deleteRanking(int id){
+        try(Connection conn = sql2o.open()){
+            conn.createQuery("DELETE FROM ranking WHERE id = :id").addParameter("id", id)
+            .executeUpdate();
+            return true; 
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
 }
