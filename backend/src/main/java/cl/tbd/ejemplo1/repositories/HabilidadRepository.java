@@ -8,4 +8,5 @@ public interface HabilidadRepository {
     public Habilidad createHabilidad(Habilidad habilidad);
     public boolean deleteHabilidad(int id);
     public boolean updateHabilidad(Habilidad nuevoHabilidad);
+    public Habilidad getHabilidad(int id);
 }

@@ -54,6 +54,21 @@ public class RankingRepositoryImp implements RankingRepository {
         }
         
     }
+
+    @Override
+    public Ranking getRanking(int id){
+		String sql = "SELECT * FROM ranking where id=:id";
+
+		try (Connection con = sql2o.open()) {
+			return con.createQuery(sql)
+				.addParameter("id", id)
+				.executeAndFetchFirst(Ranking.class);
+		}catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+	}
+
     @Override
     public boolean deleteRanking(int id){
         try(Connection conn = sql2o.open()){

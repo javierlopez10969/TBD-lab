@@ -8,4 +8,5 @@ public interface InstitucionRepository {
     public Institucion createInstitucion(Institucion institucion);
     public boolean deleteInstitucion(int id);
     public boolean updateInstitucion(Institucion nuevoInstitucion);
+    public Institucion getInstitucion(int id);
 }

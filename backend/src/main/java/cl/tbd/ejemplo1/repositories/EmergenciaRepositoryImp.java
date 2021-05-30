@@ -87,4 +87,18 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
         }
 
     }
+
+    @Override
+    public Emergencia getEmergencia(int id){
+		String sql = "SELECT * FROM emergencia where id=:id";
+
+		try (Connection con = sql2o.open()) {
+			return con.createQuery(sql)
+				.addParameter("id", id)
+				.executeAndFetchFirst(Emergencia.class);
+		}catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+	}
 }

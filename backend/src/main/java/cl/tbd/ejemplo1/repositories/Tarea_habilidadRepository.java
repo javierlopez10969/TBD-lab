@@ -8,4 +8,5 @@ public interface Tarea_habilidadRepository {
     public Tarea_habilidad createTarea_habilidad(Tarea_habilidad tarea_habilidad);
     public boolean deleteTarea_habilidad(int id);    
     public boolean updateTarea_habilidad(Tarea_habilidad nuevoTarea_habilidad);
+    public Tarea_habilidad getTarea_habilidad(int id);
 }

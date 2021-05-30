@@ -39,6 +39,10 @@ public class InstitucionService {
         Institucion result = institucionRepository.createInstitucion(institucion);
         return result;
     }
+    @GetMapping("/instituciones/{id}")
+    public Institucion getInstitucion(@PathVariable int id){
+        return institucionRepository.getInstitucion(id);
+    }
 
     @GetMapping("/instituciones/d/{id}")
     public boolean deleteInstitucion(@PathVariable int id){

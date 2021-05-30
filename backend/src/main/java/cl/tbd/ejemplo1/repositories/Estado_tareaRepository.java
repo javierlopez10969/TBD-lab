@@ -8,4 +8,5 @@ public interface Estado_tareaRepository {
     public Estado_tarea createEstado_tarea(Estado_tarea estado_tarea);
     public boolean deleteEstado_tarea(int id);
     public boolean updateEstado_tarea(Estado_tarea estado_tarea);
+    public Estado_tarea getEstado_tarea(int id);
 }

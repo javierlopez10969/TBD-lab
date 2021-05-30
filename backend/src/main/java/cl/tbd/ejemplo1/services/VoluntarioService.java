@@ -50,5 +50,10 @@ public class VoluntarioService {
     public boolean updateVoluntario(@RequestBody Voluntario voluntario){
          return voluntarioRepository.updateVoluntario(voluntario);
     }
+
+    @GetMapping("/voluntarios/d/{id}")
+    public boolean deleteVoluntario(@PathVariable int id){
+        return voluntarioRepository.deleteVoluntario(id);
+    }
     
 }

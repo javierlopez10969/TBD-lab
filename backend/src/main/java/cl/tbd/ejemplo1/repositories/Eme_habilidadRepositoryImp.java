@@ -81,4 +81,18 @@ public class Eme_habilidadRepositoryImp implements Eme_habilidadRepository {
 
     }
 
+    @Override
+    public Eme_habilidad getEme_habilidad(int id){
+		String sql = "SELECT * FROM eme_habilidad where id=:id";
+
+		try (Connection con = sql2o.open()) {
+			return con.createQuery(sql)
+				.addParameter("id", id)
+				.executeAndFetchFirst(Eme_habilidad.class);
+		}catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+	}
+
 }

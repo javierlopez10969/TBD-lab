@@ -52,6 +52,19 @@ public class Tarea_habilidadRepositoryImp implements Tarea_habilidadRepository {
         }
         
     }
+    @Override
+    public Tarea_habilidad getTarea_habilidad(int id){
+		String sql = "SELECT * FROM Tarea_habilidad where id=:id";
+
+		try (Connection con = sql2o.open()) {
+			return con.createQuery(sql)
+				.addParameter("id", id)
+				.executeAndFetchFirst(Tarea_habilidad.class);
+		}catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+	}
 
     @Override
     public boolean deleteTarea_habilidad(int id){

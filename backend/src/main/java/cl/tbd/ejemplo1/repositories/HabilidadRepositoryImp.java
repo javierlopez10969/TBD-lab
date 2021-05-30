@@ -79,4 +79,18 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
             return false;
         }
     }
+
+    @Override
+    public Habilidad getHabilidad(int id){
+		String sql = "SELECT * FROM habilidad where id=:id";
+
+		try (Connection con = sql2o.open()) {
+			return con.createQuery(sql)
+				.addParameter("id", id)
+				.executeAndFetchFirst(Habilidad.class);
+		}catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+	}
 }

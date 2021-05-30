@@ -52,6 +52,19 @@ public class Vol_habilidadRepositoryImp implements Vol_habilidadRepository {
         }
         
     }
+    @Override
+    public Vol_habilidad getVol_habilidad(int id){
+		String sql = "SELECT * FROM Vol_habilidad where id=:id";
+
+		try (Connection con = sql2o.open()) {
+			return con.createQuery(sql)
+				.addParameter("id", id)
+				.executeAndFetchFirst(Vol_habilidad.class);
+		}catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+	}
 
     @Override
     public boolean deleteVol_habilidad(int id){

@@ -48,5 +48,10 @@ public class Eme_habilidadService{
     public boolean updateEme_habilidad(@RequestBody Eme_habilidad eme_habilidad){
          return eme_habilidadRepository.updateEme_habilidad(eme_habilidad);
     }
+
+    @GetMapping("/eme_habilidades/{id}")
+    public Eme_habilidad getEme_habilidad(@PathVariable int id){
+        return eme_habilidadRepository.getEme_habilidad(id);
+    }
 }
 

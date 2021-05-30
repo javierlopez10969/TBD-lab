@@ -79,4 +79,18 @@ public class Estado_tareaRepositoryImp implements Estado_tareaRepository {
         }
 
     }
+
+    @Override
+    public Estado_tarea getEstado_tarea(int id){
+		String sql = "SELECT * FROM estado_tarea where id=:id";
+
+		try (Connection con = sql2o.open()) {
+			return con.createQuery(sql)
+				.addParameter("id", id)
+				.executeAndFetchFirst(Estado_tarea.class);
+		}catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+	}
 }

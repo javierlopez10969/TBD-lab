@@ -8,4 +8,5 @@ public interface Eme_habilidadRepository {
     public Eme_habilidad createEme_habilidad(Eme_habilidad eme_habilidad);
     public boolean deleteEme_habilidad(int id);
     public boolean updateEme_habilidad(Eme_habilidad eme_habilidad);
+    public Eme_habilidad getEme_habilidad(int id);
 }

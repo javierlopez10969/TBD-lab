@@ -52,6 +52,19 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         
     }
     @Override
+    public Institucion getInstitucion(int id){
+		String sql = "SELECT * FROM institucion where id=:id";
+
+		try (Connection con = sql2o.open()) {
+			return con.createQuery(sql)
+				.addParameter("id", id)
+				.executeAndFetchFirst(Institucion.class);
+		}catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+	}
+    @Override
     public boolean deleteInstitucion(int id){
         try(Connection conn = sql2o.open()){
             conn.createQuery("DELETE FROM institucion WHERE id = :id").addParameter("id", id)

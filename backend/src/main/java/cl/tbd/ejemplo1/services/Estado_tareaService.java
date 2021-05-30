@@ -48,4 +48,9 @@ public class Estado_tareaService {
     public boolean updateEstado_tarea(@RequestBody Estado_tarea estado_tarea){
          return estado_tareaRepository.updateEstado_tarea(estado_tarea);
     }
+
+    @GetMapping("/estado_tareas/{id}")
+    public Estado_tarea getEstado_tarea(@PathVariable int id){
+        return estado_tareaRepository.getEstado_tarea(id);
+    }
 }

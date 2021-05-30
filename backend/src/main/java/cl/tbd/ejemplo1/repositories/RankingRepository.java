@@ -8,4 +8,5 @@ public interface RankingRepository {
     public Ranking createRanking(Ranking ranking);
     public boolean deleteRanking(int id);
     public boolean updateRanking(Ranking nuevoRanking);
+    public Ranking getRanking(int id);
 }

@@ -43,7 +43,10 @@ public class Tarea_habilidadService {
     public boolean deleteTarea_habilidad(@PathVariable int id){
         return tarea_habilidadRepository.deleteTarea_habilidad(id);
     }
-
+    @GetMapping("/tarea_habilidades/{id}")
+    public Tarea_habilidad getTarea_habilidad(@PathVariable int id){
+        return tarea_habilidadRepository.getTarea_habilidad(id);
+    }
     @PostMapping("/tarea_habilidades/update")
     public boolean updateTarea_habilidad(@RequestBody Tarea_habilidad tarea_habilidad){
          return tarea_habilidadRepository.updateTarea_habilidad(tarea_habilidad);

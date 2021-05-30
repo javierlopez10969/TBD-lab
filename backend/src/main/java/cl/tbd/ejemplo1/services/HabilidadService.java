@@ -49,4 +49,9 @@ public class HabilidadService {
     public boolean updateHabilidad(@RequestBody Habilidad habilidad){
          return habilidadRepository.updateHabilidad(habilidad);
     }
+
+    @GetMapping("/habilidades/{id}")
+    public Habilidad getHabilidad(@PathVariable int id){
+        return habilidadRepository.getHabilidad(id);
+    }
 }
