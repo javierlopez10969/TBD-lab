@@ -48,4 +48,9 @@ public class EmergenciaService {
     public boolean updateEmergencia(@RequestBody Emergencia emergencia){
          return emergenciaRepository.updateEmergencia(emergencia);
     }
+
+    @GetMapping("/emergencias/{id}")
+    public Emergencia getEmergencia(@PathVariable int id){
+        return emergenciaRepository.getEmergencia(id);
+    }
 }
