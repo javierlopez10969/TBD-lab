@@ -5,10 +5,14 @@ El proyecto se divide en 3 carpetas correspondientes a las 3 partes de la aplica
 * Cliente (Carpeta Vista desarrollado con Vue.js)
 * Serivicio Res con Spring (Backend API)
 * Base de Datos (PostgreSQL)
-# Vista
+# Vista :sunglasses:
+<p align="center"><a target="_blank"><img src="https://pnglive.com/wp-content/uploads/2021/01/Vue-JS-Logo-Background-PNG-Image.png" width="400"></a></p>
+
 ### Requisitos
+
 * Npm
 * Nodejs
+
 Para levantar la vista usted tendrá que ubicarse en la carpeta llamada vista.
 
 ## Instalación de proyecto
@@ -16,7 +20,9 @@ Para levantar la vista usted tendrá que ubicarse en la carpeta llamada vista.
 ### Compilar y ejecutar la vista en el puerto local 8080
 ### `npm run serve`
 
-# Backend : Base de datos
+# Backend : Base de datos 	:cold_face:
+<p align="center"><a target="_blank"><img src="https://programacion.net/files/article/20151129021117_postgresql-logo.png" width="400"></a></p>
+
 ### Requisitos
 * PostgreSQL
 
@@ -42,7 +48,8 @@ Una vez abierta la consola de postgres ejecute el siguiente comando para crear l
 Ya creada la base de datos procedá a cargar datos dump mediante:
 ### `\i loadData.sql`
 
-# Backend : Servicio Rest
+# Backend : Servicio Rest 	:exploding_head:
+<p align="center"><a target="_blank"><img src="https://cleventy.com/wp-content/uploads/2020/05/spring-boot.png" width="400"></a></p>
 
 ### Requisitos
 * Java 8 o superior 
@@ -55,4 +62,4 @@ Configurar credenciales del usuario postgres en `application.resources`
 ## Windows
 ### `gradlew bootRun`
 ## Linux o MAC
-### `gradlew bootRun`
+### `./gradlew bootRun`
