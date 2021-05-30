@@ -41,8 +41,8 @@ public class VoluntarioService {
         return result;
     }
 
-    @GetMapping("/voluntarios/d/{id}")
-    public boolean deleteVoluntario(@PathVariable int id){
-        return voluntarioRepository.deleteVoluntario(id);
+    @GetMapping("/voluntarios/{id}")
+    public Voluntario getVoluntario(@PathVariable int id){
+        return voluntarioRepository.getVoluntario(id);
     }
 }

@@ -17,12 +17,12 @@
             <a><img class='custom-rounded' src="https://i.ibb.co/t25WcSv/1442457512-019994-1442458031-noticia-normal.png" alt="technology-4256272-1920" border="0"></a>
           </div>
           <div class="col texto-publicitario">
-            Actualmente nuestro mundo sufre de constantes catastrofes que le azotan dia a dia, estas pudiendo ser de origen natural o por parte del hombre, gracias a ello miles de millones de personas alrededor del globo no puede cubrir necesidades basicas.
+            Actualmente nuestro mundo sufre de constantes catastrofes que le azotan dia a dia, gracias a ello miles de millones de personas alrededor del globo no puede cubrir necesidades basicas.
           </div>
         </div>
         <div class="row">
           <div class="col texto-publicitario">
-            Pero no todo esta perdido, ya que cada persona puede aportar su granito de arena para apoyar a estas personas, vuelvete voluntario ya sea siendo colaborador de punto final u organizador para lograr despliegues de ayuda.
+            Pero no todo esta perdido, ya que cada persona puede aportar su granito de arena para apoyar a estas personas, vuelvete voluntario siendo un colaborador de punto final o un organizador que gestione los despliegues de ayuda.
             <!--
             <p>
               <br>Ayuda a los lugares que lo necesiten.  
@@ -44,7 +44,7 @@
             <a><img  class='custom-rounded' src="https://i.ibb.co/vBDPwkz/pexels-rodnae-productions-6646918.jpg" alt="pexels-andrea-piacquadio-3790805" border="0"></a>
           </div>
           <div class="col texto-publicitario">
-            Con tu ayuda podremos mejorar la vida de miles de millones de personas e inclusive mejorar la tuya, ven y acompañanos en esta maravillosa aventura.
+            Con tu ayuda podremos mejorar la vida de miles de millones de personas,¡Ven y acompañanos en esta maravillosa aventura!.
           </div>
 
         

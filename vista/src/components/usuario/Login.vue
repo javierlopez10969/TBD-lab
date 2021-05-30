@@ -7,7 +7,7 @@
             <div class="col">
                 
                 <div class="container-fluid ventana text-center">
-                    <a href="/"><img src="https://i.ibb.co/g9T9mMH/quickdev.png" alt="logo" ></a>
+                    <a href="/"><img src="https://i.ibb.co/nbxmWJQ/preparadoslogo.png"alt="logo" ></a>
                     <form class="form-signin" @submit.prevent="login">                        
                         <h4 class="card-titl text-center">Iniciar sesión</h4>
                         <label for="inputEmail" class="sr-only">Correo electrónico</label>

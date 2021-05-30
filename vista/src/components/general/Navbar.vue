@@ -33,13 +33,13 @@
                     </li>
                 -->
                     <li class="nav-item">
-                    <a class="nav-link color6 rounded-pill" href="/">¿Quiénes Somos?</a>
+                    <a class="nav-link color6 rounded-pill" href="/about">¿Quiénes Somos?</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link color6 rounded-pill" href="/">¿Cómo Participar?</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link color6 rounded-pill" href="/">Programas y Proyectos</a>
+                    <a class="nav-link color6 rounded-pill" href="/tareas">Programas y tareas</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link color6 rounded-pill" href="/">Contáctanos</a>

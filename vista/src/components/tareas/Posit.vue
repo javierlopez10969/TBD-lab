@@ -1,34 +1,40 @@
 <template>
     <div class="contenedor" > 
         <img hre src="https://i.ibb.co/6P44Zc9/Rectangle-12.png" alt="Rectangle-12" width="250" height="250" />
-        <div class="centrado text-center color7">
+        <div class="centrado text-center ">
 
-            <div class = " rowtext-center color7">
-                <template v-if = "estado!=undefined">
-                    Estado : {{estado}} 
-                </template>
-                <div v-if="proyecto.titulo.length >= 20"> 
-                    <h4>{{proyecto.titulo.slice(0,20)}} ...</h4>
+            <div class = " rowtext-center ">
+                <div v-if="tarea.nombre.length >= 4"> 
+                    <h4>{{tarea.nombre.slice(0,20)}}</h4>
                 </div>
                 <div col v-else> 
-                    <h4>{{proyecto.titulo}}</h4>
+                    <h4>{{tarea.nombre}}</h4>
                 </div>
-                 
-                <div v-if="proyecto.titulo.length >= 30">
-                    <h5>{{proyecto.contenido.slice(0,30)}}...</h5>
+                
+                <div  v-if="tarea.nombre.length >= 8">
+                    <h5>{{tarea.descrip.slice(0,20)}}...</h5>
                 </div>
-                <div>
-                    <h5>{{proyecto.contenido}}</h5>
+                <div col v-else> 
+                    <h4>{{tarea.descrip}}</h4>
                 </div>
-                <div>
-                    <h5> Cliente :{{proyecto.cliente}}</h5>
+                
+                <div  v-if="tarea.cant_vol_requeridos.length >= 4">
+                    <h5>{{tarea.cant_vol_requeridos.slice(0,20)}}</h5>
                 </div>
-                <div>
-                   ID cliente : {{proyecto.idCliente}}
+                <div col v-else> 
+                    <h4>{{tarea.cant_vol_requeridos}}</h4>
                 </div>
+
+                <div  v-if="tarea.cant_vol_inscritos.length >= 4">
+                    <h5>{{tarea.cant_vol_inscritos.slice(0,20)}}</h5>
+                </div>
+                <div col v-else> 
+                    <h4>{{tarea.cant_vol_inscritos}}</h4>
+                </div>
+
                 <router-link 
-                    :to="{name: 'proyecto', params: { id: proyecto._id}}" 
-                    class="btn btn-succes color6 bottom rounded-pill">Ver Proyecto
+                    :to="{name: 'tarea', params: { id: tarea.id}}" 
+                    class="btn btn-succes color6 bottom rounded-pill">Ver Tarea
                 </router-link>
             </div>
 

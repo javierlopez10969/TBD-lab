@@ -1,2 +1,5 @@
+\! clear;
 \c postgres;
-\i dbCreate.sql;    
+drop database test;
+\i basedate.sql;    
+\i loadData.sql;

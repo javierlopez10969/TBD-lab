@@ -6,7 +6,7 @@
             </h1>
         </div>
         <row v-for="tarea in Tareas" :key="tarea._id">
-            <Posit v-bind:proyecto="tarea">
+            <Posit v-bind:tarea="tarea">
             </Posit>
         </row>
 

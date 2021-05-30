@@ -44,5 +44,10 @@ public class TareaService {
     public boolean deleteTarea(@PathVariable int id){
         return tareaRepository.deleteTarea(id);
     }
+
+     @GetMapping("/tareas/{id}")
+    public Tarea getById(@PathVariable int id){
+        return tareaRepository.getById(id);
+    }
 }
 

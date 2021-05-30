@@ -30,6 +30,19 @@ const routes = [
     name: 'login',
     component: () => import('../components/usuario/Login.vue')
   },
+
+  //Tareas 
+  {
+    path: '/tareas',
+    name: 'tareas',
+    component: () => import('../components/tareas/Tareas')
+  },
+  {
+    path: '/tarea/:id',
+    name: 'tarea',
+    component: () => import('../components/tareas/Tarea')
+  },
+  //
   /*
   {
     path: '/preguntas_frecuentes',
@@ -51,16 +64,7 @@ const routes = [
     path: '/home',
     name: 'logeado',
     component: () => import('../components/usuario/Landing')
-  },
-
-
-  //PROYECTOS  
-  {
-    path: '/tablon',
-    name: 'tablero',
-    component: () => import('../components/proyectos/Tablon')
-  },
-  
+  },  
   {
     path: '/proyecto/:id',
     name: 'proyecto',

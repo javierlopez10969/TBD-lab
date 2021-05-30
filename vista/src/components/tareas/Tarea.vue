@@ -2,30 +2,28 @@
     <div row class="container-fluid ">
         <div col>
             <button class="btn btn-lg color5 rounded-pill"   
-            @click="volver()" > Volver a tablón</button>
+            @click="volver()" > <i class="bi bi-arrow-left-short"></i>Volver a tablón</button>
         </div>
         <div col class="container-fluid ventana text-center">
             <!-- @submit.prevent="handleUpdateForm()" -->
             <form > 
-                PROYECTO 
-                <h1>{{proyect.titulo}}</h1>
-                <h2> Cliente : {{proyect.cliente}} 
-                    id Cliente : {{proyect.idCliente}}
+                Tarea
+                <h1>{{tarea.nombre}}</h1>
+                <h2> 
                 </h2>
                 <h6>
-                <p>{{proyect.contenido}}
+                <p>Descripcion : {{tarea.descrip}}
                 </p> 
                 </h6>
                 <h2>
                     <p> 
-                    Postulantes proyect : 
+                    Postulantes tarea : 
                     </p>
-                    {{proyect.postulantes}}
                    
                 </h2>
                     <div class="form-group text-center">
                 </div>   
-                <div v-if="usuario.role != 'Cliente'" >
+                <div >
                     <button class="btn btn-lg color4 rounded-pill" 
                     @click="checkearPostulantes();" > Postular</button>
                 </div>
@@ -45,13 +43,13 @@ import axios from "axios";
         ],
         data() {
             return {
-                proyect: { },
+                tarea: { },
             }
         },     
         created() {
-            let apiURL = `http://localhost:3000/api/edit-proyect/${this.$route.params.id}`;
+            let apiURL = `http://localhost:3000/tareas/${this.$route.params.id}`;
             axios.get(apiURL).then((res) => {
-                this.proyect = res.data;
+                this.tarea= res.data;
             });     
         },
         methods: {
@@ -106,7 +104,7 @@ import axios from "axios";
                 return true;
             },
             volver(){
-                this.$router.push('/tablon');   
+                this.$router.push('/tareas');   
             }
         }    
     }

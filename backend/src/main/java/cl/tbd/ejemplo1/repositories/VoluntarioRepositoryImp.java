@@ -60,6 +60,19 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
             System.out.println(e.getMessage());
             return false;
         }
-
     }
+    @Override
+    public Voluntario getVoluntario(int id){
+		String sql = "SELECT * FROM voluntario where id=:id";
+
+		try (Connection con = sql2o.open()) {
+			return con.createQuery(sql)
+				.addParameter("id", id)
+				.executeAndFetchFirst(Voluntario.class);
+		}catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+	}
+    
 }
