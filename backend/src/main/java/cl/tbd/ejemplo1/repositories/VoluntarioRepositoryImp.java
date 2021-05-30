@@ -37,8 +37,10 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     @Override
     public Voluntario createVoluntario(Voluntario voluntario) {
         try(Connection conn = sql2o.open()){
-            int insertedId = (int) conn.createQuery("INSERT INTO voluntario ( nombre, fnacimiento)"+
-            " values ( :voluntarioNombre, :voluntarioFnacimiento)", true)                    
+            int insertedId = countVoluntario()+1;
+            conn.createQuery("insert into voluntario (id, nombre, fnacimiento)"+
+                    " values (:id, :voluntarioNombre, :voluntarioFnacimiento)") 
+                    .addParameter("id",  insertedId)                
                     .addParameter("voluntarioNombre", voluntario.getNombre())
                     .addParameter("voluntarioFnacimiento", voluntario.getFnacimiento())
                     .executeUpdate().getKey();
