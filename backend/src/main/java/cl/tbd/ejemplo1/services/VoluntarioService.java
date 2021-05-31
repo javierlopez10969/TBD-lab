@@ -36,9 +36,12 @@ public class VoluntarioService {
 
     @PostMapping("/voluntarios/a")
     @ResponseBody
-    public Voluntario createVoluntario(@RequestBody Voluntario voluntario){
+    public String createVoluntario(@RequestBody Voluntario voluntario){
         Voluntario result = voluntarioRepository.createVoluntario(voluntario);
-        return result;
+        if (result==null){
+            return String.format("Ya existe un usuario con ese correo");
+        }
+        return String.format("Usuario creado con exito");
     }
 
     @GetMapping("/voluntarios/{id}")

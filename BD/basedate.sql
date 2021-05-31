@@ -178,6 +178,8 @@ ALTER TABLE public.vol_habilidad OWNER TO postgres;
 CREATE TABLE public.voluntario (
     id serial NOT NULL,
     nombre character varying(100),
+    email character varying(100),
+    pass character varying(100),
     fnacimiento date
 );
 

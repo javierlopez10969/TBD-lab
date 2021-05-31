@@ -6,6 +6,8 @@ public class Voluntario {
     private Integer id;
     private String nombre;
     private Date fnacimiento;
+	private String email;
+	private String pass;
 
 	public Integer getId() {
 		return this.id;
@@ -31,5 +33,23 @@ public class Voluntario {
 		this.fnacimiento = fnacimiento;
 	}
 
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPass() {
+		return this.pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+
+	
 
 }

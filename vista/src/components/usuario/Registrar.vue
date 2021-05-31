@@ -26,10 +26,16 @@
                         <div class="form-group input-group">
                             <input name="" class="form-control rounded-pill" placeholder="Nombre Completo" type="text" v-model="user.name" required>
                         </div> 
+                        <div class="form-group input-group">
+                            <input name="" class="form-control rounded-pill" placeholder="Email" type="email" v-model="user.email" required>
+                        </div> 
+                        <div class="form-group input-group">
+                            <input name="" class="form-control rounded-pill" placeholder="Contraseña" type="password" v-model="user.pass" required>
+                        </div> 
 
                     <!-- fecha-->
                         <div class="form-group input-group">
-                            <label class="mt-2" for="datepicker-dateformat2" > </label>
+                            <label class="mt-2" required for="datepicker-dateformat2" > </label>
                             <b-form-datepicker
                             style="text-align:left;"
                             placeholder="Fecha de Nacimiento"
@@ -37,6 +43,7 @@
                             dropright
                             :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
                             locale="es"
+                            
                             v-model="user.fnacimiento"
                             ></b-form-datepicker>
                         </div>
@@ -71,25 +78,28 @@
                 user: {       
                     name: '',
                     fnacimiento: '', 
+                    email : '',
+                    pass : ''
                 },
+                respuesta : ''
 
             }
         },
         methods: {
             handleSubmitForm() {
                 let apiURL = 'http://localhost:3000/voluntarios/a';
-                //this.limpiarMensaje();
                 //this.user.name = this.user.name + ' ' + this.apellido; 
-                alert('Usuario creado con exito, nombre de usuario : ' + this.user.name)
                 axios.post(apiURL, {
                     nombre : this.user.name,
-                    fnacimiento : this.user.fnacimiento
-                    }).then(() => {
-                  this.user = {
-                    name: '',
-                    fnacimiento: '',  
-                  } 
-                this.$router.push('/login')
+                    fnacimiento : this.user.fnacimiento,
+                    email : this.user.email,
+                    pass : this.user.pass
+                    }).then(res => {
+                    this.respuesta = res.data;
+                    alert(this.respuesta);
+                    if(this.respuesta != 'Ya existe un usuario con ese correo'){
+                        this.$router.push('/login')
+                    }
                 }).catch(error => {
                     alert(error)
                     console.log(error)

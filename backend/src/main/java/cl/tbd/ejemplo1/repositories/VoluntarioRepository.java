@@ -9,4 +9,7 @@ public interface VoluntarioRepository {
     public boolean deleteVoluntario(int id);
     public Voluntario getVoluntario(int id);
     public boolean updateVoluntario(Voluntario nuevoVoluntario);
+    public Voluntario getUserByToken(String token);
+    public String logIn(Voluntario user);
+    public String logOut(Voluntario user);
 }
