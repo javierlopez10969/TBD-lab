@@ -16,15 +16,15 @@
             <div >
                 <div class="row" >
                     <!-- Boton 1 -->
-                    <a class="btn btn-default color2 border border-1"  href="/home" role="button" >Home</a>
+                    <a class="btn btn-default color2 border border-1"  href="" role="button" >Home</a>
                 </div>
                 <div class="row">
                     <!-- Boton 2 -->
-                    <a class="btn btn-default color2 border border-1" href="/tablon" role="button">Tablón</a>
+                    <a class="btn btn-default color2 border border-1" href="" role="button">Tablón</a>
                 </div>
                 <div class="row" v-if="usuario.role == 'Cliente'">
                     <!-- Boton 2 -->
-                    <a class="btn btn-default color2 border border-1"  href="/post" role="button">Crear proyecto</a>
+                    <a class="btn btn-default color2 border border-1"  href="" role="button">Crear proyecto</a>
                 </div>
                 <!-- 
                 <div class="row" v-if="usuario.role == 'Cliente'">

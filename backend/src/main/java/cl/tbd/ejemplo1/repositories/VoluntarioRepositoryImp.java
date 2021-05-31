@@ -40,13 +40,14 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
             Voluntario v1 = conn.createQuery("select * from voluntario where email=:email").addParameter("email",voluntario.getEmail()).executeAndFetchFirst(Voluntario.class);
             if (v1 == null){
                 int insertedId = countVoluntario()+1;
-                conn.createQuery("insert into voluntario (id, nombre, fnacimiento, email, pass)"+
-                        " values (:id, :voluntarioNombre, :voluntarioFnacimiento, :email, :pass)") 
+                conn.createQuery("insert into voluntario (id, nombre, fnacimiento, email, pass, loginToken)"+
+                        " values (:id, :voluntarioNombre, :voluntarioFnacimiento, :email, :pass, :loginToken)") 
                         .addParameter("id",  insertedId)                
                         .addParameter("voluntarioNombre", voluntario.getNombre())
                         .addParameter("voluntarioFnacimiento", voluntario.getFnacimiento())
                         .addParameter("email", voluntario.getEmail())
                         .addParameter("pass", voluntario.getPass())
+                        .addParameter("loginToken", 0)
                         .executeUpdate().getKey();
                 voluntario.setId(insertedId);
                 return voluntario;  
@@ -76,7 +77,6 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     @Override
     public Voluntario getVoluntario(int id){
 		String sql = "SELECT * FROM voluntario where id=:id";
-
 		try (Connection con = sql2o.open()) {
 			return con.createQuery(sql)
 				.addParameter("id", id)
@@ -89,7 +89,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
 
     @Override
     public boolean updateVoluntario(Voluntario nuevoVoluntario){
-        String updateSql = "update voluntario set nombre = :nombre, fnacimiento = :fnacimiento, email = :email, pass = :pass where id = :id";
+        String updateSql = "update voluntario set nombre = :nombre, fnacimiento = :fnacimiento, email = :email, pass = :pass, loginToken = :loginToken where id = :id";
         try (Connection con = sql2o.open()) {   
             con.createQuery(updateSql)
                 .addParameter("fnacimiento", nuevoVoluntario.getFnacimiento())
@@ -97,6 +97,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
                 .addParameter("id", nuevoVoluntario.getId())
                 .addParameter("email", nuevoVoluntario.getEmail())
                 .addParameter("pass", nuevoVoluntario.getPass())
+                .addParameter("loginToken", nuevoVoluntario.getLoginToken())
                 .executeUpdate();
             return true;
         }catch(Exception e){
@@ -116,56 +117,38 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     }
     @Override
-    public String logIn(Voluntario user) {
-        int visible = 0;
+    public Voluntario logIn(Voluntario user) {
+        System.out.println("HOLA BUENAS NOCHEs");
         try(Connection conn = sql2o.open()){
+            System.out.println("HOLA BUENAS NOCHEs");
             List<Voluntario> findUsers = conn.createQuery("select * from voluntario  where email=:email and pass=:pass")
                 .addParameter("email", user.getEmail())
                 .addParameter("pass", user.getPass())
                 .executeAndFetch(Voluntario.class);
             if(findUsers.size() == 1){
-                int token = 1;
-                try(Connection con = sql2o.open()){
-                    con.createQuery("UPDATE users SET nombre=:nombre, email=:email, pass=:pass, logintoken=:logintoken, fnacimiento = :fnacimiento WHERE id=:id ", true)
-                            .addParameter("id", findUsers.get(0).getId())
-                            .addParameter("nombre", findUsers.get(0).getNombre())
-                            .addParameter("fnacimiento", findUsers.get(0).getFnacimiento())
-                            .addParameter("email", findUsers.get(0).getEmail())
-                            .addParameter("pass", findUsers.get(0).getPass())
-                            //.addParameter("logintoken", token)
-                            .executeUpdate().getKey();
-                    return "Login Successfully";
-                }catch (Exception e){
-                    System.out.println(e.getMessage());
-                    return  "Login Fail";
-                }
+                System.out.println("Usuario ingresado con exito");
+                user.setLoginToken(1);
+                updateVoluntario(user);
+                return user;
             }else{
-                return "Login Fail";
+                return null;
             }
         }catch (Exception e){
             System.out.println(e.getMessage());
-            return "Login Fail";
+            return null;
         }
-    }
+    }   
     @Override
     public String logOut(Voluntario user){
-        int visible = 0;
         try(Connection conn = sql2o.open()){
-            List<Voluntario> findUsers = conn.createQuery("select * from voluntario where email=:email and pass=:pass")
-                    .addParameter("email", user.getEmail())
-                    .addParameter("pass", user.getPass())
+            List<Voluntario> findUsers = conn.createQuery("select * from voluntario where id=:id")
+                    .addParameter("id", user.getId())
                     .executeAndFetch(Voluntario.class);
             if(findUsers.size() == 1){
                 int token = 0;
                 try(Connection con = sql2o.open()){
-                    con.createQuery("UPDATE users SET nombre=:nombre, email=:email, pass=:pass, fnacimiento = :fnacimiento WHERE id=:id ", true)
-                            .addParameter("id", findUsers.get(0).getId())
-                            .addParameter("nombre", findUsers.get(0).getNombre())
-                            .addParameter("fnacimiento", findUsers.get(0).getFnacimiento())
-                            .addParameter("email", findUsers.get(0).getEmail())
-                            .addParameter("pass", findUsers.get(0).getPass())
-                            //.addParameter("logintoken", token)
-                            .executeUpdate().getKey();
+                    user.setLoginToken(0);
+                    updateVoluntario(user);
                     return "LogOut Successfully";
                 }catch (Exception e){
                     System.out.println(e.getMessage());

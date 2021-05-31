@@ -35,8 +35,7 @@ const routes = [
     name: 'voluntarios',
     component: () => import('../components/usuario/ListaUsuarios')
   },
-
-  //Tareas 
+  //Emergencias
   {
     path: '/emergencias',
     name: 'emergencias',

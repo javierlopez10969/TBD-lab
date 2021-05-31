@@ -51,7 +51,6 @@
             error: '',
         }
     },
-    /*
     created() {
         if (localStorage.getItem('token') === null) {
             console.log('hola')
@@ -59,15 +58,27 @@
             this.$router.push('/home');
         }
     },
-    */
     methods: {
         login() {
-            axios.post('http://localhost:3000/api/login', this.user)
+            axios.post('http://localhost:3000/login',{
+                email : this.user.email,
+                pass : this.user.pass
+            })
             .then(res => {
-            //if successfull
-            if (res.status === 200) {
-                localStorage.setItem('token', res.data.token);
-                this.$router.push({ path: '/home' });
+            if (res.data.loginToken === 1) {
+                localStorage.setItem('token', res.data);
+                this.$router.push({ path: '/emergencias' });
+                location.reload();
+                axios.post('http://localhost:3000/voluntarios/update',{
+                    id : localStorage.getItem('token').id,
+                    loginToken : 1
+                }).then(() => {}
+                , err => {
+                    alert(err.response.data.error);
+                    console.log(err.response);
+                    this.error = err.response.data.error
+                })
+
             }
             }, err => {
                 alert(err.response.data.error);

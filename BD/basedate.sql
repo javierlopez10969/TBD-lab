@@ -180,7 +180,8 @@ CREATE TABLE public.voluntario (
     nombre character varying(100),
     email character varying(100),
     pass character varying(100),
-    fnacimiento date
+    fnacimiento date,
+    loginToken int
 );
 
 

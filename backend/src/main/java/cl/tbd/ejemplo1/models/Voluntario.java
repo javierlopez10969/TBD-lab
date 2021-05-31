@@ -8,6 +8,7 @@ public class Voluntario {
     private Date fnacimiento;
 	private String email;
 	private String pass;
+	private int loginToken;
 
 	public Integer getId() {
 		return this.id;
@@ -49,7 +50,12 @@ public class Voluntario {
 		this.pass = pass;
 	}
 
+	public int getLoginToken() {
+		return this.loginToken;
+	}
 
-	
+	public void setLoginToken(int loginToken) {
+		this.loginToken = loginToken;
+	}
 
 }

@@ -10,6 +10,6 @@ public interface VoluntarioRepository {
     public Voluntario getVoluntario(int id);
     public boolean updateVoluntario(Voluntario nuevoVoluntario);
     public Voluntario getUserByToken(String token);
-    public String logIn(Voluntario user);
+    public Voluntario logIn(Voluntario user);
     public String logOut(Voluntario user);
 }

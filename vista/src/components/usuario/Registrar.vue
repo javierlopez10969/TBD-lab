@@ -34,8 +34,8 @@
                         </div> 
 
                     <!-- fecha-->
-                        <div class="form-group input-group">
-                            <label class="mt-2" required for="datepicker-dateformat2" > </label>
+                        <div class="form-group input-group" >
+                            <label class="mt-2"  for="datepicker-dateformat2" > </label>
                             <b-form-datepicker
                             style="text-align:left;"
                             placeholder="Fecha de Nacimiento"
@@ -43,8 +43,8 @@
                             dropright
                             :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
                             locale="es"
-                            
-                            v-model="user.fnacimiento"
+                            v-model="user.fnacimiento"                            
+                            aria-required="true"
                             ></b-form-datepicker>
                         </div>
                         <div class="form-group text-center">

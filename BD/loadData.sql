@@ -9,16 +9,16 @@ insert into public.habilidad (id, descrip) values (8, 'Phasellus sit amet erat. 
 insert into public.habilidad (id, descrip) values (9, 'Morbi non lectus. venenatis non, sodales sed, tincidunt eu, felis.');
 insert into public.habilidad (id, descrip) values (10, 'Duis aliquam convallis nunc. Proin at turpis a  Integer non velit.');
 
-insert into public.voluntario (id, nombre, fnacimiento, email, pass) values (1, 'Rosabel Cellier', '2020-12-10','pipe@xd.com','pipe');
-insert into public.voluntario (id, nombre, fnacimiento, email, pass) values (2, 'Meggie Winpenny', '2021-01-12','mbonn1@list-manage.com','mB6dGjdchWSK');
-insert into public.voluntario (id, nombre, fnacimiento, email, pass) values (3, 'Greta Brea', '2020-06-27','hbeacom2@meetup.com','tkqIWKN');
-insert into public.voluntario (id, nombre, fnacimiento, email, pass) values (4, 'Ilsa Plewright', '2020-06-09','svertey3@sciencedirect.com','3FXIOZScx0C');
-insert into public.voluntario (id, nombre, fnacimiento, email, pass) values (5, 'Kissie Possek', '2021-05-19','jcatterell4@nifty.com','RtLEXSxhKTw');
-insert into public.voluntario (id, nombre, fnacimiento, email, pass) values (6, 'Marj Pickston', '2021-05-20','smicklewright5@foxnews.com','Nm1oMZy5e7W');
-insert into public.voluntario (id, nombre, fnacimiento, email, pass) values (7, 'Westleigh Weeds', '2021-01-01','clapenna6@shop-pro.jp','UijtC4IM');
-insert into public.voluntario (id, nombre, fnacimiento, email, pass) values (8, 'Aprilette Ahrendsen', '2021-04-08','nfetterplace9@mac.com','J3yeyeTwxd5w');
-insert into public.voluntario (id, nombre, fnacimiento, email, pass) values (9, 'Leonanie Heiden', '2021-01-09','sbordisf@vimeo.com','eluuNPLP1NV3');
-insert into public.voluntario (id, nombre, fnacimiento, email, pass) values (10, 'Karalee Meachen', '2021-01-16','trosomang@newsvine.com','XkL7AU8IvAKQ');
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken) values (1, 'Rosabel Cellier', '2020-12-10','pipe@xd.com','pipe',0);
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken) values (2, 'Meggie Winpenny', '2021-01-12','mbonn1@list-manage.com','mB6dGjdchWSK',0);
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken) values (3, 'Greta Brea', '2020-06-27','hbeacom2@meetup.com','tkqIWKN',0);
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken) values (4, 'Ilsa Plewright', '2020-06-09','svertey3@sciencedirect.com','3FXIOZScx0C',0);
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken) values (5, 'Kissie Possek', '2021-05-19','jcatterell4@nifty.com','RtLEXSxhKTw',0);
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken) values (6, 'Marj Pickston', '2021-05-20','smicklewright5@foxnews.com','Nm1oMZy5e7W',0);
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken) values (7, 'Westleigh Weeds', '2021-01-01','clapenna6@shop-pro.jp','UijtC4IM',0);
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken) values (8, 'Aprilette Ahrendsen', '2021-04-08','nfetterplace9@mac.com','J3yeyeTwxd5w',0);
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken) values (9, 'Leonanie Heiden', '2021-01-09','sbordisf@vimeo.com','eluuNPLP1NV3',0);
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken) values (10, 'Karalee Meachen', '2021-01-16','trosomang@newsvine.com','XkL7AU8IvAKQ',0);
 
 insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (1, 3, 5);
 insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (2, 2, 1);

@@ -11,18 +11,17 @@
             <!--sidebar opcional-->
             <div row class="" v-if="!botones">
                 
-                <Sidebar
-                v-bind:usuario=user
-                >
+                <Sidebar v-bind:usuario = user >
                 </Sidebar>
             </div>   
 
             <!-- Brand/logo -->
+            
             <a class="navbar-brand margen_l2" href="/" v-if="botones" >
                 <img src="https://i.ibb.co/nbxmWJQ/preparadoslogo.png"  alt="quickdev"  height="60"/>
             </a>
             <a class="navbar-brand" href="/home" v-else >
-                <img src="https://i.ibb.co/g9T9mMH/quickdev.png"  alt="quickdev"  height="60"/>
+                <img src="https://i.ibb.co/nbxmWJQ/preparadoslogo.png"  alt="quickdev"  height="60"/>
             </a>
             <!-- Links -->
             <div class="navbar-collapse collapse">
@@ -84,6 +83,11 @@
                     {{user.name}}
             </div>
 -->
+            <ul class="nav navbar-nav navbar-right"  v-if="!botones">
+                <!-- Boton Logout-->
+                    <a class="btn btn-default colorRojo rounded-pill"   href="/" role="button" v-on:click="logout() , limpiar()"  ><i class="bi bi-power"></i> Cerrar Sesión</a> 
+            </ul>
+
             <ul class="nav navbar-nav navbar-right"  v-if="botones">
                 <!-- Boton Iniciar Sesion -->
                     <a class="btn btn-default color3 rounded-pill"  href="/login" role="button" >Iniciar Sesión</a> 
@@ -94,17 +98,6 @@
                 </div>
                 
 
-            </ul>
-            <ul class="nav navbar-nav navbar-right"  v-if="!botones">
-                <ul class="nav navbar-nav navbar-right">
-                        
-                </ul>
-
-                <div>
-                    <!-- 
-                    <a class="btn btn-default color6 rounded-pill center-text"  type="submit" @click="logout()" role="button"> <i class="bi bi-power"></i>Cerrar Sesión</a>
-                -->
-                </div>
             </ul>
 
             </nav>        
@@ -125,13 +118,32 @@ export default {
     },
     methods: {  
         logout() {
+            let usuario = window.localStorage.getItem('token');
             localStorage.clear();
+            limpiar();
+            let apiURL = 'http://localhost:3000/voluntarios/logout';                
+            axios.post(apiURL, {
+                id : usuario.id
+                }).then(()=>{
+                    localStorage.clear();
+                    localStorage.removeItem('token');
+                    location.reload();
+                }).catch(error => {
+                    alert(error)
+                    console.log(error)
+            });
+            
+            location.reload();
             if (window.location.pathname == "/"){
+                
                 location.reload();
             }else{
                 this.$router.push('/');
             }
-        } 
+        } ,
+        limpiar (){
+            localStorage.clear();
+        }
     },
     props: [
         'botones',
@@ -141,8 +153,10 @@ export default {
         return {
             images: {
                 logo: require('./preparados.png')
-            }
+            },
+            id: ''
         }
+        
     },
  
     mounted: function () {

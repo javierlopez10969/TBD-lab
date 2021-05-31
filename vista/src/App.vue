@@ -22,7 +22,6 @@ export default {
   data() {
     return {
       show : 'true',
-      baseURL: "http://localhost:3000/api",
       tamanoRoute : 0,
       usuario: {}
     }
@@ -30,7 +29,55 @@ export default {
   components: {
     Navbar,
     Footer
-  }
+  },
+  methods: {
+      ocultarMethod(){
+        if (localStorage.getItem('token') === null) {
+            return true;
+        }else{
+            return false
+        }
+      }
+  },
+  created() { 
+    this.show = this.ocultarMethod();  
+    this.tamanoRoute = this.selectTamano();
+  },
+  updated() {
+    axios.get('http://localhost:3000/api/user',
+     { headers: { token: localStorage.getItem('token')}})
+      .then(res => {
+        this.usuario = res.data.user;
+    });
+    this.show = this.ocultarMethod();  
+    this.tamanoRoute = this.selectTamano();
+  },
+  computed:{
+      currentRouteName() {
+        return this.$route.name;
+      },
+      selectTamano(){
+        if (this.currentRouteName() =='home') {
+          return 0;
+        }
+        else if(this.currentRouteName() =='tablero') {
+          return 5;
+        }
+        else{
+          return 0;
+        }
+      }
+
+  },
+  mounted() {
+    axios.get('http://localhost:3000/api/user',
+     { headers: { token: localStorage.getItem('token')}})
+      .then(res => {
+        this.usuario = res.data.user;
+    });
+    this.tamanoRoute = this.selectTamano();
+    this.show = this.ocultarMethod();  
+  },
 }
 </script>
 

@@ -58,5 +58,20 @@ public class VoluntarioService {
     public boolean deleteVoluntario(@PathVariable int id){
         return voluntarioRepository.deleteVoluntario(id);
     }
+    @PostMapping("/login")
+    @ResponseBody
+    public Voluntario logIn(@RequestBody Voluntario user){
+        System.out.println("HOLA");
+        Voluntario resultado =  voluntarioRepository.logIn(user);
+        if (resultado == null){
+            return user;
+        }else{
+            return resultado;
+        }
+    }
+    @PostMapping("/voluntarios/logout")
+    public String logOut(@RequestBody Voluntario user){
+        return voluntarioRepository.logOut(user);
+    }
     
 }
