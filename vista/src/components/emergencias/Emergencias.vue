@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div v-if="Tareas.length === 0">
+        <div v-if="Emergencias.length === 0">
             <h1>
                 No existen tareas actualmente
             </h1>
         </div>
-        <row v-for="tarea in Tareas" :key="tarea._id">
-            <Posit v-bind:tarea="tarea">
+        <row v-for="emergencia in Emergencias" :key="emergencia._id">
+            <Posit v-bind:emergencia="emergencia">
             </Posit>
         </row>
 
@@ -21,16 +21,16 @@
         },
         data(){
             return{
-                Tareas: [],
+                Emergencias: [],
                 page:1,
                 perPage:10,
                 pages: []
             }
         },  
         created() {
-            let apiURL = 'http://localhost:3000/tareas';
+            let apiURL = 'http://localhost:3000/emergencias';
             axios.get(apiURL).then(res => {
-                this.Tareas = res.data;
+                this.Emergencias = res.data;
             }).catch(error => {
                 console.log(error)
             });

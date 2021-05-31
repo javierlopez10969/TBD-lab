@@ -1,28 +1,19 @@
 <template>
     <div class="row">
         <div class="col-md-12">
+            <h1>Voluntarios inscritos</h1>
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
                         <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Telefono</th>
-                        <th>Nombre Empresa</th>
-                        <th>Rol</th>
-                        <th>Activo</th>
-                        <th>Especialidad</th>
+                        <th>Fecha de Nacimiento</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="user in Users" :key="user._id">
-                        <td>{{ user.name }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.phone }}</td>
-                        <td>{{ user.nameEmpresa }}</td>
-                        <td>{{ user.role}}</td>
-                        <td>{{ user.activo }}</td>
-                        <td>{{ user.especialidad}}</td>
+                        <td>{{ user.nombre }}</td>
+                        <td>{{ user.fnacimiento }}</td>
                         <td>
                             <router-link :to="{name: 'edit', params: { id: user._id }}" class="btn btn-success">Editar
                             </router-link>
@@ -40,12 +31,12 @@
 
     export default {
         data() {
-            return {{}
+            return {
                 Users: []
             }
         },
         created() {
-            let apiURL = 'http://localhost:3000/api/users';
+            let apiURL = 'http://localhost:3000/voluntarios';
             axios.get(apiURL).then(res => {
                 this.Users = res.data;
             }).catch(error => {
@@ -54,10 +45,9 @@
         },
         methods: {
             deleteUser(id){
-                let apiURL = `http://localhost:3000/api/delete-user/${id}`;
+                let apiURL = `http://localhost:3000//voluntarios/d/${id}`;
                 let indexOfArrayItem = this.Users.findIndex(i => i._id === id);
-
-                if (window.confirm("Seguro que quiere borrar usuario?")) {
+                if (window.confirm("Seguro que quiere borrar al voluntario?")) {
                     axios.delete(apiURL).then(() => {
                         this.Users.splice(indexOfArrayItem, 1);
                     }).catch(error => {

@@ -93,6 +93,14 @@ export default {
     background-color: rgb(153, 153, 153) !important  ;
     color: white !important ;
   }
+  .colorRojo{
+    background-color: red !important  ;
+    color: white !important ;
+  }
+  .colorRojo:hover{
+    background-color: rgb(253, 119, 119) !important  ;
+    color: white !important ;
+  }
 
   .color9{
 

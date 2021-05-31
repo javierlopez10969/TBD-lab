@@ -68,8 +68,7 @@
     export default {
         data() {
             return {
-                user: {    
-                    //id: 2,        
+                user: {       
                     name: '',
                     fnacimiento: '', 
                 },
@@ -83,7 +82,6 @@
                 //this.user.name = this.user.name + ' ' + this.apellido; 
                 alert('Usuario creado con exito, nombre de usuario : ' + this.user.name)
                 axios.post(apiURL, {
-                    //id : this.user.id,
                     nombre : this.user.name,
                     fnacimiento : this.user.fnacimiento
                     }).then(() => {

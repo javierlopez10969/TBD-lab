@@ -7,35 +7,27 @@
         <div col class="container-fluid ventana text-center">
             <!-- @submit.prevent="handleUpdateForm()" -->
             <form > 
-                Tarea
-                <h1>{{tarea.nombre}}</h1>
+                Emergencia
+                <h1>{{emergencia.nombre}}</h1>
                 <h2> 
+                    Nombre : {{institucion.nombre}}
                 </h2>
-                <h6>
-                <p>Descripcion : {{tarea.descrip}}
+                <h5>
+                <p>Descripcion : <br>{{emergencia.descrip}}
                 </p> 
-                </h6>
-                <h2>
-                    <p> 
-                    Voluntarios Requeridos: {{tarea.cant_vol_requeridos}}
-                    </p>
-                   
-                </h2>
-                <h2>
-                    <p> 
-                    Actualmente Inscritos: {{tarea.cant_vol_inscritos}}
-                    </p>
-                   
-                </h2>
+                </h5>
+
                 <h4>
                     <p> 
-                    Fecha de Inicio: {{tarea.finicio}}
+                    Fecha de Inicio: {{emergencia.finicio}}
                     </p>
                    
                 </h4>
                 <h4>
                     <p> 
-                    Fecha de Termino: {{tarea.ffin}}
+                    Fecha de Termino: {{emergencia.ffin}}
+                    Hola _{{emergencia.id_institucion}}
+
                     </p>
                    
                 </h4>
@@ -61,14 +53,21 @@ import axios from "axios";
         ],
         data() {
             return {
-                tarea: { },
+                emergencia: { },
+                id_institucion : '',
+                institucion : {}
             }
         },     
         created() {
-            let apiURL = `http://localhost:3000/tareas/${this.$route.params.id}`;
+            let apiURL = `http://localhost:3000/emergencias/${this.$route.params.id}`;
             axios.get(apiURL).then((res) => {
-                this.tarea= res.data;
-            });     
+                this.emergencia= res.data;
+                this.id_institucion =  res.data.id_institucion;
+                let apiURL2 = 'http://localhost:3000/instituciones/' + this.id_institucion.toString();
+                axios.get(apiURL2).then((res) => {
+                    this.institucion = res.data;
+                }); 
+            });       
         },
         methods: {
             handleUpdateForm() { 
@@ -122,7 +121,10 @@ import axios from "axios";
                 return true;
             },
             volver(){
-                this.$router.push('/tareas');   
+                this.$router.push('/emergencias');   
+            },
+            getInstitucion(){
+
             }
         }    
     }

@@ -4,25 +4,25 @@
         <div class="centrado text-center ">
 
             <div class = " rowtext-center ">
-                <div v-if="tarea.nombre.length >= 4"> 
-                    <h4>{{tarea.nombre.slice(0,20)}}</h4>
+                <div v-if="emergencia.nombre.length >= 4"> 
+                    <h4>{{emergencia.nombre.slice(0,20)}}</h4>
                 </div>
                 <div col v-else> 
-                    <h4>{{tarea.nombre}}</h4>
+                    <h4>{{emergencia.nombre}}</h4>
                 </div>
                 
-                <div  v-if="tarea.nombre.length >= 8">
-                    <h5>{{tarea.descrip.slice(0,20)}}...</h5>
+                <div  v-if="emergencia.nombre.length >= 8">
+                    <h5>{{emergencia.descrip.slice(0,20)}}...</h5>
                 </div>
                 <div col v-else> 
-                    <h4>{{tarea.descrip}}</h4>
+                    <h4>{{emergencia.descrip}}</h4>
                 </div>
                 
 
 
                 <router-link 
-                    :to="{name: 'tarea', params: { id: tarea.id}}" 
-                    class="btn btn-succes color6 bottom rounded-pill">Ver Tarea
+                    :to="{name: 'emergencia', params: { id: emergencia.id}}" 
+                    class="btn  colorRojo bottom rounded-pill">Ver emergencia
                 </router-link>
             </div>
 
@@ -41,7 +41,7 @@
 <script>
 export default {
     props: [
-        'tarea',
+        'emergencia',
         'estado'
         ],
 }

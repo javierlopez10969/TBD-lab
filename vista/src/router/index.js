@@ -30,17 +30,22 @@ const routes = [
     name: 'login',
     component: () => import('../components/usuario/Login.vue')
   },
+  {
+    path: '/voluntarios',
+    name: 'voluntarios',
+    component: () => import('../components/usuario/ListaUsuarios')
+  },
 
   //Tareas 
   {
-    path: '/tareas',
-    name: 'tareas',
-    component: () => import('../components/tareas/Tareas')
+    path: '/emergencias',
+    name: 'emergencias',
+    component: () => import('../components/emergencias/Emergencias')
   },
   {
-    path: '/tarea/:id',
-    name: 'tarea',
-    component: () => import('../components/tareas/Tarea')
+    path: '/emergencia/:id',
+    name: 'emergencia',
+    component: () => import('../components/emergencias/Emergencia')
   },
   //
   /*
@@ -50,11 +55,7 @@ const routes = [
     component: () => import('../components/general/PreguntasFrecuentes.vue')
   },
 
-  {
-    path: '/view',
-    name: 'view',
-    component: () => import('../components/usuario/ListaUsuarios')
-  },
+
   {
     path: '/edit/:id',
     name: 'edit',

@@ -39,10 +39,10 @@
                     <a class="nav-link color6 rounded-pill" href="/">¿Cómo Participar?</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link color6 rounded-pill" href="/tareas">Programas y tareas</a>
+                    <a class="nav-link color6 rounded-pill" href="/emergencias">Emergencias</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link color6 rounded-pill" href="/">Contáctanos</a>
+                    <a class="nav-link color6 rounded-pill" href="/voluntarios">Voluntarios</a>
                     </li>
 
                       <!--
