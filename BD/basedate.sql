@@ -50,6 +50,8 @@ CREATE TABLE public.emergencia (
     descrip character varying(400),
     finicio date,
     ffin date,
+	altitud double precision,
+	longitud double precision,
     id_institucion serial
 );
 
@@ -136,6 +138,8 @@ CREATE TABLE public.tarea (
     id_emergencia serial,
     finicio date,
     ffin date,
+	altitud double precision,
+	longitud double precision,
     id_estado serial
 );
 
@@ -181,7 +185,9 @@ CREATE TABLE public.voluntario (
     email character varying(100),
     pass character varying(100),
     fnacimiento date,
-    loginToken int
+    loginToken int,
+	altitud double precision,
+	longitud double precision
 );
 
 
@@ -203,7 +209,7 @@ COPY public.eme_habilidad (id, id_emergencia, id_habilidad) FROM stdin;
 -- Data for Name: emergencia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.emergencia (id, nombre, descrip, finicio, ffin, id_institucion) FROM stdin;
+COPY public.emergencia (id, nombre, descrip, finicio, ffin, altitud, longitud, id_institucion) FROM stdin;
 \.
 
 
@@ -253,7 +259,7 @@ COPY public.ranking (id, id_voluntario, id_tarea, puntaje, flg_invitado, flg_par
 -- Data for Name: tarea; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) FROM stdin;
+COPY public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, altitud, longitud, id_estado) FROM stdin;
 \.
 
 
@@ -283,7 +289,7 @@ COPY public.vol_habilidad (id, id_voluntario, id_habilidad) FROM stdin;
 -- Data for Name: voluntario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.voluntario (id, nombre, fnacimiento) FROM stdin;
+COPY public.voluntario (id, nombre, email, pass, fnacimiento, loginToken, altitud, longitud) FROM stdin;
 \.
 
 
