@@ -9,6 +9,8 @@ public class Voluntario {
 	private String email;
 	private String pass;
 	private int loginToken;
+	private Double altitud;
+	private Double longitud;
 
 	public Integer getId() {
 		return this.id;
@@ -56,6 +58,22 @@ public class Voluntario {
 
 	public void setLoginToken(int loginToken) {
 		this.loginToken = loginToken;
+	}
+
+	public Double getAltitud() {
+		return this.altitud;
+	}
+
+	public void setAltitud(Double altitud) {
+		this.altitud = altitud;
+	}
+
+	public Double getLongitud() {
+		return this.longitud;
+	}
+
+	public void setLongitud(Double longitud) {
+		this.longitud = longitud;
 	}
 
 }

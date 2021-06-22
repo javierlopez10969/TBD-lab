@@ -8,6 +8,8 @@ public class Emergencia {
 	private String descrip;
 	private Date finicio;
 	private Date ffin;
+	private Double altitud;
+	private Double longitud;
 	private Integer id_institucion;
 
 
@@ -49,6 +51,22 @@ public class Emergencia {
 
 	public void setFfin(Date ffin) {
 		this.ffin = ffin;
+	}
+
+	public Double getAltitud() {
+		return this.altitud;
+	}
+
+	public void setAltitud(Double altitud) {
+		this.altitud = altitud;
+	}
+
+	public Double getLongitud() {
+		return this.longitud;
+	}
+
+	public void setLongitud(Double longitud) {
+		this.longitud = longitud;
 	}
 
 	public Integer getId_institucion() {
