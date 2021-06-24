@@ -40,14 +40,16 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
             Voluntario v1 = conn.createQuery("select * from voluntario where email=:email").addParameter("email",voluntario.getEmail()).executeAndFetchFirst(Voluntario.class);
             if (v1 == null){
                 int insertedId = countVoluntario()+1;
-                conn.createQuery("insert into voluntario (id, nombre, fnacimiento, email, pass, loginToken)"+
-                        " values (:id, :voluntarioNombre, :voluntarioFnacimiento, :email, :pass, :loginToken)") 
+                conn.createQuery("insert into voluntario (id, nombre, fnacimiento, email, pass, loginToken, altitud, longitud)"+
+                        " values (:id, :voluntarioNombre, :voluntarioFnacimiento, :email, :pass, :loginToken, :voluntarioAltitud, :voluntarioLongitud)") 
                         .addParameter("id",  insertedId)                
                         .addParameter("voluntarioNombre", voluntario.getNombre())
                         .addParameter("voluntarioFnacimiento", voluntario.getFnacimiento())
                         .addParameter("email", voluntario.getEmail())
                         .addParameter("pass", voluntario.getPass())
                         .addParameter("loginToken", 0)
+                        .addParameter("voluntarioAltitud", voluntario.getAltitud())
+                        .addParameter("voluntarioLongitud", voluntario.getLongitud())
                         .executeUpdate().getKey();
                 voluntario.setId(insertedId);
                 return voluntario;  
@@ -89,7 +91,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
 
     @Override
     public boolean updateVoluntario(Voluntario nuevoVoluntario){
-        String updateSql = "update voluntario set nombre = :nombre, fnacimiento = :fnacimiento, email = :email, pass = :pass, loginToken = :loginToken where id = :id";
+        String updateSql = "update voluntario set nombre = :nombre, fnacimiento = :fnacimiento, email = :email, pass = :pass, loginToken = :loginToken where id = :id, altitud = :altitud, longitud = :longitud";
         try (Connection con = sql2o.open()) {   
             con.createQuery(updateSql)
                 .addParameter("fnacimiento", nuevoVoluntario.getFnacimiento())
@@ -98,6 +100,8 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
                 .addParameter("email", nuevoVoluntario.getEmail())
                 .addParameter("pass", nuevoVoluntario.getPass())
                 .addParameter("loginToken", nuevoVoluntario.getLoginToken())
+                .addParameter("altitud", nuevoVoluntario.getAltitud())
+                .addParameter("longitud", nuevoVoluntario.getLongitud())
                 .executeUpdate();
             return true;
         }catch(Exception e){
