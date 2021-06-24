@@ -112,6 +112,7 @@
 <script>
 
 import Sidebar from './Sidebar.vue';
+import axios from 'axios';
 export default {
     components:{
         Sidebar,
@@ -120,7 +121,7 @@ export default {
         logout() {
             let usuario = window.localStorage.getItem('token');
             localStorage.clear();
-            limpiar();
+            //limpiar();
             let apiURL = 'http://localhost:3000/voluntarios/logout';                
             axios.post(apiURL, {
                 id : usuario.id
