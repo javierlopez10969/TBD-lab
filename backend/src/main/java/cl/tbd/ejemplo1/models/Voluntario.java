@@ -9,7 +9,7 @@ public class Voluntario {
 	private String email;
 	private String pass;
 	private int loginToken;
-	private Double altitud;
+	private Double latitud;
 	private Double longitud;
 
 	public Integer getId() {
@@ -60,12 +60,12 @@ public class Voluntario {
 		this.loginToken = loginToken;
 	}
 
-	public Double getAltitud() {
-		return this.altitud;
+	public Double getLatitud() {
+		return this.latitud;
 	}
 
-	public void setAltitud(Double altitud) {
-		this.altitud = altitud;
+	public void setLatitud(Double latitud) {
+		this.latitud = latitud;
 	}
 
 	public Double getLongitud() {

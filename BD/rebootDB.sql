@@ -1,5 +1,5 @@
 \! clear;
 \c postgres;
 drop database test;
-\i basedate.sql;    
+\i dbCreate.sql;    
 \i loadData.sql;
