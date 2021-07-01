@@ -1,101 +1,60 @@
 <template>
-
-  <div style="height: 500px; width: 100%">
-    <div style="height: 200px; overflow: auto;">
-      <p>First marker is placed at {{ withPopup.lat }}, {{ withPopup.lng }}</p>
-      <p>Center is at {{ currentCenter }} and the zoom is: {{ currentZoom }}</p>
-      <button @click="showLongText">
-        Toggle long popup
-      </button>
-      <button @click="showMap = !showMap">
-        Toggle map
-      </button>
-    </div>
-    <l-map
-      v-if="showMap"
-      :zoom="zoom"
-      :center="center"
-      :options="mapOptions"
-      style="height: 80%"
-      @update:center="centerUpdate"
-      @update:zoom="zoomUpdate"
-    >
-      <l-tile-layer
-        :url="url"
-        :attribution="attribution"
-      />
-      <l-marker :lat-lng="withPopup">
-        <l-popup>
-          <div @click="innerClick">
-            I am a popup
-            <p v-show="showParagraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi.
-              Donec finibus semper metus id malesuada.
-            </p>
-          </div>
-        </l-popup>
-      </l-marker>
-      <l-marker :lat-lng="withTooltip">
-        <l-tooltip :options="{ permanent: true, interactive: true }">
-          <div @click="innerClick">
-            I am a tooltip
-            <p v-show="showParagraph">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi.
-              Donec finibus semper metus id malesuada.
-            </p>
-          </div>
-        </l-tooltip>
-      </l-marker>
-    </l-map>
+  <!-- el height para el tamaño vertical-->
+  <div id="map-wrap" style="height: 60vh">
+    <client-only>
+        <!-- este es para ver donde apunta el mapa al inicio-->
+      <l-map :zoom=4 :center="[-38.719, -72.478]">
+        <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
+        <!--l-marker es un punto en el mapa, hay que revisar si estan de la forma latitud,longitud-->
+        <l-marker :lat-lng="[-33.039722, -71.509167]">
+              <l-popup>Benjax Basado</l-popup>      
+          
+        </l-marker>
+      </l-map>
+    </client-only>
   </div>
+
 </template>
 
 <script>
-import { latLng } from "leaflet";
-import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from "vue2-leaflet";
+//import L from 'leaflet';
+import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
+import { Icon } from 'leaflet';
+
+delete Icon.Default.prototype._getIconUrl;
+Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
+
+
 
 export default {
-  name: "Example",
+  name: 'MyAwesomeMap',
   components: {
     LMap,
     LTileLayer,
     LMarker,
-    LPopup,
-    LTooltip
+    LPopup
   },
-  data() {
-    return {
-      zoom: 13,
-      center: latLng(47.41322, -1.219482),
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      withPopup: latLng(47.41322, -1.219482),
-      withTooltip: latLng(47.41422, -1.250482),
-      currentZoom: 11.5,
-      currentCenter: latLng(47.41322, -1.219482),
-      showParagraph: false,
-      mapOptions: {
-        zoomSnap: 0.5
-      },
-      showMap: true
-    };
-  },
-  methods: {
-    zoomUpdate(zoom) {
-      this.currentZoom = zoom;
+
+  modules: [
+    // Simple usage
+    'nuxt-leaflet',
+
+    // With options
+    ['nuxt-leaflet', { /* module options */ }],
+ ],
+
+  computed: {
+    dynamicSize () {
+      return [this.iconSize, this.iconSize * 1.15];
     },
-    centerUpdate(center) {
-      this.currentCenter = center;
-    },
-    showLongText() {
-      this.showParagraph = !this.showParagraph;
-    },
-    innerClick() {
-      alert("Click!");
+    dynamicAnchor () {
+      return [this.iconSize / 2, this.iconSize * 1.15];
     }
   }
+
 };
 </script>
