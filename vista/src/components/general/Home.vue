@@ -11,6 +11,7 @@
             <div class="col">
             </div>
         </div>
+        <Mapa ></Mapa> 
         <!-- iamgenes y texto -->
         <div class="row">
           <div class="col ">
@@ -20,6 +21,7 @@
             Actualmente nuestro mundo sufre de constantes catastrofes que le azotan dia a dia, gracias a ello miles de millones de personas alrededor del globo no puede cubrir necesidades basicas.
           </div>
         </div>
+
         <div class="row">
           <div class="col texto-publicitario">
             Pero no todo esta perdido, ya que cada persona puede aportar su granito de arena para apoyar a estas personas, vuelvete voluntario siendo un colaborador de punto final o un organizador que gestione los despliegues de ayuda.
@@ -64,8 +66,12 @@
 </template>
 
 <script>
-export default {
 
+import Mapa from '../mapas/mapa.vue';
+export default {
+    components:{
+        Mapa,
+    },
 }
 </script>
 <style>

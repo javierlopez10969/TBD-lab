@@ -17,7 +17,11 @@ const routes = [
     name: 'about',
     component: () => import('../components/general/About')
   },
-
+  {
+    path: '/mapa',
+    name: 'mapa',
+    component: () => import('../components/mapas/mapa')
+  },
   //-----------------------------------------------------------------------------------------------------------
   //Paginas de usuario
   {

@@ -7,6 +7,8 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Fecha de Nacimiento</th>
+                        <th>Correo</th>
+                        <th>Ubicación</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -14,6 +16,8 @@
                     <tr v-for="user in Users" :key="user._id">
                         <td>{{ user.nombre }}</td>
                         <td>{{ user.fnacimiento }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.longitud }} , {{ user.latitud }}</td>
                         <td>
                             <router-link :to="{name: 'edit', params: { id: user._id }}" class="btn btn-success">Editar
                             </router-link>

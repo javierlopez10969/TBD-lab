@@ -48,8 +48,8 @@ public class TareaRepositoryImp implements TareaRepository {
     public Tarea createTarea(Tarea tarea) {
         try(Connection conn = sql2o.open()){
             int insertedId = countTarea()+1;
-            conn.createQuery("INSERT INTO tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, altitud, longitud, id_estado) " + 
-            "values ( :id , :tareaNombre, :tareaDescrip, :tareaCant_vol_requeridos, :tareaCant_vol_inscritos, :tareaId_emergencia, :tareaFinicio, :tareaFfin, :tareaAltitud, :tareaLongitud, :tareaId_estado)", true)
+            conn.createQuery("INSERT INTO tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) " + 
+            "values ( :id , :tareaNombre, :tareaDescrip, :tareaCant_vol_requeridos, :tareaCant_vol_inscritos, :tareaId_emergencia, :tareaFinicio, :tareaFfin, :tareaId_estado)", true)
                     .addParameter("id",  insertedId)  
                     .addParameter("tareaNombre", tarea.getNombre())
 					.addParameter("tareaDescrip", tarea.getDescrip())
@@ -58,8 +58,6 @@ public class TareaRepositoryImp implements TareaRepository {
 					.addParameter("tareaId_emergencia", tarea.getId_emergencia())
 					.addParameter("tareaFinicio", tarea.getFinicio())
 					.addParameter("tareaFfin", tarea.getFfin())
-                    .addParameter("tareaAltitud", tarea.getAltitud())
-                    .addParameter("tareaLongitud", tarea.getLongitud())
 					.addParameter("tareaId_estado", tarea.getId_estado())
                     .executeUpdate().getKey();
             tarea.setId(insertedId);
@@ -88,7 +86,7 @@ public class TareaRepositoryImp implements TareaRepository {
         "update tarea set nombre = :nombre ," +
         "descrip = :descrip, cant_vol_requeridos = :cant_vol_requeridos," +
         "cant_vol_inscritos = :cant_vol_inscritos , id_emergencia = :id_emergencia,"+
-        "finicio = :finicio, ffin = :ffin, altitud = :altitud, longitud = :longitud"+
+        "finicio = :finicio, ffin = :ffin"+
         "where id = :id";
         try (Connection con = sql2o.open()) {   
             con.createQuery(updateSql)
@@ -99,8 +97,6 @@ public class TareaRepositoryImp implements TareaRepository {
                 .addParameter("id_emergencia",nuevaTarea.getId_emergencia())
                 .addParameter("finicio",nuevaTarea.getFinicio())
                 .addParameter("ffin",nuevaTarea.getFfin())
-                .addParameter("altitud",nuevaTarea.getAltitud())
-                .addParameter("longitud",nuevaTarea.getLongitud())
                 .addParameter("id", nuevaTarea.getId())
                 .executeUpdate();
             return true;

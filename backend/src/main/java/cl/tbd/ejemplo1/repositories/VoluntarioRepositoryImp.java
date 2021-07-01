@@ -26,8 +26,8 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     @Override
     public List<Voluntario> getAllVoluntarios() {
         try(Connection conn = sql2o.open()){
-            return conn.createQuery("select * from voluntario")
-                    .executeAndFetch(Voluntario.class);
+            return conn.createQuery("select nombre AS Nombre, id as Id,fnacimiento AS fnacimiento, email AS email, st_x(st_astext(ubicacion)) AS longitud, st_y(st_astext(ubicacion)) AS latitud from voluntario").executeAndFetch(Voluntario.class);
+        
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
@@ -40,16 +40,16 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
             Voluntario v1 = conn.createQuery("select * from voluntario where email=:email").addParameter("email",voluntario.getEmail()).executeAndFetchFirst(Voluntario.class);
             if (v1 == null){
                 int insertedId = countVoluntario()+1;
-                conn.createQuery("insert into voluntario (id, nombre, fnacimiento, email, pass, loginToken, altitud, longitud)"+
-                        " values (:id, :voluntarioNombre, :voluntarioFnacimiento, :email, :pass, :loginToken, :voluntarioAltitud, :voluntarioLongitud)") 
+                String point = "public.ST_GeomFromText(POINT("+voluntario.getLongitud()+" "+voluntario.getLatitud()+"),4326)";
+                conn.createQuery("insert into voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion)"+
+                        " values (:id, :voluntarioNombre, :voluntarioFnacimiento, :email, :pass, :loginToken, :ubicacion)") 
                         .addParameter("id",  insertedId)                
                         .addParameter("voluntarioNombre", voluntario.getNombre())
                         .addParameter("voluntarioFnacimiento", voluntario.getFnacimiento())
                         .addParameter("email", voluntario.getEmail())
                         .addParameter("pass", voluntario.getPass())
                         .addParameter("loginToken", 0)
-                        .addParameter("voluntarioAltitud", voluntario.getAltitud())
-                        .addParameter("voluntarioLongitud", voluntario.getLongitud())
+                        .addParameter("ubicacion", point)
                         .executeUpdate().getKey();
                 voluntario.setId(insertedId);
                 return voluntario;  
@@ -91,8 +91,9 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
 
     @Override
     public boolean updateVoluntario(Voluntario nuevoVoluntario){
-        String updateSql = "update voluntario set nombre = :nombre, fnacimiento = :fnacimiento, email = :email, pass = :pass, loginToken = :loginToken where id = :id, altitud = :altitud, longitud = :longitud";
+        String updateSql = "update voluntario set nombre = :nombre, fnacimiento = :fnacimiento, email = :email, pass = :pass, loginToken = :loginToken where id = :id, ubicacion = :ubicacion";
         try (Connection con = sql2o.open()) {   
+            String point = "public.ST_GeomFromText(POINT("+nuevoVoluntario.getLongitud()+" "+nuevoVoluntario.getLatitud()+"),4326)";
             con.createQuery(updateSql)
                 .addParameter("fnacimiento", nuevoVoluntario.getFnacimiento())
                 .addParameter("nombre",nuevoVoluntario.getNombre())
@@ -100,8 +101,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
                 .addParameter("email", nuevoVoluntario.getEmail())
                 .addParameter("pass", nuevoVoluntario.getPass())
                 .addParameter("loginToken", nuevoVoluntario.getLoginToken())
-                .addParameter("altitud", nuevoVoluntario.getAltitud())
-                .addParameter("longitud", nuevoVoluntario.getLongitud())
+                .addParameter("ubicacion", point)
                 .executeUpdate();
             return true;
         }catch(Exception e){
