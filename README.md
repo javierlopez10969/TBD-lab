@@ -43,7 +43,7 @@ Asegurese de tener configurada sus variables de entorno para ejecutar psql en cu
 
 Una vez abierta la consola de postgres ejecute el siguiente comando para crear la base de datos junto a sus tablas.
 
-### `\i basedate.sql`
+### `\i dbCreate.sql`
 
 Ya creada la base de datos procedá a cargar datos dump mediante:
 ### `\i loadData.sql`
