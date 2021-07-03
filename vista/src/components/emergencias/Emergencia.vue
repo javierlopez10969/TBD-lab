@@ -77,7 +77,7 @@
                 axios.get(apiURL2).then((res) => {
                     this.institucion = res.data;
                 }); 
-                ubicacion = [emergencia.latitud,emergencia.longitud]
+                this.ubicacion = [this.emergencia.latitud,this.emergencia.longitud]
             });       
         },
         methods: {

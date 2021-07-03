@@ -3,7 +3,7 @@
   <div>
     <div style="height: 20%; overflow: auto;">
       <h3>Mapa de emergencias : {{emergencia.nombre}}</h3>
-      <h4>Ubicacion :  {{x}} {{y}}</h4>
+      <h4>Ubicacion :  {{emergencia.latitud}} , {{emergencia.longitud}}</h4>
     </div>
     <l-map
       :zoom="zoom"
@@ -20,8 +20,8 @@
       </l-marker> 
 
       Create image icon (icon) from l-icon tag -->
-      <l-marker :lat-lng="[emergencia.latitud,emergencia.longitud]">
-        <l-icon
+      <l-marker :lat-lng="[x,y]">
+        <l-icon 
           :icon-size="dynamicSize"
           :icon-anchor="dynamicAnchor"
           icon-url= "https://i.ibb.co/DtM7qdQ/map-marker-icon.png"
@@ -34,7 +34,7 @@
 
 <script>
 import { LMap, LTileLayer, LMarker, LIcon, LPopup } from "vue2-leaflet";
-import { latLng, icon } from "leaflet";
+import { latLng} from "leaflet";
 
 export default {
   name: "Icon",
@@ -52,17 +52,10 @@ export default {
       ubicacion : [] ,
       ubicacionString : '',
       zoom: 4,
-      center: latLng(-38.719, -72.478),
+      center: latLng(-29.962679 , -71.339047),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-
-      icon: icon({
-        //iconUrl: "https://i.ibb.co/DtM7qdQ/map-marker-icon.png",
-        iconUrl: require('leaflet/dist/images/marker-icon.png'),
-        //iconSize: [32, 37],
-        iconAnchor: [16, 37]
-      }),
       staticAnchor: [16, 37],
       customText: "Foobar",
       iconSize: 36 
@@ -79,16 +72,17 @@ export default {
     dynamicAnchor() {
       return [this.iconSize / 2, this.iconSize * 1.15];
     }
+    
   },
   methods: {} ,
   mounted() {
-    
-      this.x = emergencia.latitud;
-      this.y = emergencia.longitud;
-      ubicacion = [emergencia.latitud,emergencia.longitud];
-      ubicacionString = '[' + ubicacion.toString() + ']';
-      center : latLng(x,y)
-
+  },
+  updated(){
+      this.x = this.emergencia.latitud;
+      this.y = this.emergencia.longitud;
+      this.ubicacion = [this.emergencia.latitud,this.emergencia.longitud];
+      this.ubicacionString = '[' + this.ubicacion.toString() + ']';
+     
   }
 };
 </script>
