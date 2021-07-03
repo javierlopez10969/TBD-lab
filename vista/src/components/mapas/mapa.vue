@@ -1,60 +1,85 @@
 <template>
-  <!-- el height para el tamaño vertical-->
-  <div id="map-wrap" style="height: 60vh">
-    <client-only>
-        <!-- este es para ver donde apunta el mapa al inicio-->
-      <l-map :zoom=4 :center="[-38.719, -72.478]">
-        <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
-        <!--l-marker es un punto en el mapa, hay que revisar si estan de la forma latitud,longitud-->
-        <l-marker :lat-lng="[-33.039722, -71.509167]">
-              <l-popup>Benjax Basado</l-popup>      
-          
-        </l-marker>
-      </l-map>
-    </client-only>
-  </div>
 
+  <div>
+    <div style="height: 20%; overflow: auto;">
+      <h3>Mapa de emergencias</h3>
+    </div>
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      style="height: 500px; width: 100%"
+    >
+      <l-tile-layer
+        :url="url"
+        :attribution="attribution"
+      />
+      <l-marker :lat-lng="[-38.719, -73]" :icon =icon>
+        <l-popup>Benjax Basado</l-popup>  
+      </l-marker>
+      <!-- Create image icon (icon) from l-icon tag -->
+      <l-marker :lat-lng="[-38.719, -72.478]">
+        <l-icon
+          :icon-size="dynamicSize"
+          :icon-anchor="dynamicAnchor"
+          icon-url= "https://i.ibb.co/DtM7qdQ/map-marker-icon.png"
+        />
+      </l-marker>
+    </l-map>
+  </div>
 </template>
 
 <script>
-//import L from 'leaflet';
-import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
-import { Icon } from 'leaflet';
-
-delete Icon.Default.prototype._getIconUrl;
-Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
-
-
+import { LMap, LTileLayer, LMarker, LIcon } from "vue2-leaflet";
+import { latLng, icon } from "leaflet";
 
 export default {
-  name: 'MyAwesomeMap',
+  name: "Icon",
   components: {
     LMap,
     LTileLayer,
     LMarker,
-    LPopup
+    LIcon
   },
+  data() {
+    return {
+      zoom: 7,
+      center: latLng(-38.719, -72.478),
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 
-  modules: [
-    // Simple usage
-    'nuxt-leaflet',
-
-    // With options
-    ['nuxt-leaflet', { /* module options */ }],
- ],
-
+      icon: icon({
+        iconUrl: "https://i.ibb.co/DtM7qdQ/map-marker-icon.png",
+        iconSize: [32, 37],
+        iconAnchor: [16, 37]
+      }),
+      staticAnchor: [16, 37],
+      customText: "Foobar",
+      iconSize: 64
+    };
+  },
   computed: {
-    dynamicSize () {
+    dynamicSize() {
       return [this.iconSize, this.iconSize * 1.15];
     },
-    dynamicAnchor () {
+    dynamicAnchor() {
       return [this.iconSize / 2, this.iconSize * 1.15];
     }
-  }
-
+  },
+  methods: {}
 };
 </script>
+
+<style>
+.someExtraClass {
+  background-color: aqua;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 0 20px 20px 20px;
+  box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+</style>
