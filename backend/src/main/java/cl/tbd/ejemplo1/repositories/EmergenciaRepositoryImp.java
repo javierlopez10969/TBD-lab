@@ -22,11 +22,10 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
         }
         return total;
     }
-
     @Override
     public List<Emergencia> getAllEmergencia() {
         try(Connection conn = sql2o.open()){
-            return conn.createQuery("select * from emergencia")
+            return conn.createQuery("select nombre AS Nombre, descrip AS descrip , id as Id,finicio AS finicio, ffin AS ffin, st_x(st_astext(ubicacion)) AS longitud, st_y(st_astext(ubicacion)) AS latitud from emergencia")
                     .executeAndFetch(Emergencia.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -94,7 +93,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
 
     @Override
     public Emergencia getEmergencia(int id){
-		String sql = "SELECT * FROM emergencia where id=:id";
+		String sql = "SELECT nombre AS Nombre, descrip AS descrip , id as Id,finicio AS finicio, ffin AS ffin, st_x(st_astext(ubicacion)) AS longitud, st_y(st_astext(ubicacion)) AS latitud  FROM emergencia where id=:id";
 
 		try (Connection con = sql2o.open()) {
 			return con.createQuery(sql)

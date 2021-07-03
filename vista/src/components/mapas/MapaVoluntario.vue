@@ -2,7 +2,8 @@
 
   <div>
     <div style="height: 20%; overflow: auto;">
-      <h3>Mapa de emergencias</h3>
+      <h3>Mapa de emergencias : {{emergencia.nombre}}</h3>
+      <h4>Ubicacion :  {{x}} {{y}}</h4>
     </div>
     <l-map
       :zoom="zoom"
@@ -13,17 +14,19 @@
         :url="url"
         :attribution="attribution"
       />
-      <l-marker :lat-lng="[-33.19976552083029, -70.67199596382044]" :icon =icon>
+      <!--
+      <l-marker :lat-lng=ubicacion :icon = icon>
         <l-popup>Benjax Basado</l-popup>  
-      </l-marker>
-      <!-- Create image icon (icon) from l-icon tag -->
-      <l-marker :lat-lng="[-38.719, -73]">
+      </l-marker> 
+
+      Create image icon (icon) from l-icon tag -->
+      <l-marker :lat-lng="[emergencia.latitud,emergencia.longitud]">
         <l-icon
           :icon-size="dynamicSize"
           :icon-anchor="dynamicAnchor"
           icon-url= "https://i.ibb.co/DtM7qdQ/map-marker-icon.png"
         />
-        <l-popup>Emergencia aaaaaiuda</l-popup>  
+        <l-popup>{{emergencia.nombre}}</l-popup>  
       </l-marker> 
     </l-map>
   </div>
@@ -44,6 +47,10 @@ export default {
   },
   data() {
     return {
+      x : 0,
+      y : 0,
+      ubicacion : [] ,
+      ubicacionString : '',
       zoom: 4,
       center: latLng(-38.719, -72.478),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -58,12 +65,12 @@ export default {
       }),
       staticAnchor: [16, 37],
       customText: "Foobar",
-      iconSize: 36
+      iconSize: 36 
+
     };
   },
   props: [
-        'ubicacion',
-        'nombre'
+        'emergencia'
         ],
   computed: {
     dynamicSize() {
@@ -73,7 +80,16 @@ export default {
       return [this.iconSize / 2, this.iconSize * 1.15];
     }
   },
-  methods: {}
+  methods: {} ,
+  mounted() {
+    
+      this.x = emergencia.latitud;
+      this.y = emergencia.longitud;
+      ubicacion = [emergencia.latitud,emergencia.longitud];
+      ubicacionString = '[' + ubicacion.toString() + ']';
+      center : latLng(x,y)
+
+  }
 };
 </script>
 

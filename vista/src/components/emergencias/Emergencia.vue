@@ -1,9 +1,9 @@
 <template>  
     <div row class="container-fluid ">
-        <div col>
-            <button class="btn btn-lg color5 rounded-pill"   
-            @click="volver()" > <i class="bi bi-arrow-left-short"></i>Volver a tablón</button>
-        </div>
+        
+        <button class="btn btn-lg colorRojo margin-moreleft rounded-pill"   
+        @click="volver()" > <i class="bi bi-arrow-left-short"></i>Volver a tablón</button>
+    
         <div col class="container-fluid ventana text-center">
             <!-- @submit.prevent="handleUpdateForm()" -->
             <form > 
@@ -20,6 +20,9 @@
                 <h4>
                     <p> 
                     Fecha de Inicio: {{emergencia.finicio}}
+                    </p>
+                    <p> 
+                    Ubicacion : {{emergencia.longitud}} , {{emergencia.latitud}}
                     </p>
                    
                 </h4>
@@ -41,13 +44,19 @@
 
 
         </div>
-        <div col></div>
-
+        <div col>
+        <Mapa v-bind:emergencia="emergencia" ></Mapa> 
+        </div>
     </div> 
 </template>
+
 <script>
-import axios from "axios";
+    import axios from "axios";
+    import Mapa from '../mapas/MapaVoluntario.vue';
     export default {
+        components:{
+            Mapa,
+        },
         props:[
             'usuario'
         ],
@@ -55,7 +64,8 @@ import axios from "axios";
             return {
                 emergencia: { },
                 id_institucion : '',
-                institucion : {}
+                institucion : {} ,
+                ubicacion : []
             }
         },     
         created() {
@@ -67,6 +77,7 @@ import axios from "axios";
                 axios.get(apiURL2).then((res) => {
                     this.institucion = res.data;
                 }); 
+                ubicacion = [emergencia.latitud,emergencia.longitud]
             });       
         },
         methods: {
@@ -131,7 +142,7 @@ import axios from "axios";
 </script>
 
 <style>
-    body, html {
+    /*body, html {
     padding: 0;
     margin: 0;
     width: 100%;
@@ -141,7 +152,7 @@ import axios from "axios";
         background: linear-gradient(180deg, #736CED -7.87%, rgba(255, 255, 255, 0) 20%),
                     linear-gradient(0deg, #736CED -12.07%, rgba(255, 255, 255, 0) 20%),
                     #FEF9FF;;
-    }
+    }*/
 
     .divider-text {
         position: relative;
@@ -186,6 +197,9 @@ import axios from "axios";
     }
     .margin-l{
         margin-left: 51px;
+    }
+    .margin-moreleft{
+        margin-left: -150px;
     }
 
     

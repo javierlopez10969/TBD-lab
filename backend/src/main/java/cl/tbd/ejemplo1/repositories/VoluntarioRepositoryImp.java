@@ -26,7 +26,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     @Override
     public List<Voluntario> getAllVoluntarios() {
         try(Connection conn = sql2o.open()){
-            return conn.createQuery("select nombre AS Nombre, id as Id,fnacimiento AS fnacimiento, email AS email, st_x(st_astext(ubicacion)) AS longitud, st_y(st_astext(ubicacion)) AS latitud from voluntario").executeAndFetch(Voluntario.class);
+            return conn.createQuery("select nombre AS Nombre, id as Id,fnacimiento AS fnacimiento, email AS email, pass as pass, st_x(st_astext(ubicacion)) AS longitud, st_y(st_astext(ubicacion)) AS latitud from voluntario").executeAndFetch(Voluntario.class);
         
         } catch (Exception e) {
             System.out.println(e.getMessage());
