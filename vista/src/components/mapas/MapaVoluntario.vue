@@ -82,7 +82,6 @@ export default {
       this.y = this.emergencia.longitud;
       this.ubicacion = [this.emergencia.latitud,this.emergencia.longitud];
       this.ubicacionString = '[' + this.ubicacion.toString() + ']';
-     
   }
 };
 </script>

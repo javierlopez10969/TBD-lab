@@ -25,7 +25,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     @Override
     public List<Emergencia> getAllEmergencia() {
         try(Connection conn = sql2o.open()){
-            return conn.createQuery("select nombre AS Nombre, descrip AS descrip , id as Id,finicio AS finicio, ffin AS ffin, st_x(st_astext(ubicacion)) AS longitud, st_y(st_astext(ubicacion)) AS latitud from emergencia")
+            return conn.createQuery("select nombre AS Nombre, descrip AS descrip , id as Id,finicio AS finicio, ffin AS ffin, st_x(st_astext(ubicacion)) AS latitud , st_y(st_astext(ubicacion)) AS longitud from emergencia")
                     .executeAndFetch(Emergencia.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -37,7 +37,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
         try(Connection conn = sql2o.open()){
             int insertedId = countEmergencia()+1;
             String point = "public.ST_GeomFromText(POINT("+emergencia.getLongitud()+" "+emergencia.getLatitud()+"),4326)";
-            conn.createQuery("INSERT INTO emergencia (id, nombre, descrip, finicio, ffin, altitud, longitud, id_institucion) "+
+            conn.createQuery("INSERT INTO emergencia (id, nombre, descrip, finicio, ffin, id_institucion) "+
 			"values (:id, :emergenciaNombre, :emergenciaDescrip, :emergenciaFinicio, :emergenciaFfin, :emergenciaUbicacion, :emergenciaId_institucion)", true)
                     .addParameter("id",  insertedId)      
                     .addParameter("emergenciaNombre", emergencia.getNombre())
@@ -93,7 +93,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
 
     @Override
     public Emergencia getEmergencia(int id){
-		String sql = "SELECT nombre AS Nombre, descrip AS descrip , id as Id,finicio AS finicio, ffin AS ffin, st_x(st_astext(ubicacion)) AS longitud, st_y(st_astext(ubicacion)) AS latitud  FROM emergencia where id=:id";
+		String sql = "SELECT nombre AS Nombre, descrip AS descrip , id as Id,finicio AS finicio, ffin AS ffin, st_x(st_astext(ubicacion)) AS latitud , st_y(st_astext(ubicacion)) AS longitud  FROM emergencia where id=:id";
 
 		try (Connection con = sql2o.open()) {
 			return con.createQuery(sql)

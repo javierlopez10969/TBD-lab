@@ -26,7 +26,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     @Override
     public List<Voluntario> getAllVoluntarios() {
         try(Connection conn = sql2o.open()){
-            return conn.createQuery("select nombre AS Nombre, id as Id,fnacimiento AS fnacimiento, email AS email, pass as pass, st_x(st_astext(ubicacion)) AS longitud, st_y(st_astext(ubicacion)) AS latitud from voluntario").executeAndFetch(Voluntario.class);
+            return conn.createQuery("select nombre AS Nombre, id as Id,fnacimiento AS fnacimiento, email AS email, pass as pass, st_x(st_astext(ubicacion)) AS latitud, st_y(st_astext(ubicacion)) AS longitud from voluntario").executeAndFetch(Voluntario.class);
         
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -41,8 +41,8 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
             //Obtener al menos los 20 voluntarios cercanos
             //SELECT nombre,ST_Distance( 'SRID=4326;POINT(-72.092285 -36.597889)'::geometry,ubicacion) as distancia, ubicacion from voluntario ORDER BY distancia asc limit 3;
             //SELECT *, ubicacion from voluntario ORDER BY ST_Distance( 'SRID=4326;POINT(-72.092285 -36.597889)'::geometry,ubicacion) asc limit 3;
-            "SELECT nombre , id  from voluntario " +
-            "ORDER BY ST_Distance('SRID=4326;POINT("+latitud + " "+ longitud+ ")'::geometry, ubicacion ) " +
+            "SELECT nombre , id , st_x(st_astext(ubicacion)) AS latitud, st_y(st_astext(ubicacion)) AS  longitud from voluntario " +
+            "ORDER BY ST_Distance('SRID=4326;POINT("+latitud + " "+ longitud+ ")'::geometry, ubicacion ) ASC " +
             "limit " + N + ";").executeAndFetch(Voluntario.class);
         
         } catch (Exception e) {

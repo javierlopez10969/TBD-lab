@@ -3,11 +3,18 @@
         
         <button class="btn btn-lg colorRojo margin-moreleft rounded-pill"   
         @click="volver()" > <i class="bi bi-arrow-left-short"></i>Volver a tablón</button>
-    
+
         <div col class="container-fluid ventana text-center">
             <!-- @submit.prevent="handleUpdateForm()" -->
             <form > 
                 Emergencia
+                Usuarios : {{usuarios}}
+                <div v-if="usuarios==NULL">
+                eu
+                </div> 
+                <div v-else>
+                    Hay usuarios
+                </div> 
                 <h1>{{emergencia.nombre}}</h1>
                 <h2> 
                     Nombre : {{institucion.nombre}}
@@ -46,6 +53,8 @@
         </div>
         <div col>
         <Mapa v-bind:emergencia="emergencia" ></Mapa> 
+
+        <Lista v-bind:usuarios="usuarios" ></Lista>
         </div>
     </div> 
 </template>
@@ -53,9 +62,11 @@
 <script>
     import axios from "axios";
     import Mapa from '../mapas/MapaVoluntario.vue';
+    import Lista from '../usuario/UsuariosCercanos.vue';
     export default {
         components:{
             Mapa,
+            Lista
         },
         props:[
             'usuario'
@@ -65,7 +76,8 @@
                 emergencia: { },
                 id_institucion : '',
                 institucion : {} ,
-                ubicacion : []
+                ubicacion : [],
+                usuarios : []
             }
         },     
         created() {
@@ -78,82 +90,26 @@
                     this.institucion = res.data;
                 }); 
                 this.ubicacion = [this.emergencia.latitud,this.emergencia.longitud]
-            });       
+            });  
+        },
+        mounted(){
+            let apiURL3 = `http://localhost:3000/voluntarioscercanos`;  
+            axios.post(apiURL3, this.emergencia).then((res) => {
+                this.usuarios = res.data;
+                console.log(this.usuarios);
+            }).catch(error => {
+            console.log(error)
+             });
         },
         methods: {
-            handleUpdateForm() { 
-                let apiURL = `http://localhost:3000/api/update-proyect/${this.$route.params.id}`;
-                axios.post(apiURL, this.proyect).then((res) => {
-                    console.log(res);
-                    this.proyect = res.data;
-                    if (this.usuario.proyectosPostulados == undefined || 
-                    this.usuario.proyectosPostulados == null ||
-                    this.usuario.proyectosPostulados == []) {
-                        this.usuario.proyectosPostulados = [];
-                    }
-                    //Pusheamos un objeto
-                    this.usuario.proyectosPostulados.push(
-                        {
-                            id : this.proyect._id ,
-                            estado : 'En espera'
-                        }
-                    );
-                    //alert(this.usuario.proyectosPostulados);
-                    this.actualizarIDPostulante();
-                }).catch(error => {
-                    console.log(error)
-                });
-            },
-            actualizarPostulantes(){
-                //this.postulantes.push('Hola')
-                this.proyect.postulantes.push(this.usuario._id);  
-                this.handleUpdateForm();
-            },
-            actualizarIDPostulante() {
-                let apiURL = `http://localhost:3000/api/update-user/`+ this.usuario._id;
-                axios.post(apiURL, this.usuario).then((res) => {
-                    console.log(res)
-                }).catch(error => {
-                    console.log(error)
-                    alert(error);
-                });
-            },
-            checkearPostulantes(){
-                let arreglo = this.proyect.postulantes;
-                let i;
-                for (i = 0; i < arreglo.length; i++) {
-                    if (arreglo[i] === this.usuario._id) {
-                        alert('Usted ya postulado a este proyecto')
-                        this.$router.push('/tablon');
-                        return false;
-                    }
-                }
-                this.actualizarPostulantes();
-                return true;
-            },
             volver(){
                 this.$router.push('/emergencias');   
-            },
-            getInstitucion(){
-
             }
         }    
     }
 </script>
 
 <style>
-    /*body, html {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    min-height: 100vh;
-    }
-    body {
-        background: linear-gradient(180deg, #736CED -7.87%, rgba(255, 255, 255, 0) 20%),
-                    linear-gradient(0deg, #736CED -12.07%, rgba(255, 255, 255, 0) 20%),
-                    #FEF9FF;;
-    }*/
-
     .divider-text {
         position: relative;
         text-align: center;

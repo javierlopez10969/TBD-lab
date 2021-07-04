@@ -18,7 +18,18 @@ insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken,
 insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (7, 'Westleigh Weeds', '2021-01-01','clapenna6@shop-pro.jp','UijtC4IM',0, public.ST_GeomFromText('POINT(-70.739594 -34.172045)', 4326));
 insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (8, 'Aprilette Ahrendsen', '2021-04-08','nfetterplace9@mac.com','J3yeyeTwxd5w',0, public.ST_GeomFromText('POINT(-70.675499 -33.528392)', 4326));
 insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (9, 'Juan Manuel Zolezzi', '2021-01-09','zolezzi@usach.com','eluuNPLP1NV3',0, public.ST_GeomFromText('POINT(-70.681636 -33.449114)', 4326));
-insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (10, 'Mauricio Javier Paredes Bugueño', '2021-01-16','huevito@rey.com','XkL7AU8IvAKQ',0, public.ST_GeomFromText('POINT(-71.509167 -33.039722)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (10, 'Mauricio Javier Paredes Bugueño', '2021-03-06','huevito@rey.com','XkL7AU8IvAKQ',0, public.ST_GeomFromText('POINT(-71.509167 -33.039722)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (11, 'David Ramirez', '2021-05-10','david@ramirez.com','g@QuML%cpp!G',0, public.ST_GeomFromText('POINT(-72.377930 -37.483577)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (12, 'Javier Lopez', '2021-01-26','javier@lopez.com','QT&fxvyPf@6c',0, public.ST_GeomFromText('POINT(-72.586670 -38.754083)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (13, 'Felipe Sepulveda', '2021-02-30','pipe@lonk.com','Cj7%5BKDEvHr',0, public.ST_GeomFromText('POINT(-73.234863 -39.842286)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (14, 'Benjamin Donosó', '2021-03-07','benjax8888@gmail.com','ND#f0xn099Dl',0, public.ST_GeomFromText('POINT(-71.037598 -33.422272)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (15, 'Daniel Francisco Reyes Sepulveda', '2021-01-01','dani@rey.com','qCIlqbjN6%vM',0, public.ST_GeomFromText('POINT(-71.586914 -33.578015)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (16, 'Nicolas Ortega', '2021-04-09','nico@2god.com','*KLjwCef%B@9',0, public.ST_GeomFromText('POINT(-70.894775 -34.216345)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (17, 'Diego Armando Moya', '2021-01-27','mara@moya.com','m$xZI#dNv$8R',0, public.ST_GeomFromText('POINT(-70.708008 -33.587167)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (18, 'Alonso Araya', '2021-01-30','alonso@araya.com','ayTM3*$GRyE*',0, public.ST_GeomFromText('POINT(-70.598145 -32.851903)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (19, 'Peryllan Salgado', '2021-01-22','dylan@pera.com','kAL5@e9s!^dr',0, public.ST_GeomFromText('POINT(-70.740967 -33.358062)', 4326));
+insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (20, 'Alfredo Moya', '2021-01-11','alfredo@moyita.com','k7W&EL$FI3cd',0, public.ST_GeomFromText('POINT(-70.740967 -33.504759)', 4326));
+
 
 insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (1, 3, 5);
 insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (2, 2, 1);
