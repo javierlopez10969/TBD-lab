@@ -39,10 +39,11 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         try(Connection conn = sql2o.open()){
             return conn.createQuery(
             //Obtener al menos los 20 voluntarios cercanos
-            "SELECT ST_Distance(" +
-                "'SRID=4326;POINT("+latitud + " "+ longitud+ ")'::geometry," +
-                "'SRID=4326;LINESTRING(-72.1260 42.45, -72.123 42.1546)'::geometry"+
-            ");").executeAndFetch(Voluntario.class);
+            //SELECT nombre,ST_Distance( 'SRID=4326;POINT(-72.092285 -36.597889)'::geometry,ubicacion) as distancia, ubicacion from voluntario ORDER BY distancia asc limit 3;
+            //SELECT *, ubicacion from voluntario ORDER BY ST_Distance( 'SRID=4326;POINT(-72.092285 -36.597889)'::geometry,ubicacion) asc limit 3;
+            "SELECT nombre , id  from voluntario " +
+            "ORDER BY ST_Distance('SRID=4326;POINT("+latitud + " "+ longitud+ ")'::geometry, ubicacion ) " +
+            "limit " + N + ";").executeAndFetch(Voluntario.class);
         
         } catch (Exception e) {
             System.out.println(e.getMessage());

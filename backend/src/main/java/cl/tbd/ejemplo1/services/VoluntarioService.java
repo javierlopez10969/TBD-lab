@@ -32,7 +32,7 @@ public class VoluntarioService {
     @ResponseBody
     public List<Voluntario> voluntariosCercanos(@RequestBody Emergencia emergencia){
         System.out.println("Calculando voluntarios cercanos ...");
-        return voluntarioRepository.getCercanos(emergencia.getLatitud(),emergencia.getLongitud(), 1);
+        return voluntarioRepository.getCercanos(emergencia.getLatitud(),emergencia.getLongitud(), 4);
     }
 
     @GetMapping("/voluntarios/count")
