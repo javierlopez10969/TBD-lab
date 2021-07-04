@@ -1,5 +1,6 @@
 package cl.tbd.ejemplo1.services;
 
+import cl.tbd.ejemplo1.models.Emergencia;
 import cl.tbd.ejemplo1.models.Voluntario;
 import cl.tbd.ejemplo1.repositories.VoluntarioRepository;
 
@@ -26,6 +27,12 @@ public class VoluntarioService {
     @GetMapping("/voluntarios")
     public List<Voluntario> getAllVoluntarios() {
         return voluntarioRepository.getAllVoluntarios();
+    }
+    @PostMapping("/voluntarioscercanos")
+    @ResponseBody
+    public List<Voluntario> voluntariosCercanos(@RequestBody Emergencia emergencia){
+        System.out.println("Calculando voluntarios cercanos ...");
+        return voluntarioRepository.getCercanos(emergencia.getLatitud(),emergencia.getLongitud(), 1);
     }
 
     @GetMapping("/voluntarios/count")

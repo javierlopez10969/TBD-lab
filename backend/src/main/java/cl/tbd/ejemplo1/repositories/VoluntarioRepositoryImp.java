@@ -35,6 +35,22 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     }
 
     @Override
+    public List<Voluntario> getCercanos(Double latitud,Double longitud,int N){
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery(
+            //Obtener al menos los 20 voluntarios cercanos
+            "SELECT ST_Distance(" +
+                "'SRID=4326;POINT("+latitud + " "+ longitud+ ")'::geometry," +
+                "'SRID=4326;LINESTRING(-72.1260 42.45, -72.123 42.1546)'::geometry"+
+            ");").executeAndFetch(Voluntario.class);
+        
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
     public Voluntario createVoluntario(Voluntario voluntario) {
         try(Connection conn = sql2o.open()){
             Voluntario v1 = conn.createQuery("select * from voluntario where email=:email").addParameter("email",voluntario.getEmail()).executeAndFetchFirst(Voluntario.class);

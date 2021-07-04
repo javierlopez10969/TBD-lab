@@ -5,6 +5,7 @@ import cl.tbd.ejemplo1.models.Voluntario;
 public interface VoluntarioRepository {
     public int countVoluntario();
     public List<Voluntario> getAllVoluntarios();
+    public List<Voluntario> getCercanos(Double latitud,Double longitud,int N);
     public Voluntario createVoluntario(Voluntario voluntario);
     public boolean deleteVoluntario(int id);
     public Voluntario getVoluntario(int id);

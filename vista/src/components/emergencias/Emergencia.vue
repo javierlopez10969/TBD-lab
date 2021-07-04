@@ -184,7 +184,7 @@
 
     .ventana{
         width: 540.93px;
-        height: 800px;
+        height: 400px;
         left: 482px;
         top: 26px;
 
