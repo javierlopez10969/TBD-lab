@@ -31,14 +31,14 @@ public class VoluntarioService {
     @PostMapping("/voluntarioscercanos")
     @ResponseBody
     public List<Voluntario> voluntariosCercanos(@RequestBody Emergencia emergencia){
-        System.out.println("Calculando voluntarios cercanos ...");
-        return voluntarioRepository.getCercanos(emergencia.getLatitud(),emergencia.getLongitud(), 4);
+        System.out.println("Calculando voluntarios cercanos ..." + emergencia.getLatitud() + emergencia.getLongitud() );
+        return voluntarioRepository.getCercanos(emergencia.getLatitud(),emergencia.getLongitud(),emergencia.getId());
     }
 
     @GetMapping("/voluntarios/count")
-    public String countVoluntario(){
+    public int countVoluntario(){
         int total = voluntarioRepository.countVoluntario();
-        return String.format("Tienes en total, %s de la lista.", total);
+        return total;
     }
 
     @PostMapping("/voluntarios/a")

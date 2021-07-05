@@ -37,6 +37,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     @Override
     public List<Voluntario> getCercanos(Double latitud,Double longitud,int N){
         try(Connection conn = sql2o.open()){
+            System.out.println("Voluntarios cercanos sacados correctamente");
             return conn.createQuery(
             //Obtener al menos los 20 voluntarios cercanos
             //SELECT nombre,ST_Distance( 'SRID=4326;POINT(-72.092285 -36.597889)'::geometry,ubicacion) as distancia, ubicacion from voluntario ORDER BY distancia asc limit 3;

@@ -41,6 +41,7 @@ public class InstitucionService {
     }
     @GetMapping("/instituciones/{id}")
     public Institucion getInstitucion(@PathVariable int id){
+        System.out.println("Institucion número : " + id);
         return institucionRepository.getInstitucion(id);
     }
 

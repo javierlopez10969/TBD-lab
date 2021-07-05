@@ -20,14 +20,18 @@
       </l-marker> 
 
       Create image icon (icon) from l-icon tag -->
+      <l-marker :lat-lng="[-33.19976552083029, -70.67199596382044]">
+        <l-popup>Benjax Basado</l-popup>  
+      </l-marker>
       <l-marker :lat-lng="[x,y]">
         <l-icon 
           :icon-size="dynamicSize"
           :icon-anchor="dynamicAnchor"
           icon-url= "https://i.ibb.co/DtM7qdQ/map-marker-icon.png"
         />
-        <l-popup>{{emergencia.nombre}}</l-popup>  
+        <l-popup>Emergencia : {{emergencia.nombre}}</l-popup>  
       </l-marker> 
+ 
     </l-map>
   </div>
 </template>
@@ -63,7 +67,8 @@ export default {
     };
   },
   props: [
-        'emergencia'
+        'emergencia',
+        'usuarios'
         ],
   computed: {
     dynamicSize() {
@@ -78,8 +83,8 @@ export default {
   mounted() {
   },
   updated(){
-      this.x = this.emergencia.latitud;
-      this.y = this.emergencia.longitud;
+      this.x = this.emergencia.longitud;
+      this.y = this.emergencia.latitud;
       this.ubicacion = [this.emergencia.latitud,this.emergencia.longitud];
       this.ubicacionString = '[' + this.ubicacion.toString() + ']';
   }

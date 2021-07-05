@@ -13,11 +13,11 @@
                 <tbody>
                     <tr v-for="user in usuarios" :key="user.nombre">
                         <td>{{ user.nombre }}</td>
-                        <td>{{ user.longitud }} , {{ user.latitud }}</td>
+                        <td> {{ user.latitud }} , {{ user.longitud }}</td>
                         <td>
-                            <router-link :to="{name: 'edit', params: { id: user._id }}" class="btn btn-success">Editar
+                            <router-link :to="{name: 'edit', params: { id: user._id }}" class="btn btn-success">Invitar
                             </router-link>
-                            <button @click.prevent="deleteUser(user._id)" class="btn btn-danger ">borrar</button>
+                            <button @click.prevent="deleteUser(user._id)" class="btn btn-danger ">Rechazar</button>
                         </td>
                     </tr>
                 </tbody>
@@ -27,8 +27,6 @@
 </template>
 
 <script>
-    import axios from "axios";
-
     export default {
         data() {
             return {

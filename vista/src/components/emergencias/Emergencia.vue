@@ -8,13 +8,6 @@
             <!-- @submit.prevent="handleUpdateForm()" -->
             <form > 
                 Emergencia
-                Usuarios : {{usuarios}}
-                <div v-if="usuarios==NULL">
-                eu
-                </div> 
-                <div v-else>
-                    Hay usuarios
-                </div> 
                 <h1>{{emergencia.nombre}}</h1>
                 <h2> 
                     Nombre : {{institucion.nombre}}
@@ -29,7 +22,7 @@
                     Fecha de Inicio: {{emergencia.finicio}}
                     </p>
                     <p> 
-                    Ubicacion : {{emergencia.longitud}} , {{emergencia.latitud}}
+                    Ubicacion : {{emergencia.latitud}} , {{emergencia.longitud}}
                     </p>
                    
                 </h4>
@@ -52,9 +45,14 @@
 
         </div>
         <div col>
-        <Mapa v-bind:emergencia="emergencia" ></Mapa> 
+        <div class="form-group input-group">
+            <select class="form-control rounded-pill " placeholder="Voluntarios" v-model="totalVol" required>
+                <option v-for="number in N" :key="number">{{number}}</option>
+            </select>
+        </div> 
+        <Mapa v-bind:emergencia="emergencia" v-bind:usuarios="usuarios" ></Mapa> 
+        <Lista v-bind:usuarios="usuarios" ></Lista>  
 
-        <Lista v-bind:usuarios="usuarios" ></Lista>
         </div>
     </div> 
 </template>
@@ -75,32 +73,56 @@
             return {
                 emergencia: { },
                 id_institucion : '',
+                latitud : 0,
+                longitud : 0,
                 institucion : {} ,
                 ubicacion : [],
-                usuarios : []
+                usuarios : [],
+                totalVol: 1,
+                N : 0,
             }
         },     
         created() {
             let apiURL = `http://localhost:3000/emergencias/${this.$route.params.id}`;
             axios.get(apiURL).then((res) => {
                 this.emergencia= res.data;
+                this.latitud = this.emergencia.latitud;
+                this.longitud = this.emergencia.longitud;
                 this.id_institucion =  res.data.id_institucion;
+                console.log(this.emergencia.latitud,this.emergencia.longitud);
                 let apiURL2 = 'http://localhost:3000/instituciones/' + this.id_institucion.toString();
                 axios.get(apiURL2).then((res) => {
                     this.institucion = res.data;
+                    console.log("Nombre : " + this.institucion.nombre);
                 }); 
                 this.ubicacion = [this.emergencia.latitud,this.emergencia.longitud]
             });  
+
         },
         mounted(){
-            let apiURL3 = `http://localhost:3000/voluntarioscercanos`;  
-            axios.post(apiURL3, this.emergencia).then((res) => {
+
+            let apiURL4 = `http://localhost:3000/voluntarios/count`;  
+            axios.get(apiURL4).then(res => {
+                this.N = res.data;
+                console.log("N : " + this.N);
+            }).catch(error => {
+            console.log(error)
+             });
+ 
+        },
+        updated(){
+                                    let apiURL3 = `http://localhost:3000/voluntarioscercanos`;  
+            axios.post(apiURL3, {"latitud" : this.latitud,"longitud" :this.longitud, "id": this.totalVol}).then((res) => {
                 this.usuarios = res.data;
                 console.log(this.usuarios);
             }).catch(error => {
             console.log(error)
              });
         },
+        computed(){
+            
+        },
+
         methods: {
             volver(){
                 this.$router.push('/emergencias');   
