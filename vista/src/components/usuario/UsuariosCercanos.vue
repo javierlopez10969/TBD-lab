@@ -1,7 +1,7 @@
 <template>
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-md-12">
-            <h1>Voluntarios inscritos</h1>
+            <h1>Voluntarios cercanos</h1>
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>

@@ -1,9 +1,9 @@
 <template>
   <div>
     <Navbar v-bind:botones= show v-bind:user=usuario>  </Navbar>
-    <div class="container mt-5">
+    <div class="container mt-1">
     </div>
-    <div  class="container mt-5">
+    <div  class="container-fluid mt-5 mx-0 px-10">
       <!-- v-on:update:usuario="usuario = $event" -->      
       <router-view v-bind:usuario=usuario></router-view>
     </div>
@@ -146,8 +146,8 @@ export default {
     color: white !important ;
   }
   .colorRojo:hover{
-    background-color: rgb(253, 119, 119) !important  ;
-    color: white !important ;
+    background-color: rgb(184, 1, 1) !important  ;
+    color: rgb(255, 255, 255) !important ;
   }
 
   .color9{
@@ -185,5 +185,57 @@ export default {
     .padding_arriba{
     padding-top: 65px;
   }
+  .pt-6,
+  .py-6 {
+    padding-top: 5rem !important;
+  }
+
+  .pr-6,
+  .px-6 {
+    padding-right: 5rem !important;
+  }
+
+  .pb-6,
+  .py-6 {
+    padding-bottom: 5rem !important;
+  }
+
+  .pl-6,
+  .px-6 {
+    padding-left: 5rem !important;
+  }
+
+  .pt-10,
+  .py-10 {
+    padding-top: 12rem !important;
+  }
+
+  .pr-10,
+  .px-10 {
+    padding-right: 12rem !important;
+  }
+
+  .pb-10,
+  .py-10 {
+    padding-bottom: 12rem !important;
+  }
+
+  .pl-10,
+  .px-10 {
+    padding-left: 12rem !important;
+  }
+  .mayuscula{
+    text-transform: uppercase;
+  }
+  .minuscula{
+    text-transform: lowercase;
+  }
+  .capitalize{
+    text-transform: capitalize;
+  }
+  .justificar{
+    text-align: justify;
+  }
+
 
 </style>

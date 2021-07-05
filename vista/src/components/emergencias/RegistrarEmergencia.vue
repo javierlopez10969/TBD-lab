@@ -188,8 +188,10 @@ export default {
     .ventana{
         width: 540.93px;
         height: 800px;
+        /*
         left: 482px;
         top: 26px;
+        */
 
         background: #FFFFFF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

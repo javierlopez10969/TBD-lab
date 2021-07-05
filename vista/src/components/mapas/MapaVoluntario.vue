@@ -1,20 +1,26 @@
 <template>
 
   <div>
-    <div style="height: 20%; overflow: auto;">
-      <h3>Mapa de emergencias : {{emergencia.nombre}}</h3>
+    <div style="height: 20%; overflow: auto; text-align: left !important;">
+      <h3>Ubicación de la emergencia</h3>
+       <!--
       <h4>Ubicacion :  {{emergencia.latitud}} , {{emergencia.longitud}}</h4>
+      -->
+      <h4>{{emergencia.nombre}} </h4>
+
     </div>
     <l-map
       :zoom="zoom"
       :center="center"
-      style="height: 500px; width: 100%"
+      style="height: 750px; width: 540.93px; border-radius: 20px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"
+      class="extra"
+      
     >
       <l-tile-layer
         :url="url"
         :attribution="attribution"
       />
-      <!--
+     <!-- 
       <l-marker :lat-lng=ubicacion :icon = icon>
         <l-popup>Benjax Basado</l-popup>  
       </l-marker> 
@@ -29,11 +35,11 @@
           :icon-anchor="dynamicAnchor"
           icon-url= "https://i.ibb.co/DtM7qdQ/map-marker-icon.png"
         />
-        <l-popup>Emergencia : {{emergencia.nombre}}</l-popup>  
+        <l-popup><b>Emergencia</b><br>{{emergencia.nombre}}</l-popup>  
       </l-marker> 
 
-      <l-marker v-for="usuario in usuarios" :key="id" :lat-lng="[usuario.longitud,usuario.latitud]" :icon =icon>
-        <l-popup>{{usuario.nombre}}</l-popup>  
+      <l-marker v-for="usuario in usuarios" v-bind:key="usuario" :lat-lng="[usuario.longitud,usuario.latitud]" :icon =icon>
+        <l-popup><b>Voluntario</b><br>{{usuario.nombre}}</l-popup>  
       </l-marker>
  
     </l-map>
@@ -51,7 +57,7 @@ export default {
     LTileLayer,
     LMarker,
     LIcon,
-    LPopup
+    LPopup,
   },
   data() {
     return {
@@ -60,7 +66,7 @@ export default {
       ubicacion : [] ,
       ubicacionString : '',
       zoom: 4,
-      center: latLng(-29.962679 , -71.339047),
+      center: latLng(-38.719, -72.478),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
@@ -114,4 +120,14 @@ export default {
   height: auto !important;
   margin: 0 !important;
 }
+    .extra{
+        transition: 0.5s;
+    }
+    .extra:hover{
+        /*
+        margin-top: 23px !important;
+        */
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+         
+    }
 </style>

@@ -1,37 +1,34 @@
 <template>
     <div class="contenedor" > 
-        <img hre src="https://i.ibb.co/Xtk8K3T/yellow-post-it-clipart-post-it-clipart-282-300.png"  alt="Rectangle-12" width="250" height="250" />
-        <div class="centrado text-center ">
+        <img hre src="https://i.ibb.co/Xtk8K3T/yellow-post-it-clipart-post-it-clipart-282-300.png"  alt="Rectangle-12" width="300" height="300" />
+        <div class="centrado text-center tamaño_tposit">
 
-            <div class = " rowtext-center ">
-                <div v-if="emergencia.nombre.length >= 4"> 
+            <div class = " row text-center mt-5">
+                <div v-if="emergencia.nombre.length >= 15"  > 
                     <h4>{{emergencia.nombre.slice(0,20)}}</h4>
                 </div>
                 <div col v-else> 
                     <h4>{{emergencia.nombre}}</h4>
                 </div>
                 
-                <div  v-if="emergencia.nombre.length >= 8">
+                <div  v-if="emergencia.descrip.length >= 15" >
                     <h5>{{emergencia.descrip.slice(0,20)}}...</h5>
                 </div>
                 <div col v-else> 
-                    <h4>{{emergencia.descrip}}</h4>
+                    <h5>{{emergencia.descrip}}</h5>
                 </div>
                 
 
 
                 <router-link 
                     :to="{name: 'emergencia', params: { id: emergencia.id}}" 
-                    class="btn  colorRojo bottom rounded-pill">Ver emergencia
+                    class="mt-5 btn abajo colorRojo  rounded-pill"><h5>Ver emergencia</h5>
                 </router-link>
             </div>
 
         </div>
 
-        <div class="texto-encima">
-
-
-        </div>
+      
     </div>
     
 </template>
@@ -60,8 +57,16 @@ export default {
     }
     .centrado{
         position: absolute;
-        top: 50%;
+        top: 40%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-48%, -50%);
     }
+    .tamaño_tposit{
+        width: 220px;
+        height: 350px;
+
+    }
+
+    
+
 </style>

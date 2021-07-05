@@ -1,57 +1,94 @@
 <template>  
-    <div row class="container-fluid ">
-        
-        <button class="btn btn-lg colorRojo margin-moreleft rounded-pill"   
-        @click="volver()" > <i class="bi bi-arrow-left-short"></i>Volver a tablón</button>
+    <div b-row class="container-fluid ">
 
-        <div col class="container-fluid ventana text-center">
-            <!-- @submit.prevent="handleUpdateForm()" -->
-            <form > 
-                Emergencia
-                <h1>{{emergencia.nombre}}</h1>
-                <h2> 
-                    Nombre : {{institucion.nombre}}
-                </h2>
-                <h5>
-                <p>Descripcion : <br>{{emergencia.descrip}}
-                </p> 
-                </h5>
 
-                <h4>
-                    <p> 
-                    Fecha de Inicio: {{emergencia.finicio}}
-                    </p>
-                    <p> 
-                    Ubicacion : {{emergencia.latitud}} , {{emergencia.longitud}}
-                    </p>
-                   
-                </h4>
-                <h4>
-                    <p> 
-                    Fecha de Termino: {{emergencia.ffin}}
-                    Hola _{{emergencia.id_institucion}}
+        <b-container class="container-fluid text-center">
+            <b-row>
+                        
+                
+                <b-col>
+                    <button class="btn btn-lg colorRojo rounded-pill mb-1" @click="volver()" ><i class="bi bi-arrow-left-short"></i>
+                         Volver a tablón
+                    </button>
 
-                    </p>
-                   
-                </h4>
-                    <div class="form-group text-center">
-                </div>   
-                <div >
-                    <button class="btn btn-lg color4 rounded-pill" 
-                    @click="checkearPostulantes();" > Postular</button>
+                     <div b-col class="container-fluid ventana_emer extra px-0 text-center mt-4">
+                    <!-- @submit.prevent="handleUpdateForm()" -->
+
+                    <form > 
+                        <h3 class="py-1 px-0 mx-0 soloRojo" style="border-top-left-radius: 20px;border-top-right-radius: 20px;">Emergencia</h3>
+                        <h1 class="capitalize mt-3">{{emergencia.nombre}}</h1>
+                        <!-- 
+                        <h2> 
+                            Nombre : {{institucion.nombre}}
+                        </h2>
+                        -->
+
+
+                        <h5 >
+                            <hr>
+                            <p class="justificar px-4 mt-3"> 
+                            Fecha de inicio: {{emergencia.finicio}}
+                            <br>Fecha de termino: {{emergencia.ffin}}
+                            <!-- 
+                            Hola _{{emergencia.id_institucion}}
+                            -->
+
+                            </p>
+                            <hr>
+                            <p> 
+                            Ubicación : {{emergencia.latitud}} , {{emergencia.longitud}}
+                            </p>
+                            <hr>
+
+                            <p class="justificar px-4">Descripción : <br>{{emergencia.descrip}}
+                            </p> 
+                            <hr>
+       
+                        </h5>
+                       
+                        <div class="row">
+                            <div class="col-8 pt-2">
+                                <h5>
+                                    Cantidad de Voluntarios Cercanos:
+                                </h5>
+                            </div>
+                             <div class="col-4 px-0">
+                                <div class=" form-group text-center " style="width: 140px;">
+                                    <div class="form-group input-group text-center">
+                                        <select class="form-control rounded-pill text-center" style="text-align-last: center;" placeholder="Voluntarios" v-model="totalVol" @change="obtenerUsuarios()" required>
+                                            <option  v-for="number in N" :key="number">{{number}}</option>
+                                        </select>
+                                    </div> 
+                                </div>  
+                            </div>
+                        </div>
+                        
+                       
+                        <div >
+                            <button class="mt-4 btn btn-lg color3 rounded-pill" 
+                            @click="checkearPostulantes();" > Postular</button>
+                        </div>
+                        
+
+                    </form>
+
+
+
                 </div>
-            </form>
+                </b-col>
 
+                <b-col>
+                    <Mapa v-bind:emergencia="emergencia" v-bind:usuarios="usuarios" ></Mapa> 
 
-        </div>
-        <div col>
-        <div class="form-group input-group">
-            <select class="form-control rounded-pill " placeholder="Voluntarios" v-model="totalVol" @change="obtenerUsuarios()" required>
-                <option v-for="number in N" :key="number">{{number}}</option>
-            </select>
-        </div> 
-        <Mapa v-bind:emergencia="emergencia" v-bind:usuarios="usuarios" ></Mapa> 
-        <Lista v-bind:usuarios="usuarios" ></Lista>  
+                </b-col>
+            </b-row>
+        </b-container>
+
+       
+        <div b-col>
+            
+
+            <Lista v-bind:usuarios="usuarios" ></Lista>  
 
         </div>
     </div> 
@@ -127,7 +164,7 @@
                     this.usuarios = res.data;
                     console.log(this.usuarios);
                 }).catch(error => {
-                console.log(error)
+                    console.log(error)
                 });
             }
         }    
@@ -135,6 +172,18 @@
 </script>
 
 <style>
+
+    body, html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    }
+    body {
+        background: linear-gradient(180deg, #A8DADC 4.87%, rgba(255, 255, 255, 0) 20%),
+                    linear-gradient(0deg, #A8DADC -12.07%, rgba(255, 255, 255, 0) 20%),
+                    #FEF9FF;
+    }
     .divider-text {
         position: relative;
         text-align: center;
@@ -163,15 +212,27 @@
         display: block;
     }
 
-    .ventana{
+    .ventana_emer{
         width: 540.93px;
-        height: 400px;
+        height: 750px;
+        /*
         left: 482px;
         top: 26px;
-
+*/
         background: #FFFFFF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
+        
+    }
+    .extra{
+        transition: 0.5s;
+    }
+    .extra:hover{
+        /*
+        margin-top: 23px !important;
+        */
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+         
     }
     .padding_up{
         padding-top: 15px;
@@ -181,6 +242,10 @@
     }
     .margin-moreleft{
         margin-left: -150px;
+    }
+    .soloRojo{
+        color:white !important;
+        background-color: red !important;
     }
 
     

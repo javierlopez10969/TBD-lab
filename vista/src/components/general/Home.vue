@@ -1,17 +1,17 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <div class="row">
             <div class="col">
             </div>
             <div class="col">
-                <div class="container-fluid text-right padding_arriba">
+                <div class="container-fluid text-right pt-0">
                     <img src="https://i.ibb.co/hRHLs8y/preparados.png" alt="preparados" border="0">
                 </div>   
             </div>
             <div class="col">
             </div>
         </div>
-        <Mapa ></Mapa> 
+        
         <!-- iamgenes y texto -->
         <div class="row">
           <div class="col ">
@@ -61,6 +61,8 @@
           </div>
         </div>
         </h4>
+
+        <Mapa ></Mapa> 
 
     </div>
 </template>
