@@ -46,7 +46,7 @@
         </div>
         <div col>
         <div class="form-group input-group">
-            <select class="form-control rounded-pill " placeholder="Voluntarios" v-model="totalVol" required>
+            <select class="form-control rounded-pill " placeholder="Voluntarios" v-model="totalVol" @change="obtenerUsuarios()" required>
                 <option v-for="number in N" :key="number">{{number}}</option>
             </select>
         </div> 
@@ -95,12 +95,13 @@
                     this.institucion = res.data;
                     console.log("Nombre : " + this.institucion.nombre);
                 }); 
-                this.ubicacion = [this.emergencia.latitud,this.emergencia.longitud]
-            });  
+                this.ubicacion = [this.emergencia.latitud,this.emergencia.longitud];
+            }); 
+            
+            this.obtenerUsuarios(); 
 
         },
         mounted(){
-
             let apiURL4 = `http://localhost:3000/voluntarios/count`;  
             axios.get(apiURL4).then(res => {
                 this.N = res.data;
@@ -111,13 +112,6 @@
  
         },
         updated(){
-                                    let apiURL3 = `http://localhost:3000/voluntarioscercanos`;  
-            axios.post(apiURL3, {"latitud" : this.latitud,"longitud" :this.longitud, "id": this.totalVol}).then((res) => {
-                this.usuarios = res.data;
-                console.log(this.usuarios);
-            }).catch(error => {
-            console.log(error)
-             });
         },
         computed(){
             
@@ -126,6 +120,15 @@
         methods: {
             volver(){
                 this.$router.push('/emergencias');   
+            },
+            obtenerUsuarios(){
+                let apiURL3 = `http://localhost:3000/voluntarioscercanos`;  
+                axios.post(apiURL3, {"latitud" : this.latitud,"longitud" :this.longitud, "id": this.totalVol}).then((res) => {
+                    this.usuarios = res.data;
+                    console.log(this.usuarios);
+                }).catch(error => {
+                console.log(error)
+                });
             }
         }    
     }

@@ -19,10 +19,10 @@
         <l-popup>Benjax Basado</l-popup>  
       </l-marker> 
 
-      Create image icon (icon) from l-icon tag -->
+      Create image icon (icon) from l-icon tag
       <l-marker :lat-lng="[-33.19976552083029, -70.67199596382044]">
         <l-popup>Benjax Basado</l-popup>  
-      </l-marker>
+      </l-marker> -->
       <l-marker :lat-lng="[x,y]">
         <l-icon 
           :icon-size="dynamicSize"
@@ -31,6 +31,10 @@
         />
         <l-popup>Emergencia : {{emergencia.nombre}}</l-popup>  
       </l-marker> 
+
+      <l-marker v-for="usuario in usuarios" :key="id" :lat-lng="[usuario.longitud,usuario.latitud]" :icon =icon>
+        <l-popup>{{usuario.nombre}}</l-popup>  
+      </l-marker>
  
     </l-map>
   </div>
@@ -38,7 +42,7 @@
 
 <script>
 import { LMap, LTileLayer, LMarker, LIcon, LPopup } from "vue2-leaflet";
-import { latLng} from "leaflet";
+import { latLng,icon,Icon} from "leaflet";
 
 export default {
   name: "Icon",
@@ -60,9 +64,16 @@ export default {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      icon: icon({
+        //iconUrl: "https://i.ibb.co/DtM7qdQ/map-marker-icon.png",
+        iconUrl: require('leaflet/dist/images/marker-icon.png'),
+        //iconSize: [32, 37],
+        iconAnchor: [16, 37]
+      }),
       staticAnchor: [16, 37],
       customText: "Foobar",
       iconSize: 36 
+
 
     };
   },
