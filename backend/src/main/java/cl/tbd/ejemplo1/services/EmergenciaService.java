@@ -53,4 +53,9 @@ public class EmergenciaService {
     public Emergencia getEmergencia(@PathVariable int id){
         return emergenciaRepository.getEmergencia(id);
     }
+
+    @GetMapping("/emergencias/buscar/{id}")
+    public List<Emergencia> buscarEmergencias(@PathVariable int id){
+        return emergenciaRepository.buscarEmergencias(id);
+    }
 }

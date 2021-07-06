@@ -104,4 +104,17 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
             return null;
         }
 	}
+
+    @Override
+    public List<Emergencia> buscarEmergencias(int id) {
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery("SELECT public.emergencia.id, public.emergencia.nombre, public.emergencia.descrip, public.emergencia.finicio, public.emergencia.ffin,public.emergencia.id_institucion FROM public.emergencia, public.eme_habilidad, public.vol_habilidad WHERE :id=public.vol_habilidad.id_voluntario and public.vol_habilidad.id_habilidad=public.eme_habilidad.id_habilidad and public.eme_habilidad.id_emergencia=public.emergencia.id")
+                    .addParameter("id", id)
+                    .executeAndFetch(Emergencia.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
 }

@@ -1,6 +1,9 @@
 package cl.tbd.ejemplo1.repositories;
 
+import cl.tbd.ejemplo1.models.Emergencia;
 import cl.tbd.ejemplo1.models.Voluntario;
+import cl.tbd.ejemplo1.models.Vol_habilidad;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
@@ -167,7 +170,6 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
                     .addParameter("id", user.getId())
                     .executeAndFetch(Voluntario.class);
             if(findUsers.size() == 1){
-                int token = 0;
                 try(Connection con = sql2o.open()){
                     user.setLoginToken(0);
                     updateVoluntario(user);
@@ -184,5 +186,17 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
             return " Deslogeado Fail";
         }
     }
+
+    @Override
+    public List<Vol_habilidad> miHabilidad(int id){
+		try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM Vol_habilidad where id_voluntario=:id")
+				.addParameter("id", id)
+				.executeAndFetch(Vol_habilidad.class);
+		}catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+	}
 
 }

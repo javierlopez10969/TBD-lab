@@ -1,6 +1,7 @@
 package cl.tbd.ejemplo1.repositories;
 import java.util.List;
 import cl.tbd.ejemplo1.models.Voluntario;
+import cl.tbd.ejemplo1.models.Vol_habilidad;
 
 public interface VoluntarioRepository {
     public int countVoluntario();
@@ -13,4 +14,5 @@ public interface VoluntarioRepository {
     public Voluntario getUserByToken(String token);
     public Voluntario logIn(Voluntario user);
     public String logOut(Voluntario user);
+    public List<Vol_habilidad> miHabilidad(int id);
 }

@@ -2,7 +2,11 @@ package cl.tbd.ejemplo1.services;
 
 import cl.tbd.ejemplo1.models.Emergencia;
 import cl.tbd.ejemplo1.models.Voluntario;
+import cl.tbd.ejemplo1.models.Vol_habilidad;
 import cl.tbd.ejemplo1.repositories.VoluntarioRepository;
+
+
+
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -80,5 +84,15 @@ public class VoluntarioService {
     public String logOut(@RequestBody Voluntario user){
         return voluntarioRepository.logOut(user);
     }
+
+
+
+
+    @GetMapping("/voluntarios/hab/{id}")
+    public List<Vol_habilidad> miHabilidad(@PathVariable int id){
+        return voluntarioRepository.miHabilidad(id);
+    }
+
+
     
 }

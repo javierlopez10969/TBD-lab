@@ -14,7 +14,7 @@ Ejemplo creado a con de [Spring Initializr](https://start.spring.io/) basado en 
 
 * Configurar URL de conexión en `application.resources`
 
-* Ejecutar proyecto de desarrollo con `gradlew runBoot`
+* Ejecutar proyecto de desarrollo con `gradlew bootRun`
 
 ### Ejecutando la aplicación
 Al probar la dirección:
@@ -24,6 +24,9 @@ $ curl http://localhost:9000/hello
 Debe retornar:
 ```
 Hello World!
+
+Modificar el application.properties 
+src\main\resources
 ```
 
 

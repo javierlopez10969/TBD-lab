@@ -9,4 +9,5 @@ public interface EmergenciaRepository {
     public boolean deleteEmergencia(int id);
     public boolean updateEmergencia(Emergencia emergencia);
     public Emergencia getEmergencia(int id);
+    public List<Emergencia> buscarEmergencias(int id);
 }
