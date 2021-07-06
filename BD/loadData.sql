@@ -1,13 +1,13 @@
-insert into public.habilidad (id, descrip) values (1, 'Maecenas leo odio, pede ac diam. Cras pellentesque volutpat dui.');
-insert into public.habilidad (id, descrip) values (2, 'Vestibulum quam sapien, varius ut, Curabitur convallis.');
-insert into public.habilidad (id, descrip) values (3, 'Aenean lectus. Pec quis orci eget orci vehicula condimentum.');
-insert into public.habilidad (id, descrip) values (4, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.');
-insert into public.habilidad (id, descrip) values (5, 'Morbi porttitor lorem id ligula. tristique in, tempus sit amet, sem.');
-insert into public.habilidad (id, descrip) values (6, 'Curabitur gravida nisi at nibh. In quam augue consectetuer eget, rutrum at, lorem.');
-insert into public.habilidad (id, descrip) values (7, 'Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.');
-insert into public.habilidad (id, descrip) values (8, 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.');
-insert into public.habilidad (id, descrip) values (9, 'Morbi non lectus. venenatis non, sodales sed, tincidunt eu, felis.');
-insert into public.habilidad (id, descrip) values (10, 'Duis aliquam convallis nunc. Proin at turpis a  Integer non velit.');
+insert into public.habilidad (id, descrip) values (1, 'Tener auto');
+insert into public.habilidad (id, descrip) values (2, 'Tener agua');
+insert into public.habilidad (id, descrip) values (3, 'Regalar vestuario');
+insert into public.habilidad (id, descrip) values (4, 'Tener herramientas');
+insert into public.habilidad (id, descrip) values (5, 'Mano de obra');
+insert into public.habilidad (id, descrip) values (6, 'Conocimiento en medicina');
+insert into public.habilidad (id, descrip) values (7, 'Donar alimentos no perecibles');
+insert into public.habilidad (id, descrip) values (8, 'Coleccionar monas chinas');
+insert into public.habilidad (id, descrip) values (9, 'La mama');
+insert into public.habilidad (id, descrip) values (10,'No ser fan de touhou');
 
 insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (1, 'Rosabel Cellier', '2020-12-10','pipe@xd.com','pipe',0, public.ST_GeomFromText('POINT(-72.092285 -36.597889)', 4326));
 insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (2, 'Meggie Winpenny', '2021-01-12','mbonn1@list-manage.com','mB6dGjdchWSK',0, public.ST_GeomFromText('POINT(-71.661072 -35.427106)', 4326));
@@ -42,16 +42,10 @@ insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (8, 6,
 insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (9, 4, 7);
 insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (10, 5, 3);
 
-insert into public.estado_tarea (id, descrip) values (1, 'thtvkodsdxjl');
-insert into public.estado_tarea (id, descrip) values (2, 'dnnukzwygnbf');
-insert into public.estado_tarea (id, descrip) values (3, 'cwvxjhdyapfz');
-insert into public.estado_tarea (id, descrip) values (4, 'ufikixktnsdw');
-insert into public.estado_tarea (id, descrip) values (5, 'ceydztjnackv');
-insert into public.estado_tarea (id, descrip) values (6, 'dfdoznjllcts');
-insert into public.estado_tarea (id, descrip) values (7, 'wncyvydktiwq');
-insert into public.estado_tarea (id, descrip) values (8, 'crwpxjmhojuc');
-insert into public.estado_tarea (id, descrip) values (9, 'ftgiwclzshgr');
-insert into public.estado_tarea (id, descrip) values (10, 'fbamlsadmtgn');
+insert into public.estado_tarea (id, descrip) values (1, 'No Realizado');
+insert into public.estado_tarea (id, descrip) values (2, 'En Proceso');
+insert into public.estado_tarea (id, descrip) values (3, 'Realizado');
+
 
 insert into public.institucion (id, nombre, descrip) values (1, 'Baumbach and Sons', 'shlowwlytxjo');
 insert into public.institucion (id, nombre, descrip) values (2, 'Kreiger, Skiles and Johnson', 'xwaeiqvqttoh');
@@ -64,27 +58,27 @@ insert into public.institucion (id, nombre, descrip) values (8, 'Osinski-Windler
 insert into public.institucion (id, nombre, descrip) values (9, 'Wuckert-Kerluke', 'mmfafofqvfgi');
 insert into public.institucion (id, nombre, descrip) values (10, 'Blanda-Terry', 'uutpowoybwbj');
 
-insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (1, 'Marketing', 'xyzgdjxozmhw', '2021-01-20', '2021-03-01', public.ST_GeomFromText('POINT(-71.605196 -33.521862)', 4326), 1);
-insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (2, 'Accounting', 'cbjqdizworys', '2020-06-26', '2021-05-01', public.ST_GeomFromText('POINT(-71.218014 -33.685211)', 4326), 2);
-insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (3, 'Legal', 'oxzewntmqywo', '2020-12-18', '2020-07-05', public.ST_GeomFromText('POINT(-72.951965 -41.468457)', 4326), 3);
-insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (4, 'Accounting', 'vbmrwthainpc', '2020-09-19', '2020-10-25', public.ST_GeomFromText('POINT(-71.339047 -29.962679)', 4326), 4);
-insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (5, 'Legal', 'uxuardqcviks', '2020-05-30', '2021-03-08', public.ST_GeomFromText('POINT(-70.682162 -33.448586)', 4326), 5);
-insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (6, 'Engineering', 'derhoqxoaxkq', '2020-09-13', '2021-04-11', public.ST_GeomFromText('POINT(-71.152267 -33.646207)', 4326), 6);
-insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (7, 'Marketing', 'bjlocljyikaf', '2021-02-02', '2020-12-30', public.ST_GeomFromText('POINT(-70.594368 -33.453787)', 4326), 7);
-insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (8, 'Engineering', 'nklatewygyeg', '2020-07-21', '2021-04-29', public.ST_GeomFromText('POINT(-70.102301 -20.270732)', 4326), 8);
-insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (9, 'Legal', 'mgyeosbyrrbh', '2020-08-25', '2020-08-07', public.ST_GeomFromText('POINT(-73.828039 -41.867611)', 4326), 9);
-insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (10, 'Mision atrapar presos', 'se escapan lo preso aiuudaaa', '2021-03-30', '2020-10-07', public.ST_GeomFromText('POINT(-70.67199596382044 -33.19976552083029)', 4326), 10);
+insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (1, 'Terremoto', 'Se necesitan voluntarios para rescatar perros atrapados.', '2021-01-20', '2021-03-01', public.ST_GeomFromText('POINT(-71.605196 -33.521862)', 4326), 1);
+insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (2, 'Incendio Forestal', 'Buscamos gente con awa.', '2020-06-26', '2021-05-01', public.ST_GeomFromText('POINT(-71.218014 -33.685211)', 4326), 2);
+insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (3, 'Aluvión', 'Buscamos gente para ayudar a las personas sin hogar.', '2020-12-18', '2020-07-05', public.ST_GeomFromText('POINT(-72.951965 -41.468457)', 4326), 3);
+insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (4, 'Terremoto', 'Se necesitan personas para la construcción de viviendas.', '2020-09-19', '2020-10-25', public.ST_GeomFromText('POINT(-71.339047 -29.962679)', 4326), 4);
+insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (5, 'Incendio', 'Se necesita mano de obra para ayudar en la reconstrucción de viviendas.', '2020-05-30', '2021-03-08', public.ST_GeomFromText('POINT(-70.682162 -33.448586)', 4326), 5);
+insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (6, 'Terremoto', 'Persona con auto para movilizar perritos.', '2020-09-13', '2021-04-11', public.ST_GeomFromText('POINT(-71.152267 -33.646207)', 4326), 6);
+insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (7, 'COVID-19', 'Se necesitan personas con conocimiento medico para ayudar en la vacunación contra COVID-19.', '2021-02-02', '2020-12-30', public.ST_GeomFromText('POINT(-70.594368 -33.453787)', 4326), 7);
+insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (8, 'Vomito Masivo', 'Se necesitan personas para limpiar vomito', '2020-07-21', '2021-04-29', public.ST_GeomFromText('POINT(-70.102301 -20.270732)', 4326), 8);
+insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (9, 'Terremoto', 'Se necesitan ayuda con alimentos no perecibles', '2020-08-25', '2020-08-07', public.ST_GeomFromText('POINT(-73.828039 -41.867611)', 4326), 9);
+insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (10, 'Mision atrapar presos', 'Se escapan lo preso aiuudaaa', '2021-03-30', '2020-10-07', public.ST_GeomFromText('POINT(-70.67199596382044 -33.19976552083029)', 4326), 10);
 
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (1, 'COUMADIN', 'Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.', 37, 49, 1, '2021-03-12', '2021-04-05', 1);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (2, 'Cytarabine', 'Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.', 65, 67, 2, '2021-04-26', '2020-12-05',  2);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (3, 'Vineyard Grape Antibacterial Hand Wash', 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 31, 8, 3, '2020-07-25', '2021-02-15', 3);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (4, 'ANTI BACTERIAL HAND SANITIZER', 'Sed ante. Vivamus tortor. Duis mattis egestas metus.', 75, 49, 4, '2021-02-07', '2021-05-24', 4);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (5, 'HYDROCORTISONE ACETATE', 'Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', 88, 7, 5, '2021-03-03', '2021-02-18', 5);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (6, 'IBUPROFEN', 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.', 4, 25, 6, '2020-12-23', '2020-11-06', 6);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (7, 'MS CONTIN', 'In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.', 46, 100, 7, '2020-10-10', '2020-09-16', 7);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (8, 'Diphenoxylate Hydrochloride and Atropine Sulfate', 'Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 81, 27, 8, '2020-09-12', '2021-04-09', 8);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (9, 'Nitrogen', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 70, 28, 9, '2021-01-31', '2020-08-14',  9);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (10, 'COMETRIQ', 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.', 26, 15, 10, '2020-06-29', '2021-01-10', 10);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (1, 'Rescatar Perros', 'Tener auto', 37, 49, 1, '2021-03-12', '2021-04-05', 1);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (2, 'Apagar fuego', 'Tener agua', 65, 67, 2, '2021-04-26', '2020-12-05',  2);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (3, 'Ayudar Personas en Situacion de calle', 'Donar vestuario', 31, 8, 3, '2020-07-25', '2021-02-15', 3);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (4, 'Construir viviendas', 'Tener herramientas', 75, 49, 4, '2021-02-07', '2021-05-24', 1);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (5, 'Construir viviendas', 'Mano de obra', 88, 7, 5, '2021-03-03', '2021-02-18', 2);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (6, 'Rescatar Perros', 'Tener auto', 4, 25, 6, '2020-12-23', '2020-11-06', 3);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (7, 'Poner Vacunas', 'Conocimiento en medicina', 46, 100, 7, '2020-10-10', '2020-09-16', 3);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (8, 'Limpiar espacio publico', 'Mano de obra', 81, 27, 8, '2020-09-12', '2021-04-09', 2);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (9, 'Ayudar Personas en Situacion de calle', 'Donar alimentos no perecibles', 70, 28, 9, '2021-01-31', '2020-08-14',  2);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (10,'Buscar profugos', 'Mano de obra', 26, 15, 10, '2020-06-29', '2021-01-10', 1);
 
 insert into public.ranking (id, id_voluntario, id_tarea, puntaje, flg_invitado, flg_participa) values (1, 2, 7, 9, 1, 9);
 insert into public.ranking (id, id_voluntario, id_tarea, puntaje, flg_invitado, flg_participa) values (2, 4, 1, 8, 6, 1);

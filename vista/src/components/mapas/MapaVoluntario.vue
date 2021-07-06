@@ -48,7 +48,7 @@
 
 <script>
 import { LMap, LTileLayer, LMarker, LIcon, LPopup } from "vue2-leaflet";
-import { latLng,icon,Icon} from "leaflet";
+import { latLng,icon} from "leaflet";
 
 export default {
   name: "Icon",
