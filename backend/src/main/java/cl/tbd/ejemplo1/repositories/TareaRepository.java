@@ -9,4 +9,5 @@ public interface TareaRepository {
     public Tarea createTarea(Tarea tarea);
     public boolean deleteTarea(int id);
     public boolean updateTarea(Tarea nuevaTarea);
+    public List<Tarea> buscarTareas(int id);
 }

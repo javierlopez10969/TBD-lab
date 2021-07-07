@@ -52,5 +52,9 @@ public class TareaService {
     public boolean updateTarea(@RequestBody Tarea tarea){
          return tareaRepository.updateTarea(tarea);
     }
+    @GetMapping("/tareas/buscar/{id}")
+    public List<Tarea> buscarTareas(@PathVariable int id){
+        return tareaRepository.buscarTareas(id);
+    }
 }
 
