@@ -5,7 +5,7 @@
     </div>
     <div  class="container-fluid mt-5 mx-0 px-10">
       <!-- v-on:update:usuario="usuario = $event" -->      
-      <router-view v-bind:usuario=usuario></router-view>
+      <router-view v-bind:usuario="usuario"></router-view>
     </div>
     <div class = "container-fluid bottom mx-0 px-0">
       <Footer></Footer>

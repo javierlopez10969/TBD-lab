@@ -104,7 +104,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
             return null;
         }
 	}
-
+    //Buscar emergencias a partir de la id de un voluntario haciendo joins con la habilidad del voluntario
     @Override
     public List<Emergencia> buscarEmergencias(int id) {
         try(Connection conn = sql2o.open()){

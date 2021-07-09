@@ -99,7 +99,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     }
     @Override
     public Voluntario getVoluntario(int id){
-		String sql = "SELECT * FROM voluntario where id=:id";
+		String sql = "select nombre AS Nombre, id as Id,fnacimiento AS fnacimiento, email AS email, pass as pass, st_x(st_astext(ubicacion)) AS latitud, st_y(st_astext(ubicacion)) AS longitud from voluntario where id=:id";
 		try (Connection con = sql2o.open()) {
 			return con.createQuery(sql)
 				.addParameter("id", id)

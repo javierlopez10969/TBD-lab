@@ -50,6 +50,12 @@ const routes = [
     name: 'emergencia',
     component: () => import('../components/emergencias/Emergencia')
   },
+  //Buscar tareas y emergencias disponibles
+  {
+    path: '/tareas',
+    name: 'tareas',
+    component: () => import('../components/usuario/BuscarTyE')
+  },
   //
   /*
   {

@@ -43,13 +43,9 @@
                     <li class="nav-item">
                     <a class="nav-link color6 rounded-pill" href="/voluntarios">Voluntarios</a>
                     </li>
-
-                      <!--
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Busca tu proyecto" aria-label="Search">
-                        <button class="btn btn-outline-success color3 rounded-pill" type="submit">Buscar</button>
-                    </form>
-                    -->
+                    <li class="nav-item">
+                    <a class="nav-link color6 rounded-pill" href="/tareas">Buscar Tareas según voluntarios</a>
+                    </li>
                 </ul>
 
 

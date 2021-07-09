@@ -105,13 +105,18 @@ public class TareaRepositoryImp implements TareaRepository {
             return false;
         }
     }
+    //Buscar tareas a partir de la id de un voluntario haciendo joins con la habilidad del voluntario
     @Override
     public List<Tarea> buscarTareas(int id) {
         try(Connection conn = sql2o.open()){
             return conn.createQuery(
-                "SELECT DISTINCT public.tarea.id, public.tarea.nombre, public.tarea.descrip, public.tarea.cant_vol_requeridos, public.tarea.cant_vol_inscritos, public.tarea.id_emergencia, public.tarea.finicio, public.tarea.ffin, public.tarea.id_estado FROM public.tarea_habilidad, public.tarea, public.eme_habilidad, public.vol_habilidad, public.estado_tarea WHERE :id=public.vol_habilidad.id_voluntario and public.vol_habilidad.id_habilidad=public.eme_habilidad.id_habilidad and public.eme_habilidad.id=public.tarea_habilidad.id_emehab and public.tarea.id=public.tarea_habilidad.id_tarea and public.estado_tarea.descrip!='Realizado'")
-                    .addParameter("id", id)
-                    .executeAndFetch(Tarea.class);
+            "SELECT DISTINCT public.tarea.id, public.tarea.nombre, public.tarea.descrip, public.tarea.cant_vol_requeridos,"+
+             "public.tarea.cant_vol_inscritos, public.tarea.id_emergencia, public.tarea.finicio, public.tarea.ffin, public.tarea.id_estado "+
+             "FROM public.tarea_habilidad, public.tarea, public.eme_habilidad, public.vol_habilidad, public.estado_tarea "+
+             "WHERE :id=public.vol_habilidad.id_voluntario and public.vol_habilidad.id_habilidad=public.eme_habilidad.id_habilidad "+
+             "and public.eme_habilidad.id=public.tarea_habilidad.id_emehab and public.tarea.id=public.tarea_habilidad.id_tarea and public.tarea.id_estado<>3")
+            .addParameter("id", id)
+            .executeAndFetch(Tarea.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

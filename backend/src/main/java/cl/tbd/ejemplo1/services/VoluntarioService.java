@@ -85,9 +85,6 @@ public class VoluntarioService {
         return voluntarioRepository.logOut(user);
     }
 
-
-
-
     @GetMapping("/voluntarios/hab/{id}")
     public List<Vol_habilidad> miHabilidad(@PathVariable int id){
         return voluntarioRepository.miHabilidad(id);

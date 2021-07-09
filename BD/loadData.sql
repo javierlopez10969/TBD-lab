@@ -33,16 +33,27 @@ insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken,
 insert into public.voluntario (id, nombre, fnacimiento, email, pass, loginToken, ubicacion) values (20, 'Alfredo Moya', '2021-01-11','alfredo@moyita.com','k7W&EL$FI3cd',0, public.ST_GeomFromText('POINT(-70.740967 -33.504759)', 4326));
 
 
-insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (1, 3, 5);
-insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (2, 2, 1);
-insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (3, 3, 5);
-insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (4, 1, 9);
-insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (5, 8, 10);
-insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (6, 8, 3);
-insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (7, 5, 10);
-insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (8, 6, 4);
-insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (9, 4, 7);
-insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (10, 5, 3);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (1, 1, 1);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (21, 1, 9);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (2, 2, 2);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (3, 3, 3);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (4, 4, 4);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (5, 5, 5);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (6, 6, 6);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (7, 7, 7);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (8, 8, 8);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (9, 9, 9);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (10, 10, 10);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (11, 11, 11);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (12, 12, 12);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (13, 13, 1);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (14, 14, 2);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (15, 15, 3);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (16, 16, 4);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (17, 17, 5);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (18, 18, 10);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (19, 19, 11);
+insert into public.vol_habilidad (id, id_voluntario, id_habilidad) values (20, 20, 12);
 
 insert into public.estado_tarea (id, descrip) values (1, 'No Realizado');
 insert into public.estado_tarea (id, descrip) values (2, 'En Proceso');
@@ -72,12 +83,12 @@ insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id
 insert into public.emergencia (id, nombre, descrip, finicio, ffin, ubicacion, id_institucion) values (10, 'Mision atrapar presos', 'Se escapan lo preso aiuudaaa', '2021-03-30', '2020-10-07', public.ST_GeomFromText('POINT(-70.67199596382044 -33.19976552083029)', 4326), 10);
 
 insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (1, 'Rescatar Perros', 'Buscar perritos atrapados en la calle zoom 1234', 37, 49, 1, '2021-03-12', '2021-04-05', 1);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (2, 'Apagar fuego', 'Buscar posibles puntos donde las llamas no se encuentren apagadas', 65, 67, 2, '2021-04-26', '2020-12-05',  2);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (3, 'Ayudar Personas en Situacion de calle', 'Necesitamos gente desde las 8:00 am en la calle egg king 333 para ayudar a gente en situacion de calle', 31, 8, 3, '2020-07-25', '2021-02-15', 3);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (2, 'Apagar fuego', 'Buscar posibles puntos donde las llamas no se encuentren apagadas', 65, 67, 2, '2021-04-26', '2020-12-05',  1);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (3, 'Ayudar Personas en Situacion de calle', 'Necesitamos gente desde las 8:00 am en la calle egg king 333 para ayudar a gente en situacion de calle', 31, 8, 3, '2020-07-25', '2021-02-15', 1);
 insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (4, 'Construir viviendas', 'Se requiere de herramientas para la reconstruccion de viviendas de gente afectada por la catastrofe', 75, 49, 4, '2021-02-07', '2021-05-24', 1);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (5, 'Reparar viviendas afectadas por el incendio', 'Gente con experiencia en la reparación de viviendas', 88, 7, 5, '2021-03-03', '2021-02-18', 2);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (6, 'Rescatar Animales', 'Rescatar animales afectados por el desastre', 4, 25, 6, '2020-12-23', '2020-11-06', 3);
-insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (7, 'Poner Vacunas', 'Ayudar a centro de vacunación con poco personal', 46, 100, 7, '2020-10-10', '2020-09-16', 3);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (5, 'Reparar viviendas afectadas por el incendio', 'Gente con experiencia en la reparación de viviendas', 88, 7, 5, '2021-03-03', '2021-02-18', 3);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (6, 'Rescatar Animales', 'Rescatar animales afectados por el desastre', 4, 25, 6, '2020-12-23', '2020-11-06', 1);
+insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (7, 'Poner Vacunas', 'Ayudar a centro de vacunación con poco personal', 46, 100, 7, '2020-10-10', '2020-09-16', 1);
 insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (8, 'Limpiar espacio publico', 'Se necesitan voluntarios que ayuden a limpiar el lugar afectado por el desastre', 81, 27, 8, '2020-09-12', '2021-04-09', 2);
 insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (9, 'Ayudar Personas en Situacion de calle', 'Se necesita de donaciones para personas en situacion de calle afectadas por la catastrofe', 70, 28, 9, '2021-01-31', '2020-08-14',  2);
 insert into public.tarea (id, nombre, descrip, cant_vol_requeridos, cant_vol_inscritos, id_emergencia, finicio, ffin, id_estado) values (10,'Buscar profugos', 'Partimos a las 9 de la mañana en el puente pio nono a buscar a los responsables del incendio en valparaiso', 26, 15, 10, '2020-06-29', '2021-01-10', 1);

@@ -52,6 +52,7 @@ public class TareaService {
     public boolean updateTarea(@RequestBody Tarea tarea){
          return tareaRepository.updateTarea(tarea);
     }
+    //Buscar tareas segun el id de la habilidad
     @GetMapping("/tareas/buscar/{id}")
     public List<Tarea> buscarTareas(@PathVariable int id){
         return tareaRepository.buscarTareas(id);

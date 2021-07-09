@@ -54,4 +54,11 @@ public class HabilidadService {
     public Habilidad getHabilidad(@PathVariable int id){
         return habilidadRepository.getHabilidad(id);
     }
+
+    @GetMapping("/habilidades/usuario/{id}")
+    public List<Habilidad>  getHabilidadUsuario(@PathVariable int id){
+        return habilidadRepository.getHabilidadUsuario(id);
+    }
+    
+  
 }
