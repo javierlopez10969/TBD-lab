@@ -32,6 +32,8 @@
             img-top
         >
 
+
+
             <b-card-body>
             <b-card-title>{{ Usuario.nombre}}</b-card-title>
             <hr>
@@ -54,25 +56,44 @@
 horizontal
          -->
         <div>
-            <b-card no-body class="overflow-hidden mt-5" style="max-width: 600px; max-height:300px;">
+            <b-card no-body class="overflow-hidden mt-5" style="max-width: 600px; max-height:288px;">
                 <b-row no gutters>
-                <b-col md="6">
-                    <b-card-img src="https://placekitten.com/500/500" alt="Image" class="rounded-0"></b-card-img>
-                </b-col>
-                <b-col md="6">
-                    <b-card-title class = "mb-2 pt-2">{{ Usuario.nombre}}</b-card-title>
-                    <hr>
-                    <h4>Correo</h4>
-                    <b-card-sub-title class="mb-2">{{ Usuario.email}}</b-card-sub-title>
-                     <hr>
-                    <b-card-title>Fecha de nacimiento</b-card-title>
-                    <b-card-sub-title class="mb-2">{{ Usuario.fnacimiento}}</b-card-sub-title>
-                    {{Habilidades[0]}}
-                    </b-card-body>
-                </b-col>
+                    <b-col md="6">
+                        <b-card img-src="https://placekitten.com/500/500" img-alt="Image" class="rounded-0"></b-card>
+                    </b-col>
+                    <b-col md="6">
+                        <b-card-title class = "mb-2 pt-2">{{ Usuario.nombre}}</b-card-title>
+                        <hr class="my-1">
+                        <h5>Correo</h5>
+                        <b-card-sub-title class="mb-2">{{ Usuario.email}}</b-card-sub-title>
+                        <hr  class="my-1">
+                        <h5>Fecha de nacimiento</h5>
+                        <b-card-sub-title class="mb-2">{{ Usuario.fnacimiento}}</b-card-sub-title>
+                        <hr  class="my-1">
+                        <h5>Habilidades</h5>   
+
+                         <b-card-sub-title class="mb-2" v-if="Habilidades.length<4">
+                            <div v-for="habilidad in Habilidades" :key="habilidad._id">
+                                {{ habilidad.descrip}}       
+
+                            </div>             
+                        </b-card-sub-title>  
+                     
+
+                        <b-card-sub-title class="mb-2" v-else style="overflow: auto; max-height:77px; min-width:280px;">
+                            <div v-for="habilidad in Habilidades" :key="habilidad._id">
+                                {{ habilidad.descrip}}                           
+                            </div>             
+                        </b-card-sub-title>  
+
+                    </b-col>
                 </b-row>
             </b-card>
             </div>
+
+        <div>    
+            
+        </div>
 
 
        
@@ -103,16 +124,29 @@ horizontal
                 </thead>
                 <tbody>
                     <tr v-for="tarea in Tareas" :key="tarea._id">
+                        
                         <td>{{ tarea.nombre}}</td>
                         <td>{{ tarea.descrip }}</td>
 
-                        <td>Habilidad</td>
+                        <td>Habilidad
+                        
+                            <tbody>
+                                <tr v-for="habilidadesTarea in HabilidadesTarea" :key="habilidadesTarea._id" script="">
+                                    <td>{{ habilidadesTarea.descrip}} hola {{habilidadesTarea}}</td>
+                                </tr>
+                            </tbody>
+                        </td>
                         <td>{{ tarea.id_emergencia}}</td>
 
                         <td>
                         </td>
                     </tr>
+                   
                 </tbody>
+                <tr>    
+                    <th>Habilidad tarea</th>      
+                </tr>
+                
             </table>
         </div>
        <!-- <Lista v-bind:id="id"></Lista>
@@ -133,25 +167,32 @@ horizontal
                 Tareas :[],
                 Usuario : {},
                 Habilidades : {},
-                id : 9,
+                HabilidadesTarea : {},
+                HabilidadesEmergencia : {},
+                id : 1
             }
         },
+       /* @GetMapping("/habilidades/tarea/{id}")
+   
+        @GetMapping("/habilidades/emergencia/{id]")*/
+    
+    
         created() {
             let apiURL = 'http://localhost:3000/tareas/buscar/' + this.id;
             axios.get(apiURL).then(res => {
                 this.Tareas = res.data;
-                            let apiURL2 = 'http://localhost:3000/voluntarios/' + this.id;
-            axios.get(apiURL2).then(res => {
-                this.Usuario = res.data;
-                                let apiURL3 = 'http://localhost:3000/habilidades/usuario/' + this.id;
-                axios.get(apiURL3).then(res => {
-                    this.Habilidades = res.data;
-                }).catch(error => {
-                    console.log(error)
-                });
-            }).catch(error => {
-                console.log(error)
-            });
+                    let apiURL2 = 'http://localhost:3000/voluntarios/' + this.id;
+                    axios.get(apiURL2).then(res => {
+                        this.Usuario = res.data;
+                            let apiURL3 = 'http://localhost:3000/habilidades/usuario/' + this.id;
+                            axios.get(apiURL3).then(res => {
+                                this.Habilidades = res.data;
+                            }).catch(error => {
+                                console.log(error)
+                            });
+                    }).catch(error => {
+                        console.log(error)
+                    });
             }).catch(error => {
                 console.log(error)
             });
@@ -181,7 +222,17 @@ horizontal
                 }).catch(error => {
                     console.log(error)
                 });
+            },
+            getHabilidadTarea(id){
+                let apiURL4 = 'http://localhost:3000/habilidades/tarea/' + id;
+                axios.get(apiURL4).then(res => {
+                    this.HabilidadesTarea = res.data;
+                }).catch(error => {
+                    console.log(error)
+                });
+
             }
+            
         }
     }
 </script>    

@@ -177,7 +177,7 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
 
     @Override
     public List<Habilidad> getHabilidadEmergencia(int id){
-    String sql = "select h.id, h.descrip from habilidad as h, eme_habilidad as eme, Emergencia as e where eme.id_habilidad = h.id and eme.id_emergencia=e.id and e.id= :id";
+    String sql = "select h.id, h.descrip from habilidad as h, eme_habilidad as eme, Emergencia as e where eme.id_habilidad=h.id and eme.id_emergencia=e.id and e.id= :id";
         try (Connection con = sql2o.open()) {
 			return con.createQuery(sql)
 				.addParameter("id", id)

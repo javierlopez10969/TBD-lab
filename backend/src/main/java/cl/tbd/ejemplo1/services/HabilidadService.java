@@ -54,6 +54,16 @@ public class HabilidadService {
     public Habilidad getHabilidad(@PathVariable int id){
         return habilidadRepository.getHabilidad(id);
     }
+  
+    @GetMapping("/habilidades/tarea/{id}")
+    public List<Habilidad>  getHabilidadTarea(@PathVariable int id){
+        return habilidadRepository.getHabilidadTarea(id);
+    }
+
+    @GetMapping("/habilidades/emergencia/{id}")
+    public List<Habilidad>  getHabilidadEmergencia(@PathVariable int id){
+        return habilidadRepository.getHabilidadEmergencia(id);
+    }
 
     @GetMapping("/habilidades/usuario/{id}")
     public List<Habilidad>  getHabilidadUsuario(@PathVariable int id){
