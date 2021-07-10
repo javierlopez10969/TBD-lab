@@ -5,7 +5,7 @@
             <div class="col-md-3 mx-auto">
                 <div class="input-group">
                     <input class="form-control border-end-0 border rounded-pill" type="search" 
-                    value="search" v-model="id" @change="actualizarBusqueda();getUsuario();getHabilidades()">
+                    value="search" v-model="id" @change="actualizarBusqueda();getUsuario();getHabilidades();">
                     <span class="input-group-append">
                         <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
                             <i class="bi bi-search"></i>
@@ -82,7 +82,7 @@ horizontal
 
                         <b-card-sub-title class="mb-2" v-else style="overflow: auto; max-height:77px; min-width:280px;">
                             <div v-for="habilidad in Habilidades" :key="habilidad._id">
-                                {{ habilidad.descrip}}                           
+                                {{habilidad.descrip}}                           
                             </div>             
                         </b-card-sub-title>  
 
@@ -125,14 +125,13 @@ horizontal
                 <tbody>
                     <tr v-for="tarea in Tareas" :key="tarea._id">
                         
-                        <td>{{ tarea.nombre}}</td>
+                        <td>{{ tarea.nombre}} {{tarea.id}} </td>
                         <td>{{ tarea.descrip }}</td>
 
-                        <td>Habilidad
-                        
+                        <td>                        
                             <tbody>
-                                <tr v-for="habilidadesTarea in HabilidadesTarea" :key="habilidadesTarea._id" script="">
-                                    <td>{{ habilidadesTarea.descrip}} hola {{habilidadesTarea}}</td>
+                                <tr v-for="habilidades in HabilidadesTarea" :key="habilidades._id" script="">
+                                    <td>,{{habilidades}}</td>
                                 </tr>
                             </tbody>
                         </td>
@@ -143,9 +142,7 @@ horizontal
                     </tr>
                    
                 </tbody>
-                <tr>    
-                    <th>Habilidad tarea</th>      
-                </tr>
+               
                 
             </table>
         </div>
@@ -167,7 +164,7 @@ horizontal
                 Tareas :[],
                 Usuario : {},
                 Habilidades : {},
-                HabilidadesTarea : {},
+                HabilidadesTarea : [],
                 HabilidadesEmergencia : {},
                 id : 1
             }
@@ -187,6 +184,17 @@ horizontal
                             let apiURL3 = 'http://localhost:3000/habilidades/usuario/' + this.id;
                             axios.get(apiURL3).then(res => {
                                 this.Habilidades = res.data;
+                                console.log("Total de tareas : " + this.Tareas.length );
+                                for (let index = 0; index < this.Tareas.length; index++) {
+                                    console.log(" El index : " + index +" El id : " + this.Tareas[index].id)
+                                    let apiURL4 = 'http://localhost:3000/habilidades/tarea/' + this.Tareas[index].id;
+                                    axios.get(apiURL4).then(res => {
+                                        this.HabilidadesTarea[index] = res.data;
+                                    }).catch(error => {
+                                        console.log(error)
+                                    });
+                                    
+                                }
                             }).catch(error => {
                                 console.log(error)
                             });
@@ -196,13 +204,28 @@ horizontal
             }).catch(error => {
                 console.log(error)
             });
+            
+
 
         },
         methods: {
             actualizarBusqueda(){
+                console.log("ID : " + this.id);
                 let apiURL = 'http://localhost:3000/tareas/buscar/' + this.id;
                 axios.get(apiURL).then(res => {
                     this.Tareas = res.data;
+                    console.log("Total de tareas : " + this.Tareas.length );
+                    this.HabilidadesTarea = [];
+                    for (let index = 0; index < this.Tareas.length; index++) {
+                        let id = this.Tareas[index].id;
+                        console.log(" El index : " + index +" El id : " + this.Tareas[index].id)
+                        let apiURL4 = 'http://localhost:3000/habilidades/tarea/' + id;
+                        axios.get(apiURL4).then(res => {
+                            this.HabilidadesTarea[index] = res.data;
+                        }).catch(error => {
+                            console.log(error)
+                        });
+                    }
                 }).catch(error => {
                     console.log(error)
                 });
@@ -219,14 +242,6 @@ horizontal
                 let apiURL3 = 'http://localhost:3000/habilidades/usuario/' + this.id;
                 axios.get(apiURL3).then(res => {
                     this.Habilidades = res.data;
-                }).catch(error => {
-                    console.log(error)
-                });
-            },
-            getHabilidadTarea(id){
-                let apiURL4 = 'http://localhost:3000/habilidades/tarea/' + id;
-                axios.get(apiURL4).then(res => {
-                    this.HabilidadesTarea = res.data;
                 }).catch(error => {
                     console.log(error)
                 });
