@@ -5,56 +5,18 @@
             <div class="col-md-3 mx-auto">
                 <div class="input-group">
                     <input class="form-control border-end-0 border rounded-pill" type="search" 
-                    value="search" v-model="id" @change="actualizarBusqueda();getUsuario();getHabilidades();">
+                    value="search" v-model="id" @change="buscar();actualizarBusqueda();getUsuario();getHabilidades();">
                     <span class="input-group-append">
+                        <router-link 
+                        :to="{name: 'tareas', params: { id: id}}" class="">
                         <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
                             <i class="bi bi-search"></i>
                         </button>
+                        </router-link>
                     </span>
                 </div>
             </div>
         </div>
-        <!--
-        {{id}}
-         {{Usuario}}
-         -->
-           <!--
-         <h2></h2>
-         <h3></h3>
-         <h3>{{ Usuario.fnacimiento}}</h3>
-
-        <div>
-        <b-card
-            no-body
-            style="max-width: 13rem;"
-            img-src="https://placekitten.com/300/300"
-            img-alt="Image"
-            img-top
-        >
-
-
-
-            <b-card-body>
-            <b-card-title>{{ Usuario.nombre}}</b-card-title>
-            <hr>
-            <h4>Correo</h4>
-            <b-card-sub-title class="mb-2">{{ Usuario.email}}</b-card-sub-title>
-            <b-card-title>Fecha de nacimiento</b-card-title>
-            <b-card-sub-title class="mb-2">{{ Usuario.fnacimiento}}</b-card-sub-title>
-            </b-card-body>
-
-            <b-list-group flush>
-            <b-list-group-item>Cras justo odio</b-list-group-item>
-            <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-            <b-list-group-item>Vestibulum at eros</b-list-group-item>
-            </b-list-group>
-
-            <b-card-footer>This is a footer</b-card-footer>
-        </b-card>
-        </div>
-      
-horizontal
-         -->
         <div>
             <b-card no-body class="overflow-hidden mt-5" style="max-width: 600px; max-height:288px;">
                 <b-row no gutters>
@@ -75,7 +37,6 @@ horizontal
                          <b-card-sub-title class="mb-2" v-if="Habilidades.length<4">
                             <div v-for="habilidad in Habilidades" :key="habilidad._id">
                                 {{ habilidad.descrip}}       
-
                             </div>             
                         </b-card-sub-title>  
                      
@@ -123,19 +84,18 @@ horizontal
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="tarea in Tareas" :key="tarea._id">
+                    <tr v-for="tarea in Tareas" :key="tarea.id">
                         
                         <td>{{ tarea.nombre}} {{tarea.id}} </td>
                         <td>{{ tarea.descrip }}</td>
 
                         <td>                        
                             <tbody>
-                                <tr v-for="habilidades in HabilidadesTarea" :key="habilidades._id" script="">
-                                    <td>,{{habilidades}}</td>
-                                </tr>
+                                <Lista v-bind:id="tarea.id" v-bind:modo="1"></Lista>
                             </tbody>
                         </td>
-                        <td>{{ tarea.id_emergencia}}</td>
+                        <td><Lista v-bind:id="tarea.id_emergencia" v-bind:modo="2"></Lista>
+                        </td>
 
                         <td>
                         </td>
@@ -154,7 +114,7 @@ horizontal
 <script>    
 
     import axios from 'axios';
-    import Lista from './ListaTyE.vue';
+    import Lista from './GTarea.vue';
     export default {
         components:{
             Lista
@@ -175,38 +135,27 @@ horizontal
     
     
         created() {
-            let apiURL = 'http://localhost:3000/tareas/buscar/' + this.id;
+            if (this.$route.params.id != null) {
+                this.id = this.$route.params.id;
+            }
+            let apiURL = `http://localhost:3000/tareas/buscar/` +this.id;
             axios.get(apiURL).then(res => {
-                this.Tareas = res.data;
-                    let apiURL2 = 'http://localhost:3000/voluntarios/' + this.id;
-                    axios.get(apiURL2).then(res => {
-                        this.Usuario = res.data;
-                            let apiURL3 = 'http://localhost:3000/habilidades/usuario/' + this.id;
-                            axios.get(apiURL3).then(res => {
-                                this.Habilidades = res.data;
-                                console.log("Total de tareas : " + this.Tareas.length );
-                                for (let index = 0; index < this.Tareas.length; index++) {
-                                    console.log(" El index : " + index +" El id : " + this.Tareas[index].id)
-                                    let apiURL4 = 'http://localhost:3000/habilidades/tarea/' + this.Tareas[index].id;
-                                    axios.get(apiURL4).then(res => {
-                                        this.HabilidadesTarea[index] = res.data;
-                                    }).catch(error => {
-                                        console.log(error)
-                                    });
-                                    
-                                }
-                            }).catch(error => {
-                                console.log(error)
-                            });
-                    }).catch(error => {
-                        console.log(error)
-                    });
+            this.Tareas = res.data;
+                let apiURL2 = 'http://localhost:3000/voluntarios/' + this.id;
+                axios.get(apiURL2).then(res => {
+                    this.Usuario = res.data;
+                        let apiURL3 = 'http://localhost:3000/habilidades/usuario/' + this.id;
+                        axios.get(apiURL3).then(res => {
+                            this.Habilidades = res.data;
+                        }).catch(error => {
+                            console.log(error)
+                        });
+                }).catch(error => {
+                    console.log(error)
+                });
             }).catch(error => {
                 console.log(error)
             });
-            
-
-
         },
         methods: {
             actualizarBusqueda(){
@@ -214,21 +163,12 @@ horizontal
                 let apiURL = 'http://localhost:3000/tareas/buscar/' + this.id;
                 axios.get(apiURL).then(res => {
                     this.Tareas = res.data;
-                    console.log("Total de tareas : " + this.Tareas.length );
-                    this.HabilidadesTarea = [];
-                    for (let index = 0; index < this.Tareas.length; index++) {
-                        let id = this.Tareas[index].id;
-                        console.log(" El index : " + index +" El id : " + this.Tareas[index].id)
-                        let apiURL4 = 'http://localhost:3000/habilidades/tarea/' + id;
-                        axios.get(apiURL4).then(res => {
-                            this.HabilidadesTarea[index] = res.data;
-                        }).catch(error => {
-                            console.log(error)
-                        });
-                    }
+                    console.log("Tareas puestas ");
+                    this.getHabilidadesTarea();
                 }).catch(error => {
                     console.log(error)
                 });
+
             },
             getUsuario(){
                 let apiURL2 = 'http://localhost:3000/voluntarios/' + this.id;
@@ -246,6 +186,9 @@ horizontal
                     console.log(error)
                 });
 
+            },
+            buscar(){
+                this.$router.push('/tareas/'+this.id);
             }
             
         }

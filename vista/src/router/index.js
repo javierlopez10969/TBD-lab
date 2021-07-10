@@ -52,7 +52,12 @@ const routes = [
   },
   //Buscar tareas y emergencias disponibles
   {
-    path: '/tareas',
+    path: '/tareas/:id',
+    name: 'tareas',
+    component: () => import('../components/usuario/BuscarTyE')
+  },
+  {
+    path: '/tareas/',
     name: 'tareas',
     component: () => import('../components/usuario/BuscarTyE')
   },
