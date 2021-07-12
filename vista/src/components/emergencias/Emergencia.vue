@@ -35,7 +35,7 @@
 
                             </p>
                             <hr>
-                            <p> 
+                            <p style="text-align: left; padding-left: 24px"> 
                             Ubicación : {{emergencia.latitud}} , {{emergencia.longitud}}
                             </p>
                             <hr>
