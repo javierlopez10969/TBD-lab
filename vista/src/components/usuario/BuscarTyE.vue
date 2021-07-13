@@ -1,7 +1,7 @@
 <template>
     <div>
-          
         <div class="row">
+       
             <div class="col-md-3 mx-auto">
                 <div class="input-group">
                     <input class="form-control border-end-0 border rounded-pill" type="search" 
@@ -17,12 +17,13 @@
                 </div>
             </div>
         </div>
+        <div v-if="(0<Usuario.id) && (Usuario.id<=cantUsers)">
         <div class="row">
             <div class="col-6 mt-5">
                 <b-card no-body class="overflow-hidden" style="max-width: 600px; max-height:288px;">
                     <b-row no gutters>
                         <b-col md="6">
-                            <b-card :img-src='"https://placekitten.com/500/500?image=" + this.id2' img-alt="Image" class="rounded-0"></b-card>
+                            <b-card  :img-src='"https://placekitten.com/500/500?image=" + this.id2' img-alt="Image" class="rounded-0"></b-card>
                         </b-col>
                         <b-col md="6">
                             <b-card-title class = "mb-2 pt-2">{{ Usuario.nombre}}</b-card-title>
@@ -54,43 +55,10 @@
             </div>  
 
           
-
-            <div class="col-6  mt-5">
-                <button v-on:click="isHidden = !isHidden">Mostrar/Ocultar</button>
-                
-                <div v-if="!isHidden">
-                     <b-card  class="overflow-hidden hidden" style="max-width: 600px; max-height:288px;">
-                    <b-row no gutters>                      
-                        <b-col >
-                            <b-card-title class = "mb-2 pt-2">Tarea</b-card-title>
-                            <hr class="my-1">
-                            <h5>Correo</h5>
-                            <b-card-sub-title class="mb-2">{{ Usuario.email}}</b-card-sub-title>
-                            <hr  class="my-1">
-                            <h5>Fecha de nacimiento</h5>
-                            <b-card-sub-title class="mb-2">{{ Usuario.fnacimiento}}</b-card-sub-title>
-                            <hr  class="my-1">
-                            <h5>Habilidades</h5>   
-
-                            <b-card-sub-title class="mb-2" v-if="Habilidades.length<4">
-                                <div v-for="habilidad in Habilidades" :key="habilidad._id">
-                                    {{ habilidad.descrip}}       
-                                </div>             
-                            </b-card-sub-title>  
+            <!-- cuadro tarea-->
+            <div class="col-6  mt-5">     
                         
-
-                            <b-card-sub-title class="mb-2" v-else style="overflow: auto; max-height:77px; min-width:280px;">
-                                <div v-for="habilidad in Habilidades" :key="habilidad._id">
-                                    {{habilidad.descrip}}                           
-                                </div>             
-                            </b-card-sub-title>  
-
-                            </b-col>
-                        </b-row>                      
-                    </b-card> 
-                 </div>
-                
-                
+                <TareaComp v-bind:idTarea.sync="idTarea" > </TareaComp>
             </div>
 
              
@@ -104,22 +72,9 @@
                     <tr>
                         <th>Emergencia</th>
                         <th>Nombre Tarea</th>
-                        <th>Descripción </th>
-                        <th>Habilidades requerida</th>
-                        
+                        <th>Descripción de la tarea </th>
+                        <th>Habilidades requerida</th>                        
                         <th>Acciones</th>
-                        
-                                <!--
-                    private Integer id;
-                    private String nombre;
-                    private String descrip;
-                    private Integer cant_vol_requeridos;
-                    private Integer cant_vol_inscritos;
-                    private Integer id_emergencia;
-                    private Date finicio;
-                    private Date ffin;
-                    private Integer id_estado;
-                    -->
                     </tr>
                 </thead>
                 <tbody>
@@ -128,7 +83,13 @@
                         </td>
                         
                         
-                        <td>{{ tarea.nombre}} {{tarea.id}} </td>
+                        <td>          
+                             <p style="padding-bottom:0px;margin-bottom:0px;"> 
+                                {{ tarea.nombre}}
+                            </p>
+                            <p style="color:grey; padding-top:0px;margin-top:0px; font-weight: bold; font-size: 14px;"> 
+                                ID : {{tarea.id}}   
+                            </p> </td>
                         <td>{{ tarea.descrip }}</td>
 
                         <td>                        
@@ -138,21 +99,28 @@
                         </td>
 
 
-                        <td>
+                        <td class="text-center">
+
+                            <btn                                
+                                class="mx-2 mt-1 mb-1 btn abajo colorVerde  rounded-pill" @click="actualizarID(tarea.id)"><h6 class="my-1">Ver Tarea</h6>
+                            </btn>
+
                             <router-link 
                                 :to="{name: 'emergencia', params: { id: tarea.id_emergencia}}" 
-                                class="mt-0 btn abajo colorRojo  rounded-pill" ><h6>Ver emergencia</h6>
+                                class=" btn abajo colorRojo  rounded-pill" ><h6 class="my-1">Ver emergencia</h6>
                             </router-link>
                         </td>
                     </tr>
                    
                 </tbody>
-               
-                
             </table>
         </div>
-       <!-- <Lista v-bind:id="id"></Lista>
-         -->
+    </div>
+    <div v-else>
+        <h1 class = " mt-5 mb-5 text-center " style="padding-top:100px; padding-bottom:100px;"> Error 404 :( No hay usuarios con esa id</h1>
+    </div>
+
+   
     </div>
 </template>
     
@@ -160,9 +128,11 @@
 
     import axios from 'axios';
     import Lista from './GTarea.vue';
+    import TareaComp from './TareaPeq.vue';
     export default {
         components:{
-            Lista
+            Lista,
+            TareaComp
         },
         data() {
             return {
@@ -173,9 +143,10 @@
                 HabilidadesEmergencia : {},
                 id : 1,
                 id2: this.id,
+                error : 0 ,
                 urlGato : `https://placekitten.com/500/500?image=` + this.id%16+1,
-
-                isHidden: false
+                idTarea : 0.1,
+                cantUsers: 0,
             
             }
         },
@@ -195,18 +166,31 @@
                 let apiURL2 = 'http://localhost:3000/voluntarios/' + this.id;
                 axios.get(apiURL2).then(res => {
                     this.Usuario = res.data;
+                    this.error = 0 ;
                         let apiURL3 = 'http://localhost:3000/habilidades/usuario/' + this.id;
                         axios.get(apiURL3).then(res => {
                             this.Habilidades = res.data;
+                                let apiURL3 = 'http://localhost:3000/voluntarios/count';
+                                axios.get(apiURL3).then(res => {
+                                    this.cantUsers = res.data;
+                                }).catch(error => {
+                                    console.log(error)
+                                });
                         }).catch(error => {
+                            this.error =1 ;
                             console.log(error)
                         });
                 }).catch(error => {
+                    this.error =1 ;
                     console.log(error)
                 });
             }).catch(error => {
+                this.error =1 ;
                 console.log(error)
             });
+            if (this.Usuario == null) {
+                this.error = 1;
+            }
             
         },
         methods: {
@@ -226,8 +210,10 @@
                 let apiURL2 = 'http://localhost:3000/voluntarios/' + this.id;
                 axios.get(apiURL2).then(res => {
                     this.Usuario = res.data;
+                    this.error = 0 ;
                 }).catch(error => {
                     console.log(error)
+                    this.error = 1 ;
                 });
             },
             getHabilidades(){
@@ -241,6 +227,9 @@
             },
             buscar(){
                 this.$router.push('/tareas/'+this.id);
+            },
+            actualizarID(id){
+                this.idTarea = id;
             }
         },
         updated(){
@@ -252,6 +241,18 @@
 </script>    
     
 <style>    
+
+    body, html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    }
+    body {
+        background: linear-gradient(180deg, #b7e7e9 4.87%, rgba(255, 255, 255, 0) 20%),
+                    linear-gradient(0deg, #b7e7e9 -12.07%, rgba(255, 255, 255, 0) 20%),
+                    #FEF9FF;
+    }
 .ms-n5 {
     margin-left: -40px;
 }

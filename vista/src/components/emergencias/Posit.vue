@@ -22,7 +22,7 @@
 
                 <router-link 
                     :to="{name: 'emergencia', params: { id: emergencia.id}}" 
-                    class="mt-5 btn abajo colorRojo  rounded-pill"><h5>Ver emergencia</h5>
+                    class="mt-5 btn abajo colorRojo  rounded-pill"><h5 class="my-1">Ver emergencia</h5>
                 </router-link>
             </div>
 

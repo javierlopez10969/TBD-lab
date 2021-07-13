@@ -6,8 +6,13 @@
             </div>
         </div>
         <div v-if="emergencia">
-            Nombre de emergencia : {{Emergencia.nombre}}
-            ID : {{Emergencia.id}}
+            <p style="padding-bottom:0px;margin-bottom:0px;"> 
+                {{Emergencia.nombre}} 
+            </p>
+            <p style="color:grey; padding-top:0px;margin-top:0px; font-weight: bold; font-size: 14px;"> 
+                ID : {{Emergencia.id}}
+            </p>
+            
         </div>
     </div>
 </template>

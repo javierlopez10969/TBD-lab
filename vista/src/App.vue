@@ -142,11 +142,20 @@ export default {
     color: white !important ;
   }
   .colorRojo{
-    background-color: red !important  ;
+    background-color: rgb(255, 0, 0) !important  ;
     color: white !important ;
   }
   .colorRojo:hover{
-    background-color: rgb(184, 1, 1) !important  ;
+    background-color: rgb(168, 15, 15) !important  ;
+    color: rgb(255, 255, 255) !important ;
+  }
+
+  .colorVerde{
+    background-color: rgb(48, 190, 20) !important  ;
+    color: white !important ;
+  }
+  .colorVerde:hover{
+    background-color: rgb(36, 136, 22) !important  ;
     color: rgb(255, 255, 255) !important ;
   }
 
