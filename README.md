@@ -6,7 +6,7 @@ El proyecto se divide en 3 carpetas correspondientes a las 3 partes de la aplica
 * Serivicio Res con Spring (Backend API)
 * Base de Datos (PostgreSQL)
 # Vista :sunglasses:
-<p align="center"><a target="_blank"><img src="https://vue2-leaflet.netlify.app/logo.png" width="200"></a></p>
+<p align="center"><a target="_blank"><img src="https://vuejs.org/images/logo.svg" width="200"></a></p>
 
 ### Requisitos
 
