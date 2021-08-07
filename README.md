@@ -20,7 +20,7 @@ Para levantar la vista usted tendrá que ubicarse en la carpeta llamada vista.
 ### Compilar y ejecutar la vista en el puerto local 8080
 ### `npm run serve`
 
-# Backend : Base de datos 	:cold_face:
+# Backend : Base de datos POSTGRESQL	:cold_face:
 <p align="center"><a target="_blank"><img src="https://programacion.net/files/article/20151129021117_postgresql-logo.png" width="400"></a></p>
 
 ### Requisitos
@@ -47,6 +47,21 @@ Una vez abierta la consola de postgres ejecute el siguiente comando para crear l
 
 Ya creada la base de datos procedá a cargar datos dump mediante:
 ### `\i loadData.sql`
+
+# Backend : Base de datos POSTGRESQL	:flushed:
+
+
+### Requisitos
+* MongoDB
+
+Para generar la base de datos con la que opera la aplicación, usted deberá ubicarse en la carpeta BD, una vez dentro de esa carpeta
+abrá una terminal o consola en esa carpeta y ejecute ;
+
+## Windows, Linux o MAC
+
+Asegurese de tener configurada sus variables de entorno para ejecutar psql en cualquier lugar de su computador.
+
+### `mongo < database.js`
 
 # Backend : Servicio Rest 	:exploding_head:
 <p align="center"><a target="_blank"><img src="https://cleventy.com/wp-content/uploads/2020/05/spring-boot.png" width="400"></a></p>

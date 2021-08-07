@@ -1,0 +1,42 @@
+ejecutar mongo
+
+mongo
+
+ejecutar codigo para mongo
+
+mongo < database.js
+
+usar abse de datos
+
+use mevnhub
+
+
+show collections
+
+db.users.find()
+db.users.find().pretty()
+db.users.find({atributo:valor})
+db.collection.findOne(atributo:valor}) : el primer dato
+db.users.findOne({""})
+db.collection.find(atributo:valor}).sort({{atributo:1}}) 
+db.collection.find().limit(3) : limite de posibles objetos encontrados
+db.collection.find().forEach(product => print("Product name : " + product.name))
+db.users.count()
+
+
+Actualizar 
+db.collection.update({atributo : valor}, {nuevoAtributo : valor,nuevoAtributo:valor})
+
+db.help() : mostrar comandos
+db : actual base de datos
+show dbs : muestra todas las bases de datos
+db.dropDatabase() : borrar toda la base de datos
+db.createCollection("protyectos") : crear una collecition
+
+//BOORAR base de datos
+db.dropDatabase()
+
+
+
+
+
