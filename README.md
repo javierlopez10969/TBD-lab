@@ -53,7 +53,7 @@ Ya creada la base de datos procedá a cargar datos dump mediante:
 
 ### Requisitos
 * MongoDB
-<p align="center"><a target="_blank"><img src="https://img2.freepng.es/20190111/thz/kisspng-mongodb-logo-database-nosql-postgresql-how-to-create-an-outstanding-tech-stack-clickup-bl-5c391bdf9cff48.4731136215472465596431.jpg" width="400"></a></p>
+<p align="center"><a target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/1280px-MongoDB_Logo.svg.png" width="400"></a></p>
 Para generar la base de datos con la que opera la aplicación, usted deberá ubicarse en la carpeta BD,luego en la carpeta MONGO una vez dentro de esa carpeta
 abrá una terminal o consola en esa carpeta y ejecute :
 
