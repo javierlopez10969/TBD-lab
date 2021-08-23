@@ -48,18 +48,18 @@ Una vez abierta la consola de postgres ejecute el siguiente comando para crear l
 Ya creada la base de datos procedá a cargar datos dump mediante:
 ### `\i loadData.sql`
 
-# Backend : Base de datos POSTGRESQL	:flushed:
+# Backend : Base de datos MONGODB
 
 
 ### Requisitos
 * MongoDB
-
-Para generar la base de datos con la que opera la aplicación, usted deberá ubicarse en la carpeta BD, una vez dentro de esa carpeta
-abrá una terminal o consola en esa carpeta y ejecute ;
+<p align="center"><a target="_blank"><img src="https://img2.freepng.es/20190111/thz/kisspng-mongodb-logo-database-nosql-postgresql-how-to-create-an-outstanding-tech-stack-clickup-bl-5c391bdf9cff48.4731136215472465596431.jpg" width="400"></a></p>
+Para generar la base de datos con la que opera la aplicación, usted deberá ubicarse en la carpeta BD,luego en la carpeta MONGO una vez dentro de esa carpeta
+abrá una terminal o consola en esa carpeta y ejecute :
 
 ## Windows, Linux o MAC
 
-Asegurese de tener configurada sus variables de entorno para ejecutar psql en cualquier lugar de su computador.
+Asegurese de tener configurada sus variables de entorno para ejecutar mongo en cualquier lugar de su computador.
 
 ### `mongo < database.js`
 
